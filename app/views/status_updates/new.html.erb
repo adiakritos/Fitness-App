@@ -1,0 +1,16 @@
+<% provide(:title, "New Stat") %>
+<% provide(:heading, "Welcome, #{ current_user.email }!") %>
+       
+<div id="stats-page-container">
+  <div id="stat-form" >
+    <div id="stat-form-inner"> 
+      <div id="init"> <%#= render 'layouts/init-stats-form' %></div>
+      <div id="stat"> <%= render 'layouts/stat-input-form' %></div>
+   </div>
+ </div>
+  <%= render 'layouts/progress' %> 
+</div>
+
+                                     
+
+

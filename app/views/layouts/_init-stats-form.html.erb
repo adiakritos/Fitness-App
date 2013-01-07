@@ -1,0 +1,21 @@
+
+<%= form_for(current_user, html: {method: :put}) do |f| %>
+    
+    <%= f.label :target_bf_percent %>
+    <%= f.text_field :target_bf_pct %>
+
+    <%= f.label :Deficit_percent %>
+    <%= f.text_field :deficit_pct %>
+
+    <%= f.label :activity_factor %>
+    <%= f.select( :activity_factor, options_for_select( [['Pick One', nil],
+                                                         ['Sedentary (Desk Job)', 1.2],
+                                               ['Light Activity (1-3 day a week)', 1.35],
+                                               ['Moderate Activity (3-5 days a week)', 1.55],
+                                               ['Very Active ( 6-7 days a week)', 1.75],
+                                               ['Extremely Active (Atheletic Endurance)', 1.95]]) )
+    %>
+  <%= f.submit "Post", class:"btn btn-large btn-primary" %> 
+<% end %>
+
+

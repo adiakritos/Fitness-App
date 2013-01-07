@@ -1,0 +1,228 @@
+/* header */
+
+#logo {
+  float: left;
+  margin-right: 10px;
+  font-size: 1.7em;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  padding-top: 9px;
+  font-weight: bold;
+  line-height: 1;
+}
+
+#logo:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
+
+
+/* subheader * / 
+
+
+
+
+
+/* footer */
+
+footer {
+  margin-top: 45px;
+  padding-top: 5px;
+  border-top: 1px solid #eaeaea;
+  color: #999;
+}
+
+footer a {
+  color: #555;
+}  
+
+footer a:hover { 
+  color: #222;
+}
+
+footer small {
+  float: left;
+}
+
+footer ul {
+  float: right;
+  list-style: none;
+}
+
+footer ul li {
+  float: left;
+  margin-left: 10px;
+}
+
+
+
+
+
+/* universal */
+
+html {
+  overflow-y: scroll;
+}
+
+body {
+  padding-top: 60px;
+}
+
+section {
+  overflow: auto;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.center {
+  text-align: center;
+}                     
+
+.center h1 {
+  margin-bottom: 10px;
+}
+
+/* forms */
+
+input, textarea, select, .uneditable-input {
+  border: 1px solid #bbb;
+  width: 65%;
+  padding: 10px;
+  height: auto;
+  margin-bottom: 15px;
+}
+
+#error_explanation {
+  color: #f00;
+  ul {
+    list-style: none;
+    margin: 0 0 18px 0;
+  }
+}
+
+.field_with_errors {
+  @extend .control-group;
+  @extend .error;
+ }
+
+
+ /* Status_updates */
+
+.status_updates {
+  list-style: none;
+  margin: 10px 0 0 0;
+
+  li {
+    padding: 10px 0;
+    border-top: 1px solid #e8e8e8;
+  }
+}
+.content {
+  display: block;
+}
+.timestamp {
+  color: #999;
+}
+.gravatar {
+  float: left;
+  margin-right: 10px;
+}
+aside {
+  textarea {
+    height: 100px;        
+    margin-bottom: 5px;
+  }
+}
+
+
+/* Log Page Styling */
+
+#log-page-container{
+  margin-left:auto;
+  margin-right:auto;
+  width:900px;
+  text-align:left;
+
+  #log{
+    width:100%;
+    margin-left:auto;
+    margin-right:auto; 
+  }
+
+  .inner {                     
+    overflow:hidden;
+  }
+
+  #log-inner{
+    padding:1px .8px;
+  }
+
+  table#log th{
+    border-bottom:1px solid gray;
+    text-align:center;
+  }
+
+  table#log td{
+    border-bottom:1px dotted gray;
+    text-align:center;
+  }
+
+}
+
+
+
+/*   New Stat Page   */
+
+#stats-page-container{
+  #progress{
+      width:370px;
+      height:250px;
+      float:left;
+      margin: 20px 0 0 10px;
+      border:1px solid black;
+
+      h3, h4, p{
+      text-align:center;
+      }
+      
+      #progress-header{
+        margin-bottom:10px;
+      }
+      #progress-left{
+        float:left;
+        margin-left:30px;
+      }
+
+      #progress-right{
+        float:left;
+        margin-left:50px;
+      }
+      #progress-inner{
+        padding:10px 0 0 10px;
+      }
+    }   
+
+  #stat-form{
+    float:left;
+    width:140px;
+    margin: 20px 0 0 50px;
+    height:170px;
+
+    input{
+      width:100px;
+    } 
+
+    #stat-form-inner{
+      border:1px solid black;
+      padding: 10px 0 0 15px;
+    }
+
+    select{
+      width:80%;
+    }
+  }
+}
