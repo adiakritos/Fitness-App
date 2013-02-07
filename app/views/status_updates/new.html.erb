@@ -4,8 +4,11 @@
 <div id="stats-page-container">
   <div id="stat-form" >
     <div id="stat-form-inner"> 
-      <div id="init"> <%#= render 'layouts/init-stats-form' %></div>
-      <div id="stat"> <%= render 'layouts/stat-input-form' %></div>
+      <% if current_user.status_update == nil  %> 
+        <%= render 'layouts/init_stats_form' %> 
+      <% else %> 
+        <%= render 'layouts/stat_input_form' %>
+      <% end  %>
    </div>
  </div>
   <%= render 'layouts/progress' %> 

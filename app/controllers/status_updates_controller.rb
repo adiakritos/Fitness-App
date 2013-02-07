@@ -53,6 +53,7 @@ class StatusUpdatesController < ApplicationController
       @goal = current_user.goal;
       @time_to_goal = nil;
       @fat_to_burn = nil;
+
     elsif
       @first = current_user.status_update.first
       @last  = current_user.status_update.last
@@ -83,6 +84,7 @@ class StatusUpdatesController < ApplicationController
       
     end
   end
+
 
 
 
