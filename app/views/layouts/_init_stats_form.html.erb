@@ -1,5 +1,5 @@
 <div id='init'>
-<%= form_for(current_user, html: {method: :put}) do |f| %>
+  <%= form_for(current_user, method: :put ) do |f| %>
     
     <%= f.label :target_bf_percent %>
     <%= f.text_field :target_bf_pct %>

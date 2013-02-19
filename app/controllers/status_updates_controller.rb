@@ -17,7 +17,7 @@ class StatusUpdatesController < ApplicationController
   end 
   
   def new
-      @status_update = current_user.status_update.build if user_signed_in?
+    @status_update = current_user.status_update.build if user_signed_in?
   end
 
   def show

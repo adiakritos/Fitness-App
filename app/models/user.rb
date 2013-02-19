@@ -45,5 +45,9 @@ class User < ActiveRecord::Base
  #   self.target_bf_pct = 0.10
  #   self.activity_factor = 1.3
  # end                   
+  
+ def new?
+   self.created_at <= 1.minutes.ago.to_date ? true : nil
+ end
 
 end
