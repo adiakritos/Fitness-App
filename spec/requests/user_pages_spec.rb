@@ -17,7 +17,7 @@ describe "User pages" do
     end
 
     describe "with valid information" do
-      after {click_button "Save Changes"}
+      after {click_button "Save Changes"}          
       it { should have_content('success') }
     end
   end

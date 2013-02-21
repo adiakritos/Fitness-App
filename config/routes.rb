@@ -8,7 +8,6 @@ App3::Application.routes.draw do
   end
 
   devise_for :users
-  resources :users
 
   root to: 'static_pages#home'
   match '/faq', to: 'static_pages#faq'
