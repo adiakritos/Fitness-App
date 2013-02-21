@@ -1,12 +1,12 @@
-<div id='stat'>
-  <%= form_for(@status_update) do |f| %>
+<h3> Enter Your New Stats! </h3>
+<%= form_for(@status_update) do |f| %>
 
-    <%= f.label :current_weight %>
-    <%= f.text_field :current_weight %>
+  <%= f.label :current_weight %>
+  <%= f.text_field :current_weight %>
 
-    <%= f.label :current_bf_pct %>
-    <%= f.text_field :current_bf_pct %>
+  <%= f.label :current_bf_pct %>
+  <%= f.text_field :current_bf_pct %>
 
-    <%= f.submit "Post", class:"btn btn-large btn-primary" %> 
-  <% end %>
-</div> 
+  <%= f.submit "Post", class:"btn btn-large btn-primary" %> 
+<% end %>
+

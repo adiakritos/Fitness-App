@@ -1,5 +1,5 @@
 <div id='init'>
-  <%= form_for(current_user, method: :put ) do |f| %>
+  <%= form_for(current_user) do |f| %>
     
     <%= f.label :target_bf_percent %>
     <%= f.text_field :target_bf_pct %>
@@ -14,9 +14,8 @@
                                     ['Light Activity (1-3 day a week)', 1.35],
                                     ['Moderate Activity (3-5 days a week)', 1.55],
                                     ['Very Active ( 6-7 days a week)', 1.75],
-                                    ['Extremely Active (Atheletic Endurance)', 1.95]]) )
-    %>
-  <%= f.submit "Put", class:"btn btn-large btn-primary" %> 
-<% end %>
+                                    ['Extremely Active (Atheletic Endurance)', 1.95]]) )%>
+    <%= f.submit "Post", class:"btn btn-large btn-primary" %> 
+  <% end %>
 
 </div>

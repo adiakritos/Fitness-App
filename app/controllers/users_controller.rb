@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
   def edit
-    #needs a default edit view
+    
   end
                                         
   def update
@@ -13,5 +13,10 @@ class UsersController < ApplicationController
       render new_status_update_path
     end
   end
+
+  def show
+
+  end
+
 
 end
