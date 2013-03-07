@@ -1,5 +1,6 @@
 App3::Application.routes.draw do
 
+  mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
 
   resources :status_updates do 
     collection do 
@@ -7,8 +8,8 @@ App3::Application.routes.draw do
     end
   end
 
-  devise_for :users
-
+  devise_for :users, :controllers => { :registrations => "registrations" }
+  
   root to: 'static_pages#home'
   match '/faq', to: 'static_pages#faq'
   match '/contact', to: 'static_pages#contact'

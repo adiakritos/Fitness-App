@@ -1,0 +1,17 @@
+<div id=current-stats>
+    <div id=current-stats-inner>
+       <div id=current-stats-header>
+           <h3> Previous Stats </h3>
+       </div>
+       <h4> Weight </h4>
+       <%= pluralize(@current_weight, 'lbs') %>
+       <h4> Bodyfat percent </h4>
+       <%= @current_bf_pct %>%
+       <h4> Lean Body Mass </h4>
+       <%= pluralize(@current_lbm, 'lbs') %>
+       <h4> Body Fat </h4>
+       <%= pluralize(@current_fat_weight, 'lbs') %>
+       
+    </div>
+</div>                                                        
+

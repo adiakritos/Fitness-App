@@ -81,7 +81,10 @@ class StatusUpdatesController < ApplicationController
       @daily_calorie_target = daily_calorie_target(@tdee, @deficit_pct)
       @weekly_burn_rate     = weekly_burn_rate(@tdee, @daily_calorie_target)
       @time_to_goal         = time_to_goal(@weekly_burn_rate, @fat_to_burn)
-      
+      @current_weight       = BigDecimal(@first.current_weight, 4)
+      @current_bf_pct       = BigDecimal(@first.current_bf_pct * 100, 4)
+      @current_lbm          = BigDecimal(@first.current_lbm, 4)
+      @current_fat_weight   = BigDecimal(@first.current_fat_weight, 4)
     end
   end
 

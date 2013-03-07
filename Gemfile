@@ -4,6 +4,8 @@ gem 'rails', '3.2.11'
 gem 'bcrypt-ruby', '3.0.1'
 gem 'faker', '1.0.1'
 gem 'devise'
+gem 'fastercsv' # Only required on Ruby 1.8 and below
+gem 'rails_admin'
 
 
 group :development, :test do

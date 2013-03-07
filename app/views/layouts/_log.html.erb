@@ -1,9 +1,9 @@
-<div id = "log">
-    <div id = "log-inner" class = "inner">
+<div id= log">
+    <div id="log-inner" class="inner">
       <h3>Status Updates (<%= @user.status_update.count %>)</h3> 
       <% if @user.status_update.any? %>
       <h4> <%= link_to "Reset Log", delete_all_status_updates_path, method: :delete, data: { confirm: "Are you sure? Once this log is reset there is no going back!"}%> </h4>
-        <table id = "log">
+        <table id="log">
         <thead>
           <tr>
             <th>Entry Date</th>
@@ -16,7 +16,7 @@
             <th>Fat Change</th>
           </tr>
         </thead>
-        <tbody class = "status updates">
+        <tbody class="status updates">
           <%= render @status_updates %>
         </tbody>        
       <% end %>

@@ -23,11 +23,11 @@ module StatusUpdatesHelper
  end
 
  def daily_calorie_target(tdee, deficit_pct)
-    return '%.2f' % (tdee.to_d - (tdee.to_d * deficit_pct.to_d ))  
+    return '%.2f' % (tdee.to_d * deficit_pct.to_d)  
  end
 
  def weekly_burn_rate(tdee, daily_calorie_target)
-    return '%.2f' % (tdee.to_d-daily_calorie_target.to_d)*7 
+    return '%.2f' % (daily_calorie_target.to_d*7) 
  end
 
  def time_to_goal(weekly_burn_rate, fat_to_burn)

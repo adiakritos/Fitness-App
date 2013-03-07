@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121211162614) do
+ActiveRecord::Schema.define(:version => 20130224125811) do
 
   create_table "status_updates", :force => true do |t|
     t.datetime "created_at",           :null => false

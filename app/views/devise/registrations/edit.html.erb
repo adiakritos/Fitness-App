@@ -1,25 +1,55 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<% provide(:title, "User Settings" ) %>
+<% provide(:heading, "User Settings" ) %>
 
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
-  <%= devise_error_messages! %>
+<div id=registration-form-wrapper>
+  <div id=registration-form-inner>
+    <%= devise_error_messages! %>
 
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email %></div>
+    <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
 
-  <div><%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-  <%= f.password_field :password, :autocomplete => "off" %></div>
+      <h2>User Settings</h2>
+      </br>
+      <%= fields_for :user do |a| %>
+        <%= a.label :target_bf_percent %>
+        <%= a.text_field :target_bf_pct %>
 
-  <div><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %></div>
+        <%= a.label :Deficit_percent %>
+        <%= a.text_field :deficit_pct %>
 
-  <div><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-  <%= f.password_field :current_password %></div>
+        <%= a.label :activity_factor %>
+        <%= a.select( :activity_factor, options_for_select( 
+                                        [['Pick One', nil],
+                                        ['Sedentary (Desk Job)', 1.2],
+                                        ['Light Activity (1-3 day a week)', 1.35],
+                                        ['Moderate Activity (3-5 days a week)', 1.55],
+                                        ['Very Active ( 6-7 days a week)', 1.75],
+                                        ['Extremely Active (Atheletic Endurance)', 1.95]]) )%>
+      <% end %>
 
-  <div><%= f.submit "Update" %></div>
-<% end %>
+      </br>
+      <h2>Change Password</h2>
+      </br>
 
-<h3>Cancel my account</h3>
+      <%= f.label :email %>
+      <%= f.email_field :email %>
 
-<p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete %>.</p>
+      <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+      <%= f.password_field :password, :autocomplete => "off" %>
 
-<%= link_to "Back", :back %>
+      <%= f.label :password_confirmation %>
+      <%= f.password_field :password_confirmation %>
+
+      <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+      <%= f.password_field :current_password %>
+
+      <%= f.submit "Update", class:"btn btn-large btn-primary" %> 
+
+    <% end %>
+
+    <h2> Account Settings </h2>
+    </br>
+    <p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete %>.</p>
+
+    
+  </div>
+</div>

@@ -6,9 +6,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :status_update, dependent: :destroy
-
   # after_initialize :default_values
-
+  attr_accessor :password, :password_confirmation, :current_password
   attr_accessible :email,
                   :goal,
                   :measurement,
@@ -20,7 +19,9 @@ class User < ActiveRecord::Base
                   :remember_me,
                   :deficit_pct,
                   :target_bf_pct,
-                  :activity_factor
+                  :activity_factor,
+                  :current_password
+  
                                
   validates :email,           presence: true
   validates :target_bf_pct,   length: { minimum: 3, maximum: 4 },

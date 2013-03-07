@@ -1,24 +1,22 @@
 require 'spec_helper'
+include Warden::Test::Helpers
+Warden.test_mode!
 
 describe "User pages" do
 
+  subject { page }
+
   describe "User Settings Page" do    
     let(:user) { FactoryGirl.create(:user) }
-    before { visit edit_user_path(user) }
+    login_as(:user, scope: :user)
 
-    describe 'page' do
-      it { should have_selector('h1',    text: "Update your settings!") }
-      it { should have_selector('title', text: "Edit User Settings") }
-    end
+    before { visit edit_user_registration_path }
 
-    describe "with valid information" do
-      before {click_button "Save Changes"}
-      it { should have_content('error') }
-    end
+    it { should have_selector('h1',    text: "User Settings") }
+    it { should have_selector('title', text: "User Settings") }
 
-    describe "with valid information" do
-      after {click_button "Save Changes"}          
-      it { should have_content('success') }
-    end
+
+   
   end
+   Warden.test_reset!
 end

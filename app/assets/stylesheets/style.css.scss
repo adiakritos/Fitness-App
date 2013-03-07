@@ -175,12 +175,12 @@ aside {
 
 
 
-/*   New Stat Page   */
+/* Dashboard */
 
 #stats-page-container{
   #progress{
       width:370px;
-      height:250px;
+      height:210px;
       float:left;
       margin: 20px 0 0 10px;
       border:1px solid black;
@@ -225,4 +225,49 @@ aside {
       width:80%;
     }
   }
+  
+  #current-stats{
+    padding:10px 20px 20px 20px;
+    border:1px solid black;
+    float:left;
+    margin:20px 0 0 10px;
+
+    h3{
+      margin-bottom:10px;
+    }
+  }
+  
+  #settings{
+    border:1px solid black;
+    padding:10px 20px 10px 20px;
+    margin:20px 0 0 10px;
+    float:left;
+    h3{
+      margin-bottom:10px;
+    } 
+  }
+  #metabolism{
+    border:1px solid black;
+    padding:10px 20px 10px 20px;
+    margin:20px 0 0 10px;
+    float:left;
+    h3{
+      margin-bottom:10px;
+    } 
+  }  
+}
+
+/* Registration/ Settings Page */
+
+#registration-form-wrapper{
+  width:500px;
+  margin:auto;
+}
+
+#registration-form-inner{
+  .edit_user{
+    width:300px;
+  }
+  width:300px;
+  margin:auto;
 }
