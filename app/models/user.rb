@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
                   :password,
                   :password_confirmation,
                   :remember_me,
-                  :deficit_pct,
+                  :deficit_amnt,
                   :target_bf_pct,
                   :activity_factor,
                   :current_password
@@ -28,12 +28,12 @@ class User < ActiveRecord::Base
                               presence: true, 
                               on: :update
   validates :activity_factor, presence: true, on: :update
-  validates :deficit_pct,     presence: true, on: :update
- # validates :goal,            presence: true
- # validates :measurement,     presence: true
- # validates :bmr_formula,     presence: true
- # validates :fat_factor,      presence: true
- # validates :protein_factor,  presence: true
+  validates :deficit_amnt,    presence: true, on: :update
+ # validates :goal,           presence: true
+ # validates :measurement,    presence: true
+ # validates :bmr_formula,    presence: true
+ # validates :fat_factor,     presence: true
+ # validates :protein_factor, presence: true
  
                   
  # def default_values
@@ -51,4 +51,9 @@ class User < ActiveRecord::Base
    self.created_at <= 1.minutes.ago.to_date ? true : nil
  end
 
+
+ 
+
+ 
+  
 end

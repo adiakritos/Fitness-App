@@ -61,5 +61,5 @@ class StatusUpdate < ActiveRecord::Base
    end 
 
    default_scope order: 'status_updates.created_at DESC'
-
+   
 end

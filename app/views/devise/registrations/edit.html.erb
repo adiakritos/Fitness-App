@@ -2,53 +2,68 @@
 <% provide(:heading, "User Settings" ) %>
 
 <div id=registration-form-wrapper>
+    <div id=registration-form-right>
+      <table>
+         <tr>
+            <th>TDEE: </th>
+            <td><%= @tdee %></td>
+         </tr>
+         <tr>
+
+         </tr>
+      </table>
+    </div>
   <div id=registration-form-inner>
-    <%= devise_error_messages! %>
+    
+    <div id=registration-form-left>
+      <%= devise_error_messages! %>
 
-    <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
+      <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
 
-      <h2>User Settings</h2>
-      </br>
-      <%= fields_for :user do |a| %>
-        <%= a.label :target_bf_percent %>
-        <%= a.text_field :target_bf_pct %>
+        <h2>User Settings</h2>
+        </br>
+        <%= fields_for :user do |a| %>
+          <%= a.label :target_bf_percent %>
+          <%= a.text_field :target_bf_pct %> %
 
-        <%= a.label :Deficit_percent %>
-        <%= a.text_field :deficit_pct %>
+          <%= a.label :Weight_deficit_per_week %>
+          <%= a.text_field :deficit_amnt %> pounds
 
-        <%= a.label :activity_factor %>
-        <%= a.select( :activity_factor, options_for_select( 
-                                        [['Pick One', nil],
-                                        ['Sedentary (Desk Job)', 1.2],
-                                        ['Light Activity (1-3 day a week)', 1.35],
-                                        ['Moderate Activity (3-5 days a week)', 1.55],
-                                        ['Very Active ( 6-7 days a week)', 1.75],
-                                        ['Extremely Active (Atheletic Endurance)', 1.95]]) )%>
+          <%= a.label :activity_factor %>
+          <%= a.select( :activity_factor, options_for_select( 
+                                          [['Pick One', nil],
+                                          ['Sedentary (Desk Job)', 1.2],
+                                          ['Light Activity (1-3 day a week)', 1.35],
+                                          ['Moderate Activity (3-5 days a week)', 1.55],
+                                          ['Very Active ( 6-7 days a week)', 1.75],
+                                          ['Extremely Active (Atheletic Endurance)', 1.95]]) )%>
+        <% end %>
+
+        </br>
+        <h2>Change Password</h2>
+        </br>
+
+        <%= f.label :email %>
+        <%= f.email_field :email %>
+
+        <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+        <%= f.password_field :password, :autocomplete => "off" %>
+
+        <%= f.label :password_confirmation %>
+        <%= f.password_field :password_confirmation %>
+
+        <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+        <%= f.password_field :current_password %>
+
+        <%= f.submit "Update", class:"btn btn-large btn-primary" %> 
+
       <% end %>
 
+      <h2> Account Settings </h2>
       </br>
-      <h2>Change Password</h2>
-      </br>
+      <p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete %>.</p>
 
-      <%= f.label :email %>
-      <%= f.email_field :email %>
-
-      <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-      <%= f.password_field :password, :autocomplete => "off" %>
-
-      <%= f.label :password_confirmation %>
-      <%= f.password_field :password_confirmation %>
-
-      <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-      <%= f.password_field :current_password %>
-
-      <%= f.submit "Update", class:"btn btn-large btn-primary" %> 
-
-    <% end %>
-
-    <h2> Account Settings </h2>
-    </br>
-    <p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete %>.</p>
+    </div> 
 
     
   </div>

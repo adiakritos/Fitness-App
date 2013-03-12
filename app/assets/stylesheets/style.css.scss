@@ -1,3 +1,13 @@
+
+/*   container   */
+
+.container{
+  .container-inner{
+    width:930px;
+    margin:auto;
+  }
+
+}
 /* header */
 
 #logo {
@@ -142,8 +152,7 @@ aside {
 /* Log Page Styling */
 
 #log-page-container{
-  margin-left:auto;
-  margin-right:auto;
+  margin:auto;
   width:900px;
   text-align:left;
 
@@ -178,47 +187,76 @@ aside {
 /* Dashboard */
 
 #stats-page-container{
+  overflow:hidden;
+
   #progress{
-      width:370px;
-      height:210px;
-      float:left;
-      margin: 20px 0 0 10px;
       border:1px solid black;
+      overflow:hidden;
+      float:left;
+      margin:15px 0 0 15px;
+      width:343px;
+      #progress-inner{
+        margin:auto;
+        overflow:hidden;
+        padding:10px 0 0 0;
+      } 
 
       h3, h4, p{
       text-align:center;
       }
       
       #progress-header{
-        margin-bottom:10px;
+        width:70px;
+        margin:auto;
       }
-      #progress-left{
+      
+      #progress-bottom-inner{ 
+        overflow:hidden;
+        width:190px;
+        margin:10px auto; 
+       }
+      #progress-current{
         float:left;
-        margin-left:30px;
       }
 
-      #progress-right{
+      #progress-end{
         float:left;
-        margin-left:50px;
       }
-      #progress-inner{
-        padding:10px 0 0 10px;
-      }
+
+    
     }   
+    
+  #stats-page-inner{
+    overflow:hidden;
+    margin:auto;
+    width:600px;
+    #stats-page-inner-top{
+      width:600px;
+      margin:auto;
+      overflow:hidden;
+    }
+  }
 
-  #stat-form{
+  #stat-form{          
+    border:1px solid black;
+    margin: 25px 0 0 0;
     float:left;
-    width:140px;
-    margin: 20px 0 0 50px;
-    height:170px;
+    width:160px;
 
     input{
       width:100px;
     } 
 
     #stat-form-inner{
-      border:1px solid black;
-      padding: 10px 0 0 15px;
+     
+      h3{ 
+        margin:10px 0 5px 10px;
+       }
+      #stat-form-bottom{
+        width:110px;
+        margin:auto;
+      }
+
     }
 
     select{
@@ -227,13 +265,19 @@ aside {
   }
   
   #current-stats{
+    width:303px;
     padding:10px 20px 20px 20px;
     border:1px solid black;
     float:left;
-    margin:20px 0 0 10px;
+    margin:0 0 0 15px;
 
     h3{
       margin-bottom:10px;
+    }
+
+    #current-stats-inner{
+      width:190px;
+      margin:auto;
     }
   }
   
@@ -260,14 +304,24 @@ aside {
 /* Registration/ Settings Page */
 
 #registration-form-wrapper{
-  width:500px;
+  width:700px;
   margin:auto;
+
+  #registration-form-inner{
+    width:300px;
+    margin:auto; 
+
+    .edit_user{
+      width:300px;
+    }
+
+    #registration-form-left{
+    }
+  }
+  #registration-form-right{
+      border:1px solid black;
+      float:right;
+    } 
 }
 
-#registration-form-inner{
-  .edit_user{
-    width:300px;
-  }
-  width:300px;
-  margin:auto;
-}
+

@@ -1,22 +1,43 @@
-  <div id="progress" >
-    <div id="progress-inner">
-      <div id="progress-header">
-        <h3> Total Overall Progress </h3>
-        <p> <%= @beginning_date %> - <%= @last_date %> </p> 
-      </div>
-      <div id = "progress-left">
-        <h4> Total Weight Change    </h4>
-        <p> <%= pluralize(@total_weight_change, 'lb') %> </p>
-        <h4> Total Fat Change       </h4>
-        <p> <%= pluralize(@total_fat_change, 'lb') %> </p>
-        <h4> Total LBM Change       </h4>
-        <p> <%= pluralize(@total_lbm_change, 'lbs') %> </p>
-     </div>
-     <div id = "progress-right">
-        <h4> Time To Goal </h4>
-        <p> <%= pluralize(@time_to_goal, 'week') %> </p>
-        <h4> Fat to Burn </h4>
-        <p> <%= pluralize(@fat_to_burn, 'lbs') %> </p>
-     </div>
+<div id="progress" >
+  <div id="progress-inner">
+
+    <div id="progress-header">
+      <h3> Progress </h3>
+      <h4> End Date </h4>
+      <%= @end_date %> 
     </div>
-  </div> 
+
+    <div id=progress-bottom>
+      <div id=progress-bottom-inner>
+
+        <div id=progress-current>
+          <table>
+            <tr>
+              <th> Current BF Pct </th>
+              <th> Target BF Pct </th>
+            </tr>
+            <tr>
+              <td> <%= @current_bf_pct %> % </td>
+              <td> <%= @target_bf_pct * 100 %> % </td>
+            </tr>
+          </table>
+        </div>
+
+        <div id=progress-end>
+          <table>
+            <tr>
+              <th> Current Weight </th>
+              <th> Target Weight </th>
+            </tr>
+            <tr>
+              <td> <%= @current_weight %> </td>
+              <td> <%= @target_weight %>  </td>
+            </tr>
+          </table> 
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div> 

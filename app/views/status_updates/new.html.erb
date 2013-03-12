@@ -2,15 +2,13 @@
 <% provide(:heading, "Welcome, #{ current_user.email }!") %>
        
 <div id="stats-page-container">
-  <div id="stat-form" >
-    <div id="stat-form-inner"> 
-      <%= render 'layouts/stat_input_form' %> 
-    </div>
+  <div id=stats-page-inner> 
+
+    <%= render 'layouts/stat_input_form' %> 
+    <%= render 'layouts/current_stats' %>
+    <%= render 'layouts/progress' %> 
+
   </div>
-  <%= render 'layouts/progress' %> 
-  <%= render 'layouts/current_stats' %>
-  <%= render 'layouts/settings' %>
-  <%= render 'layouts/metabolism' %>
 </div>
 
 

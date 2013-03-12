@@ -7,7 +7,7 @@ FactoryGirl.define do
 
   factory :status_update do
     user
-    current_weight 150
-    current_bf_pct 0.15
+    current_weight 180
+    current_bf_pct 20
   end 
 end

@@ -1,5 +1,8 @@
+require 'rubygems'
+require 'active_support/core_ext/numeric/time'
 class StatusUpdatesController < ApplicationController
   include StatusUpdatesHelper
+  include ApplicationHelper
 
   before_filter :correct_user, only: :destroy
   before_filter :total_progress, only: :new
@@ -45,50 +48,9 @@ class StatusUpdatesController < ApplicationController
     redirect_to root_url if @status_update.nil?
   end 
   
-  def total_progress
-    if current_user.status_update == nil
-      @total_weight_change = 0
-      @total_fat_change = 0
-      @total_lbm_change = 0
-      @goal = current_user.goal;
-      @time_to_goal = nil;
-      @fat_to_burn = nil;
-
-    elsif
-      @first = current_user.status_update.first
-      @last  = current_user.status_update.last
-      @beginning_date = current_user.status_update
-                        .first.created_at.strftime("%m/%d/%Y")
-      @last_date      = current_user.status_update
-                        .last.created_at.strftime("%m/%d/%Y")
-      @total_weight_change = BigDecimal(@first.current_weight - 
-                                        @last.current_weight, 3)
-      @total_fat_change    = BigDecimal(@first.current_fat_weight - 
-                                        @last.current_fat_weight, 3)
-      @total_lbm_change    = BigDecimal(@first.current_lbm - 
-                                        @last.current_lbm, 3)
-      @goal            = current_user.goal
-      @lbm             = @first.current_lbm
-      @activity_factor = current_user.activity_factor
-      @deficit_pct     = current_user.deficit_pct
-      @bmr             = bmr(@lbm)
-      @total_weight    = @first.current_weight
-      @target_bf_pct   = current_user.target_bf_pct
-      @target_weight   = target_weight(@total_weight, @target_bf_pct, @lbm)
-      @fat_to_burn     = fat_to_burn(@total_weight, @target_weight)
-      @tdee            = tdee(@bmr, @activity_factor)
-      @deficit_pct     = current_user.deficit_pct
-      @daily_calorie_target = daily_calorie_target(@tdee, @deficit_pct)
-      @weekly_burn_rate     = weekly_burn_rate(@tdee, @daily_calorie_target)
-      @time_to_goal         = time_to_goal(@weekly_burn_rate, @fat_to_burn)
-      @current_weight       = BigDecimal(@first.current_weight, 4)
-      @current_bf_pct       = BigDecimal(@first.current_bf_pct * 100, 4)
-      @current_lbm          = BigDecimal(@first.current_lbm, 4)
-      @current_fat_weight   = BigDecimal(@first.current_fat_weight, 4)
-    end
-  end
+ 
+end
 
 
 
 
-end                                
