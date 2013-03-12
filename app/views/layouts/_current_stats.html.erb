@@ -16,7 +16,7 @@
            <td><%= pluralize(@recent_weight_change, 'lbs') %></td> 
          </tr>
        </table>
-
+       <span><%= link_to "Log", status_update_path(current_user.id)%></span>
     </div>
 </div>                                                        
 

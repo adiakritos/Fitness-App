@@ -1,7 +1,6 @@
 require 'rubygems'
 require 'active_support/core_ext/numeric/time'
 class StatusUpdatesController < ApplicationController
-  include StatusUpdatesHelper
   include ApplicationHelper
 
   before_filter :correct_user, only: :destroy
@@ -48,7 +47,6 @@ class StatusUpdatesController < ApplicationController
     redirect_to root_url if @status_update.nil?
   end 
   
- 
 end
 
 
