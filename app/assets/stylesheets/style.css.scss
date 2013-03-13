@@ -295,9 +295,7 @@ aside {
     padding:10px 20px 10px 20px;
     margin:20px 0 0 10px;
     float:left;
-    h3{
-      margin-bottom:10px;
-    } 
+    h3{ margin-bottom:10px; } 
   }  
 }
 
@@ -327,3 +325,30 @@ aside {
 }
 
 
+/* Meals page */
+
+#meals-page-container{
+  width:550px;
+  margin:auto;
+
+  td{ text-align:center; }
+  .remove-td-center { text-align:left; }
+  
+  #parent-meals-table{ width:100%; }
+  
+  #parent-meals-thead{ }
+
+  .parent-meals-thead-tr{ }
+          
+  #parent-meals-first-tr{ }
+
+  #parent-meals-second-tr{ }
+
+  #parent-meals-tbody{ } 
+
+  .meal-thead{ background:black;
+    
+  } 
+ 
+  .meal-thead-name { color:white; } 
+}

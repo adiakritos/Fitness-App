@@ -8,6 +8,8 @@ App3::Application.routes.draw do
     end
   end
 
+  resources :meals  
+
   devise_for :users, :controllers => { :registrations => "registrations" }
   
   root to: 'static_pages#home'
