@@ -123,6 +123,8 @@ GEM
       activesupport (= 3.2.11)
       bundler (~> 1.0)
       railties (= 3.2.11)
+    rails3-jquery-autocomplete (1.0.11)
+      rails (~> 3.0)
     rails_admin (0.1.2)
       bootstrap-sass (~> 2.0)
       builder (~> 3.0)
@@ -212,8 +214,10 @@ DEPENDENCIES
   faker (= 1.0.1)
   fastercsv
   jquery-rails (= 2.0.2)
+  jquery-ui-rails
   pg (= 0.12.2)
   rails (= 3.2.11)
+  rails3-jquery-autocomplete
   rails_admin
   rspec-rails (= 2.10.0)
   sass-rails (= 3.2.4)

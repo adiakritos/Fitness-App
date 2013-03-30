@@ -15,6 +15,7 @@ module ApplicationHelper
   end
 
   def target_weight(total_weight, target_bf_pct, lbm)
+    target_bf_pct /= 100
     return '%.2f' %  ((total_weight*target_bf_pct)+lbm)
   end
 
@@ -82,7 +83,7 @@ module ApplicationHelper
       @activity_factor = current_user.activity_factor
       @bmr             = bmr(@lbm)
       @total_weight    = @first.current_weight
-      @target_bf_pct   = (current_user.target_bf_pct) / 100
+      @target_bf_pct   = (current_user.target_bf_pct) 
       @target_weight   = target_weight(@total_weight, @target_bf_pct, @lbm)
       @fat_to_burn     = fat_to_burn(@total_weight, @target_weight)
       @tdee            = tdee(@bmr, @activity_factor)

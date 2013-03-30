@@ -1,17 +1,19 @@
 <div id="progress" >
   <div id="progress-inner">
 
-    <div id="progress-header">
-      <h3> Progress </h3>
-      <h4> End Date </h4>
-      <%= @end_date %> 
-    </div>
-
-    <div id=progress-bottom>
-      <div id=progress-bottom-inner>
-
-        <div id=progress-current>
-          <table>
+    <table>
+      <thead>
+        <tr>
+          <th colspan=3><h3>Progress</h3></th>
+        </tr>
+        <tr>
+          <th colspan=3><h4>End Date</h4></th>
+          </tr> 
+        <tr>
+          <th colspan=3><h4><%= @end_date %></h4></th>
+        </tr> 
+      </thead>
+      <tbody>
             <tr>
               <th> Current BF Pct </th>
               <th> Target BF Pct </th>
@@ -19,12 +21,7 @@
             <tr>
               <td> <%= @current_bf_pct %> % </td>
               <td> <%= @target_bf_pct %> % </td>
-            </tr>
-          </table>
-        </div>
-
-        <div id=progress-end>
-          <table>
+            </tr> 
             <tr>
               <th> Current Weight </th>
               <th> Target Weight </th>
@@ -33,11 +30,9 @@
               <td> <%= @current_weight %> </td>
               <td> <%= @target_weight %>  </td>
             </tr>
-          </table> 
-        </div>
+      </tbody>
+    </table>
 
-      </div>
-    </div>
 
   </div>
 </div> 

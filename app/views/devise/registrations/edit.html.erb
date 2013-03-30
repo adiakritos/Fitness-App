@@ -2,22 +2,32 @@
 <% provide(:heading, "User Settings" ) %>
 
 <div id=registration-form-wrapper>
+
+  
     <div id=registration-form-right>
-      <table>
-         <tr>
-            <th>Total Daily Energy Expn: </th>
-            <td><%= @tdee %></td>
-         </tr>
-         <tr>
-            <th> Target Daily Intake: </th>
-            <td><%= @daily_intake %></td>
-         </tr>
-         <tr>
-            <th>End Date from Today: </th>
-            <td><%= @end_date %></td>
-         </tr>
-      </table>
+      <h3> Calorie Usage </h3>
+      <ul>
+        <li>End Date from Today: <%= @end_date %> </li>
+        <li>Total daily Energy Expn: <%= @tdee %> </li>
+        <li>Daily Target Intake: <%= @daily_intake %> </li>
+        <li>Daily Caloric Deficit: <%= @tdee.to_d - @daily_intake.to_d %> </li>
+      </ul>
+
+      <hr>
+
+      <h3>Activity Level Factor </h3>
+      <ul>
+        <li> 1.2 :: Sedentary (Desk Job) </li>
+        <li> 1.35 :: Light Activity (Train 1-3 days/week) </li>
+        <li> 1.45 :: Moderatly Active (Train 3-5 days/week) </li>
+        <li> 1.6-1.75 :: Very Active (Train 6-7 days/week) </li>
+        <li> 1.8-1.9 :: Extremely Active (Atheltic Endurance) </li>
+      </ul>
+
     </div>
+
+
+
   <div id=registration-form-inner>
     
     <div id=registration-form-left>
@@ -35,13 +45,7 @@
           <%= a.text_field :deficit_amnt %> pounds
 
           <%= a.label :activity_level %>
-          <%= a.select( :activity_factor, options_for_select( 
-                                          [['Pick One', nil],
-                                          ['Sedentary (Desk Job)', 1.2],
-                                          ['Light Activity (1-3 day a week)', 1.35],
-                                          ['Moderate Activity (3-5 days a week)', 1.45],
-                                          ['Very Active ( 6-7 days a week)', 1.75],
-                                          ['Extremely Active (Atheletic Endurance)', 1.95]]) )%>
+          <%= a.text_field :activity_factor %>
         <% end %>
 
         </br></br> 
