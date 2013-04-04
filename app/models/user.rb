@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :status_update, dependent: :destroy
+  has_many :meal, dependent: :destroy
+  has_many :custom_food, dependent: :destroy
   # after_initialize :default_values
   attr_accessor :password, :password_confirmation, :current_password
   attr_accessible :email,

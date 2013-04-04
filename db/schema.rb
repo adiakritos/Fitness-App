@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130404172344) do
+ActiveRecord::Schema.define(:version => 20130404175951) do
 
   create_table "foods", :force => true do |t|
     t.string   "name"
@@ -30,6 +30,8 @@ ActiveRecord::Schema.define(:version => 20130404172344) do
   end
 
   create_table "meals", :force => true do |t|
+    t.integer "user_id"
+    t.string  "meal_name"
   end
 
   create_table "rails_admin_histories", :force => true do |t|
