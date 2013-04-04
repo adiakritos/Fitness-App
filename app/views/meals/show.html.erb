@@ -23,11 +23,10 @@
         </thead>
         <tbody id=parent-meals-tbody>
             <tr>
-                <% #render @meals %>
-                <%= render 'layouts/meals' %>
+              <%= render @meals %>
             </tr>
             <tr>
-                <th class=remove-td-center><%= link_to "+" %> </th>
+                <th class=remove-td-center><%= link_to "new meal", meals_path , method: :create%> </th>
             </tr>
         </tbody>
     </table>

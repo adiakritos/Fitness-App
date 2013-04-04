@@ -12,6 +12,8 @@ namespace :db do
 
 
     users = User.all(limit:6)
+
+    #Creating Test Status Updates
     15.times do |n|
       weight = 200 - n
       bf_pct = 19 - n - 0.5
@@ -20,5 +22,16 @@ namespace :db do
                                    current_bf_pct: bf_pct )
       end
     end
+
+
+    #Create Test Meals
+    
+      users.each do |user|
+          5.times do |n|
+          name = "Meal: #{n}" 
+          user.meal.create!(meal_name: name)
+        end
+      end
+
   end
 end

@@ -49,58 +49,75 @@ module ApplicationHelper
   end
     
   def total_progress
-    if current_user.status_update == nil
-      @total_weight_change = 0
-      @total_fat_change = 0
-      @total_lbm_change = 0
-      @goal = current_user.goal;
-      @time_to_goal = nil;
-      @fat_to_burn = nil;
-      @target_bf_pct = 0;
+    if user_signed_in?
+      if current_user.status_update == nil
+        @total_weight_change = 0
+        @total_fat_change = 0
+        @total_lbm_change = 0
+        @time_to_goal = 0
+        @fat_to_burn = 0
+        @target_bf_pct = 0
+        @lbm             = 0
+        @activity_factor = 0
+        @bmr             = 0
+        @total_weight    = 0
+        @target_bf_pct   = 0
+        @target_weight   = 0
+        @fat_to_burn     = 0
+        @tdee            = 0
+        @deficit_amnt    = 0
+        @deficit_pct     = 0
+        @daily_calorie_target = 0
+        @daily_intake         = 0
+        @weekly_burn_rate     = 0
+        @time_to_goal         = 0
+        @current_weight       = 0
+        @current_bf_pct       = 0
+        @current_lbm          = 0
+        @current_fat_weight   = 0
+      elsif
 
-    elsif
-
-      @first = current_user.status_update.first
-      @last  = current_user.status_update.last
-      @beginning_date = current_user.status_update
-                        .first.created_at.strftime("%m/%d/%Y")
-      @last_date      = current_user.status_update
-                        .last.created_at.strftime("%m/%d/%Y")
-      @total_weight_change  = BigDecimal(@first.current_weight - 
-                                         @last.current_weight, 3)
-      @total_fat_change     = BigDecimal(@first.current_fat_weight - 
-                                         @last.current_fat_weight, 3)
-      @total_lbm_change     = BigDecimal(@first.current_lbm - 
-                                         @last.current_lbm, 3)
-      @recent_fat_change    = BigDecimal(@first.current_fat_weight -
-                                         @first.previous_status_update.current_fat_weight, 3)
-      @recent_lbm_change    = BigDecimal(@first.current_lbm -
-                                         @first.previous_status_update.current_lbm, 2)
-      @recent_weight_change = BigDecimal(@first.current_weight -
-                                        @first.previous_status_update.current_weight, 2) 
-      @goal            = current_user.goal
-      @lbm             = @first.current_lbm
-      @activity_factor = current_user.activity_factor
-      @bmr             = bmr(@lbm)
-      @total_weight    = @first.current_weight
-      @target_bf_pct   = (current_user.target_bf_pct) 
-      @target_weight   = target_weight(@total_weight, @target_bf_pct, @lbm)
-      @fat_to_burn     = fat_to_burn(@total_weight, @target_weight)
-      @tdee            = tdee(@bmr, @activity_factor)
-      @deficit_amnt    = current_user.deficit_amnt
-      @deficit_pct     = deficit_pct(@deficit_amnt, @tdee)
-      @daily_calorie_target = daily_calorie_target(@tdee, @deficit_pct)
-      @daily_intake         = daily_intake(@tdee, @daily_calorie_target)
-      @weekly_burn_rate     = weekly_burn_rate(@tdee, @daily_calorie_target)
-      @time_to_goal         = time_to_goal(@weekly_burn_rate, @fat_to_burn)
-      @current_weight       = BigDecimal(@first.current_weight, 4)
-      @current_bf_pct       = BigDecimal(@first.current_bf_pct * 100, 4)
-      @current_lbm          = BigDecimal(@first.current_lbm, 4)
-      @current_fat_weight   = BigDecimal(@first.current_fat_weight, 4)
-      #End Date
-      @start_date           = current_user.status_update.first.created_at
-      @end_date             = (@start_date + @time_to_goal.to_i.weeks).strftime("%m/%d/%Y")
-    end           
+        @first = current_user.status_update.first
+        @last  = current_user.status_update.last
+        @beginning_date = current_user.status_update
+                          .first.created_at.strftime("%m/%d/%Y")
+        @last_date      = current_user.status_update
+                          .last.created_at.strftime("%m/%d/%Y")
+        @total_weight_change  = BigDecimal(@first.current_weight - 
+                                          @last.current_weight, 3)
+        @total_fat_change     = BigDecimal(@first.current_fat_weight - 
+                                          @last.current_fat_weight, 3)
+        @total_lbm_change     = BigDecimal(@first.current_lbm - 
+                                          @last.current_lbm, 3)
+        @recent_fat_change    = BigDecimal(@first.current_fat_weight -
+                                          @first.previous_status_update.current_fat_weight, 3)
+        @recent_lbm_change    = BigDecimal(@first.current_lbm -
+                                          @first.previous_status_update.current_lbm, 2)
+        @recent_weight_change = BigDecimal(@first.current_weight -
+                                          @first.previous_status_update.current_weight, 2) 
+        @lbm             = @first.current_lbm
+        @activity_factor = current_user.activity_factor
+        @bmr             = bmr(@lbm)
+        @total_weight    = @first.current_weight
+        @target_bf_pct   = (current_user.target_bf_pct) 
+        @target_weight   = target_weight(@total_weight, @target_bf_pct, @lbm)
+        @fat_to_burn     = fat_to_burn(@total_weight, @target_weight)
+        @tdee            = tdee(@bmr, @activity_factor)
+        @deficit_amnt    = current_user.deficit_amnt
+        @deficit_pct     = deficit_pct(@deficit_amnt, @tdee)
+        @daily_calorie_target = daily_calorie_target(@tdee, @deficit_pct)
+        @daily_intake         = daily_intake(@tdee, @daily_calorie_target)
+        @weekly_burn_rate     = weekly_burn_rate(@tdee, @daily_calorie_target)
+        @time_to_goal         = time_to_goal(@weekly_burn_rate, @fat_to_burn)
+        @current_weight       = BigDecimal(@first.current_weight, 4)
+        @current_bf_pct       = BigDecimal(@first.current_bf_pct * 100, 4)
+        @current_lbm          = BigDecimal(@first.current_lbm, 4)
+        @current_fat_weight   = BigDecimal(@first.current_fat_weight, 4)
+        #End Date
+        @start_date           = current_user.status_update.first.created_at
+        @end_date             = (@start_date + @time_to_goal.to_i.weeks).strftime("%m/%d/%Y")
+      end           
+    end
   end
 end
 

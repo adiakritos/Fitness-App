@@ -23,13 +23,15 @@
         </div>
       </header> 
       
-      <div class="navbar navbar-fixed-middle">
-        <div class="navbar-inner"> 
+       
           <% if user_signed_in? %>
-            <%= render 'layouts/subheader' %>
+            <div class="navbar navbar-fixed-middle">
+              <div class="navbar-inner">
+                 <%= render 'layouts/subheader' %>
+              </div>
+            </div> 
           <% end %>
-        </div>
-      </div>
+        
       <%= yield %>
       <%= debug(params) if Rails.env.development? %>
 
