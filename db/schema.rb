@@ -11,7 +11,26 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130311210807) do
+ActiveRecord::Schema.define(:version => 20130404172344) do
+
+  create_table "foods", :force => true do |t|
+    t.string   "name"
+    t.string   "brand"
+    t.float    "fat"
+    t.float    "carbs"
+    t.float    "protien"
+    t.string   "type"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "meal_foods_meals", :force => true do |t|
+    t.integer "meal_id"
+    t.integer "meal_food_id"
+  end
+
+  create_table "meals", :force => true do |t|
+  end
 
   create_table "rails_admin_histories", :force => true do |t|
     t.text     "message"
