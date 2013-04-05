@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  before_save :sanitize
+  before_create :sanitize
 
   has_many :status_update, dependent: :destroy
   has_many :meal, dependent: :destroy
