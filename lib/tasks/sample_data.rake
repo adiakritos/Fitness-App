@@ -26,12 +26,24 @@ namespace :db do
 
     #Create Test Meals
     
-      users.each do |user|
-          5.times do |n|
-          name = "Meal: #{n}" 
-          user.meal.create!(meal_name: name)
-        end
+    users.each do |user|
+        3.times do |n|
+        name = "Meal: #{n}" 
+        user.meal.create!(meal_name: name)
       end
+    end
+
+
+    #Create Test Foods
+      
+    users.each do |user|
+        user.meal.each do |meal|
+          5.times do |n|
+            name = "Sample Food"
+            meal.meal_foods.create!(name:name)
+          end
+        end
+    end
 
   end
 end

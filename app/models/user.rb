@@ -5,19 +5,22 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  before_save :sanitize
+
   has_many :status_update, dependent: :destroy
   has_many :meal, dependent: :destroy
   has_many :custom_foods, dependent: :destroy
   # after_initialize :default_values
-  attr_accessor :password, :password_confirmation, :current_password
+  attr_accessor :user_password, :user_password_confirmation, :current_password
   attr_accessible :email,
+                  :password,
+                  :password_confirmation,
+                  :current_password,
                   :goal,
                   :measurement,
                   :bmr_formula,
                   :fat_factor,
                   :protein_factor,
-                  :password,
-                  :password_confirmation,
                   :remember_me,
                   :deficit_amnt,
                   :target_bf_pct,
@@ -53,7 +56,11 @@ class User < ActiveRecord::Base
    self.created_at <= 1.minutes.ago.to_date ? true : nil
  end
 
-
+ def sanitize
+   self.activity_factor = 3
+   self.deficit_amnt = 1
+   self.target_bf_pct = 10 
+ end
  
 
  
