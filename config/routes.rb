@@ -9,6 +9,7 @@ App3::Application.routes.draw do
   end
 
   resources :meals  
+  resources :foods
 
   devise_for :users, :controllers => { :registrations => "registrations" }
   

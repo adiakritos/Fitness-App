@@ -1,18 +1,19 @@
 <tr>
-    <thead class=meal-thead>
-      <td class=meal-thead-name> <%= meal.meal_name %> </td>
-        <th> </th>
-        <th> </th>
-        <th> </th>
-        <th> </th>
-        <th> <%= link_to "x" %> </th>
-    </thead>
-    <tbody class=meal-tbody>
+  <thead class=meal-thead>
+    <td class=meal-thead-name> <%= meal.meal_name %> </td>
+      <th> </th>
+      <th> </th>
+      <th> </th>
+      <th> </th>
+      <th> <%= link_to "x", meal_path(meal.id), method: :delete %> </th>
+  </thead>
 
-       <%# get reference to current meal and it's foods %>
-       <%= render meal.meal_foods %>
+  <tbody class=meal-tbody>
 
-       <td class=remove-td-center> <%= link_to "new food" %> </td> 
-    </tbody>    
+    <%# get reference to current meal and it's foods %>
+    <%= render meal.meal_foods %>
+
+    <td class=remove-td-center> <%= link_to "new food", foods_path(id: meal.id), method: :create %> </td> 
+  </tbody>    
 </tr> 
 

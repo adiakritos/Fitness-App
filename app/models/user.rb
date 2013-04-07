@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   before_create :sanitize
 
   has_many :status_update, dependent: :destroy
-  has_many :meal, dependent: :destroy
+  has_many :meals, dependent: :destroy
   has_many :custom_foods, dependent: :destroy
   # after_initialize :default_values
   attr_accessor :user_password, :user_password_confirmation, :current_password

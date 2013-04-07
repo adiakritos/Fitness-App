@@ -3,15 +3,14 @@ class MealsController < ApplicationController
   # Pages
   def show
    @user = User.find(params[:id])
-   @meals = @user.meal
+   @meals = @user.meals
   end
 
   # Functions
   def create
-   @meal = current_user.meal.build
+   @meal = current_user.meals.build
 
     if @meal.save
-      flash[:success] = "Meal Saved!"
       redirect_to meal_path(current_user.id)
     else
       flash[:error] = "Couldn't Create Meal"
@@ -24,7 +23,17 @@ class MealsController < ApplicationController
   end
 
   def destroy
-    
+    @meal = Meal.find(params[:id])
+    @meal.destroy
+    redirect_to meal_path(current_user.id)
+  end
+
+
+  private
+
+  def create_meal
+
+
   end
 
   
