@@ -9,7 +9,13 @@ App3::Application.routes.draw do
   end
 
   resources :meals  
-  resources :foods
+  resources :foods do
+    collection do
+      post :save_selected
+      get :search
+    end
+  end
+      
 
   devise_for :users, :controllers => { :registrations => "registrations" }
   

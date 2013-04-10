@@ -19,4 +19,13 @@ class FoodsController < ApplicationController
     @meal_food.destroy
     redirect_to meal_path(current_user.id)
   end
+   
+  def search
+    @foods = Food.order(:name).where("name like ?", "%#{params[:term]}%")
+    render json: @foods.map{|t| {type: t.type, label: t.name}}
+  end
+  
+  def save_selected
+
+  end
 end

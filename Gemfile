@@ -6,6 +6,7 @@ gem 'faker', '1.0.1'
 gem 'devise'
 gem 'fastercsv' # Only required on Ruby 1.8 and below
 gem 'rails_admin'
+gem 'jbuilder'
 
 gem 'closure-compiler'
 

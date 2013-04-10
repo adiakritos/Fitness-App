@@ -10,10 +10,14 @@
 
   <tbody class=meal-tbody>
 
-    <%# get reference to current meal and it's foods %>
     <%= render meal.meal_foods %>
 
-    <td class=remove-td-center> <%= link_to "new food", foods_path(id: meal.id), method: :create %> </td> 
+    <td class=remove-td-center>
+      <%= form_tag({:controller => "foods", :action => "save_selected"}, method: "post", class: "search_food_form") %>
+      <%= text_field_tag 'search_food_text_field', nil, data: { catcomplete_source: search_foods_path } %>
+    
+    </td>
+    <td class=remove-td-center> <%#= link_to "new food", foods_path(id: meal.id), method: :create %> </td> 
   </tbody>    
 </tr> 
 

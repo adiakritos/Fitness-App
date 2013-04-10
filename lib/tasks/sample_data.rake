@@ -29,7 +29,7 @@ namespace :db do
     users.each do |user|
         3.times do |n|
         name = "Meal: #{n}" 
-        user.meal.create!(meal_name: name)
+        user.meals.create!(meal_name: name)
       end
     end
 
@@ -37,10 +37,10 @@ namespace :db do
     #Create Test Foods
       
     users.each do |user|
-        user.meal.each do |meal|
+        user.meals.each do |meal|
           5.times do |n|
             name = "Sample Food"
-            meal.meal_foods.create!(name:name)
+            meals.meal_foods.create!(name:name)
           end
         end
     end
