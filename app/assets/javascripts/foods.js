@@ -23,9 +23,16 @@ $.widget( "custom.catcomplete", $.ui.autocomplete, {
   });
 
 $(function() {
-  
- 
-    $( "#search_food_text_field" ).catcomplete({
-       source: $("#search_food_text_field").data('catcomplete-source')
+
+    // toggle 'new food text field
+    $('.search-form-block').hide()
+
+    $('.new-food-button').hover(function(e){
+        e.preventDefault();
+        $(this).parent().parent().prev('tr').children().show(1000);
+    });
+
+    $( ".auto-complete" ).catcomplete({
+       source: $(".auto-complete").data('catcomplete-source')
     });
   });

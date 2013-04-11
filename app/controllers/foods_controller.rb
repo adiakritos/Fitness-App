@@ -21,8 +21,13 @@ class FoodsController < ApplicationController
   end
    
   def search
-    @foods = Food.order(:name).where("name like ?", "%#{params[:term]}%")
-    render json: @foods.map{|t| {type: t.type, label: t.name}}
+    @user = current_user
+    # type = CustomFood HAVING user_id = current_user.id
+    #@foods = Food.order(:name).where("name like ?" , "%#{params[:term]}%").limit(8)
+    @foods = Food.order(:name).where("type = ? AND user_id = ? OR type = ?",
+                                     "CustomFood", current_user.id, "SiteFood").limit(8)
+
+    render json: @foods.map{|t| {label: t.name, type: t.type}}
   end
   
   def save_selected

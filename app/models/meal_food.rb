@@ -1,3 +1,3 @@
 class MealFood < Food
-  has_one :meal
+  has_one :user
 end

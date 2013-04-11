@@ -34,15 +34,25 @@ namespace :db do
     end
 
 
-    #Create Test Foods
+    #Create Test Foods for users
       
     users.each do |user|
         user.meals.each do |meal|
-          5.times do |n|
-            name = "Sample Food"
-            meals.meal_foods.create!(name:name)
+          2.times do |n|
+            name = "A food"
+            meal.meal_foods.create!(name:name)
           end
         end
+
+        3.times do |n|
+          name = "A food"
+          user.custom_foods.create!(name:name)
+        end
+    end
+
+    10.times do |food|
+      name = "Apple"
+      SiteFood.create(name: name)
     end
 
   end

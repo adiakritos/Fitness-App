@@ -11,13 +11,16 @@
   <tbody class=meal-tbody>
 
     <%= render meal.meal_foods %>
-
-    <td class=remove-td-center>
-      <%= form_tag({:controller => "foods", :action => "save_selected"}, method: "post", class: "search_food_form") %>
-      <%= text_field_tag 'search_food_text_field', nil, data: { catcomplete_source: search_foods_path } %>
-    
-    </td>
-    <td class=remove-td-center> <%#= link_to "new food", foods_path(id: meal.id), method: :create %> </td> 
+    <tr>
+      <td class=search-form-block>
+        <%= form_tag({:controller => "foods", :action => "save_selected"}, method: "post") do %>
+          <%= text_field_tag 'search_food_text_field', nil, data: { catcomplete_source: search_foods_path }, class: "auto-complete" %>
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <td > <%= link_to "new food", nil,  {class: "new-food-button"} %> </td> 
+    </tr>
   </tbody>    
 </tr> 
 

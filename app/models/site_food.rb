@@ -1,0 +1,3 @@
+class SiteFood < Food
+
+end
