@@ -13,8 +13,8 @@
     <%= render meal.meal_foods %>
     <tr>
       <td class=search-form-block>
-        <%= form_tag({:controller => "foods", :action => "save_selected"}, method: "post") do %>
-          <%= text_field_tag 'search_food_text_field', nil, data: { catcomplete_source: search_foods_path }, class: "auto-complete" %>
+        <%= form_tag({:controller => "foods", :action => "create", meal_id: meal.id}, method: "post" ) do %>
+          <%= text_field_tag 'food_name', "Enter Food", data: { catcomplete_source: search_foods_path }, class: "auto-complete"%>
         <% end %>
       </td>
     </tr>

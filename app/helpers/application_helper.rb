@@ -8,6 +8,8 @@ include StatusUpdatesHelper
       "#{base_title} | #{page_title}"
     end
   end 
+  
 
+  
 end
 

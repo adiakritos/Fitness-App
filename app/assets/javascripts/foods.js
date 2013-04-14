@@ -7,7 +7,8 @@
 //    });
 // });
 // 
-//
+
+
 $.widget( "custom.catcomplete", $.ui.autocomplete, {
     _renderMenu: function( ul, items ) {
       var that = this,
@@ -29,10 +30,10 @@ $(function() {
 
     $('.new-food-button').hover(function(e){
         e.preventDefault();
-        $(this).parent().parent().prev('tr').children().show(1000);
+        $(this).parent().parent().prev('tr').children().show(100);
     });
 
     $( ".auto-complete" ).catcomplete({
        source: $(".auto-complete").data('catcomplete-source')
     });
-  });
+});

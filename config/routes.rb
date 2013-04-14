@@ -11,7 +11,6 @@ App3::Application.routes.draw do
   resources :meals  
   resources :foods do
     collection do
-      post :save_selected
       get :search
     end
   end

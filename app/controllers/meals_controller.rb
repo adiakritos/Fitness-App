@@ -1,14 +1,16 @@
+require 'rubygems' 
 class MealsController < ApplicationController
-
+  before_filter :correct_user, only: [:create, :update, :destroy]
+  before_filter :user_signed_in?
   # Pages
   def show
-   @user = User.find(params[:id])
-   @meals = @user.meals
+    @user = User.find(params[:id])
+    @meals = @user.meals
   end
 
   # Functions
   def create
-   @meal = current_user.meals.build
+    @meal = current_user.meals.build
 
     if @meal.save
       redirect_to meal_path(current_user.id)
@@ -17,24 +19,22 @@ class MealsController < ApplicationController
       redirect_to meal_path(current_user.id)
     end 
   end
-  
+
   def update
 
   end
 
   def destroy
-    @meal = Meal.find(params[:id])
+    @id = params[:id].to_i
+    @meal = current_user.meals.find(@id)
     @meal.destroy
     redirect_to meal_path(current_user.id)
   end
 
-
   private
 
-  def create_meal
-
-
-  end
-
+  def correct_user
   
+  
+  end  
 end

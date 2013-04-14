@@ -3,7 +3,7 @@ require 'active_support/core_ext/numeric/time'
 class StatusUpdatesController < ApplicationController
   include StatusUpdatesHelper
 
-  before_filter :correct_user, only: :destroy
+  before_filter :correct_user, only: [:destroy, :delete_all]
   before_filter :total_progress, only: :new
 
   def create
