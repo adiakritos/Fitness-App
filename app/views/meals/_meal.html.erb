@@ -1,25 +1,19 @@
-<tr>
+<tr class="meal-tr-<%= meal.id %>" span=5>
   <thead class=meal-thead>
     <td class=meal-thead-name> <%= meal.meal_name %> </td>
       <th> </th>
       <th> </th>
       <th> </th>
       <th> </th>
-      <th> <%= link_to "x", meal_path(meal.id), method: :delete %> </th>
+      <th> <%= link_to "x", meal_path(meal.id), method: :delete, remote:true %> </th>
   </thead>
 
-  <tbody class=meal-tbody>
+  <tbody class=meal-tbody-<%= meal.id %>>
 
     <%= render meal.meal_foods %>
+    <%#= render 'layouts/search_food_form', meal: meal %>
     <tr>
-      <td class=search-form-block>
-        <%= form_tag({:controller => "foods", :action => "create", meal_id: meal.id}, method: "post" ) do %>
-          <%= text_field_tag 'food_name', "Enter Food", data: { catcomplete_source: search_foods_path }, class: "auto-complete"%>
-        <% end %>
-      </td>
-    </tr>
-    <tr>
-      <td > <%= link_to "new food", nil,  {class: "new-food-button"} %> </td> 
+      <td > <%= link_to "new food", new_food_path(meal_id: meal.id), class: "new-food-button-#{ meal.id }", remote: true %> </td> 
     </tr>
   </tbody>    
 </tr> 

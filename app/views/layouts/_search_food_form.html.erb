@@ -1,0 +1,4 @@
+<%= form_tag({:controller => "foods", :action => "create", meal_id: meal.id}, method: "post", remote: true, class: "form-#{meal.id}") do %>
+  <%= text_field_tag 'food_name', "Search or Create Food", data: { catcomplete_source: search_foods_path }, class: "auto-complete"%>
+<% end %>
+   

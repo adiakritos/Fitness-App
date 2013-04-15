@@ -1,12 +1,6 @@
 // Place all the behaviors and hooks related to the matching controller here.
 // All this logic will automatically be available in application.js.
 
-//$(function() {
-//    $( "#search_food_text_field" ).catcomplete({
-//        source: $('#search_food_text_field').data('autocomplete-source')
-//    });
-// });
-// 
 
 
 $.widget( "custom.catcomplete", $.ui.autocomplete, {
@@ -24,16 +18,12 @@ $.widget( "custom.catcomplete", $.ui.autocomplete, {
   });
 
 $(function() {
-
-    // toggle 'new food text field
-    $('.search-form-block').hide()
-
-    $('.new-food-button').hover(function(e){
-        e.preventDefault();
-        $(this).parent().parent().prev('tr').children().show(100);
-    });
-
-    $( ".auto-complete" ).catcomplete({
-       source: $(".auto-complete").data('catcomplete-source')
+    $(this).bind('ajax:success', function(){
+      $(".auto-complete").catcomplete({
+        source: $(".auto-complete").data('catcomplete-source')
+      })  
     });
 });
+
+
+

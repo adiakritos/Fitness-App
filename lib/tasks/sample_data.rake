@@ -51,7 +51,7 @@ namespace :db do
     end
 
     10.times do |food|
-      name = "Apple"
+      name = "Apple #{food}"
       SiteFood.create(name: name)
     end
 
