@@ -338,7 +338,6 @@ aside {
   width:550px;
   margin:auto;
 
-
   td{ text-align:center; }
   .remove-td-center { text-align:left; }
   
@@ -354,11 +353,7 @@ aside {
 
   #parent-meals-tbody{ } 
 
-  .meal-thead tr{ background:black;
-               -webkit-border-radius: 3px;
-               -moz-border-radius: 3px;
-               border-radius: 3px; 
-  } 
+  .meal-thead { background:black; } 
  
   .meal-thead-name { color:white; } 
 }

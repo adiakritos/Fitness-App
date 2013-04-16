@@ -9,15 +9,14 @@ class MealsController < ApplicationController
   end
 
   # Functions
-  def create
-    @meal = current_user.meals.build
 
-    if @meal.save
-      redirect_to meal_path(current_user.id)
-    else
-      flash[:error] = "Couldn't Create Meal"
-      redirect_to meal_path(current_user.id)
-    end 
+  def new
+    @meal = current_user.meals.build
+    @meal.save
+    respond_to do |format|
+      format.html {redirect_to meal_path(current_user.id)}
+      format.js
+    end
   end
 
   def update
@@ -28,7 +27,10 @@ class MealsController < ApplicationController
     @id = params[:id].to_i
     @meal = current_user.meals.find(@id)
     @meal.destroy
-    redirect_to meal_path(current_user.id)
+    respond_to do |format|
+      format.html {redirect_to meal_path(current_user.id)}
+      format.js
+    end
   end
 
   private

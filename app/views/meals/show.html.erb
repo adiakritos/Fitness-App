@@ -4,7 +4,7 @@
 
 <div id=meals-page-container>
 
-    <table id=parent-meals-table >
+    <table id=parent-meals-table>
         <thead id=parent-meals-thead>
             <tr id=parent-meals-first-tr class=parent-meals-thead-tr>
                 <th> 119% </th>  
@@ -21,11 +21,9 @@
                 <td> 101% </td>
             </tr>
         </thead>
-        <tbody id=parent-meals-tbody>
-              <%= render @meals %>
-            <tr>
-                <th class=remove-td-center><%= link_to "new meal", meals_path, method: :create%> </th>
-            </tr>
+        <%= render @meals %>
+        <tbody>
+            <th class=remove-td-center id='new-meal-button'><%= link_to "new meal", new_meal_path,  remote: true %> </th>
         </tbody>
     </table>
 
