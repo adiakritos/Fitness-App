@@ -7,7 +7,7 @@
 
     <%= render meal.meal_foods %>
     <tr>
-      <td > <%= link_to "new food", new_food_path(meal_id: meal.id), class: "new-food-button-#{ meal.id }", remote: true %> </td> 
+      <td > <%= link_to "add food", new_food_path(meal_id: meal.id), class: "new-food-button-#{ meal.id }", remote: true %> </td> 
     </tr>
   </tbody>    
 

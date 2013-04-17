@@ -1,8 +1,8 @@
 <tr class="food-tr-<%= meal_food.id %>">
-  <td><%= meal_food.name %></td>
-  <td> </td>
-    <td>  </td>
-    <td>  </td>
-    <td>  </td>
-    <td> <%= link_to "x", food_path(meal_food.id), method: :delete, remote: true %> </td>
+  <td><%= meal_food.name   %></td>
+  <td><%= meal_food.amount %></td>
+  <td><%= meal_food.fat    %></td>
+  <td><%= meal_food.carbs  %></td>
+  <td><%= meal_food.protien %> </td>
+  <td><%= link_to "x", food_path(meal_food.id), method: :delete, remote: true %> </td>
 </tr>
