@@ -4,7 +4,9 @@
 <% end %>
 <% if @custom_food.nil? & !@site_food.nil?  %>
    $(".meal-tbody-<%= @meal.id %>").prepend('<%= j render @meal_food %>');  
+
 <% elsif @custom_food.nil? & @site_food.nil? %>
+
   <% if @new_food.nil? %>
     //render the modal box
     var $modal, $modal_close, $modal_container, $meal_id, $new_food_form;
@@ -29,7 +31,14 @@
       $modal.hide();
       return false;
     });  
-  <% elsif !@new_food.nil? %>
-   $(".meal-tbody-<%= @meal.id %>").prepend('<%= j render @meal_food %>');  
+
+    $(document).on('click', '#modal .submit', function() {
+      console.log('hello');
+      $modal_container.hide();
+      $modal.hide();
+    }); 
+     
+  <% elsif !@new_food.nil? %>    
+    $(".meal-tbody-<%= @meal.id %>").prepend('<%= j render @meal_food %>');  
   <% end %>
 <% end %>
