@@ -3,7 +3,7 @@ class FoodsController < ApplicationController
   #functions
   def create
     @meal_id = params[:meal_id]
-    @food_name = params[:food_name]
+    @new_food = params[:new_food_name]
     @site_food = SiteFood.find_by_name(params[:food_name])
     @custom_food = current_user.custom_foods.find_by_name(params[:food_name])
     @meal = current_user.meals.find_by_id(@meal_id) 
@@ -16,6 +16,7 @@ class FoodsController < ApplicationController
         flash[:error] = "#{@meal_id}"
       else
         @meal_food = @meal.meal_foods.build(name:         @custom_food.name, 
+                                            brand:        @custom_food.brand,
                                             amount:       @custom_food.amount,
                                             fat:          @custom_food.fat,
                                             carbs:        @custom_food.carbs,
@@ -25,21 +26,17 @@ class FoodsController < ApplicationController
         @meal_food.save!
       end  
       respond_to do |format|
-        format.html { redirect_to meal_path(current_user.id)}
+        format.html {redirect_to meal_path(current_user.id)}
         format.js
       end
     end
 
-    #if custom_food NOR site_foods exist 
-    if @custom_food.nil? & @site_food.nil?
-    #create custom_food and meal_food with default values and then send popup box for user to update the food. 
-       
-    #if food in "cancelled" then delete that food
-    #create custom and meal foods based on user input
-    #OTHERWISE
-      else
-    #create both a custom_food and meal_food based on site_food info
+    #if custom_food doesn't exist but site_food DOES
+    if @custom_food.nil? & !@site_food.nil?
+     #create custom_food and meal_food
+      
       @meal_food = @meal.meal_foods.build(name:         @site_food.name,
+                                          brand:        @site_food.brand,
                                           amount:       @site_food.amount,
                                           fat:          @site_food.fat,
                                           carbs:        @site_food.carbs,
@@ -48,6 +45,7 @@ class FoodsController < ApplicationController
       @meal_food.save!
 
       @custom_food = current_user.custom_foods.build(name:         @site_food.name,
+                                                     brand:        @site_food.brand,
                                                      amount:       @site_food.amount,
                                                      fat:          @site_food.fat,
                                                      carbs:        @site_food.carbs,
@@ -56,18 +54,54 @@ class FoodsController < ApplicationController
       @custom_food.save!  
 
       respond_to do |format|
-        format.html { redirect_to meal_path(current_user.id)}
+        format.html {redirect_to meal_path(current_user.id)}
         format.js
       end
-    end
 
+
+    #if neither custom_food nor site_food exists
+    elsif @custom_food.nil? & @site_food.nil?
+    #Render modal box to capture food info
+      if @new_food.nil?
+
+        respond_to do |format|
+          format.html {redirect_to meal_path(current_user.id)}
+          format.js
+        end 
+
+    #When user submits the modal box 
+      else !@new_food.nil?
+        @meal_food = @meal.meal_foods.build(name:         params[:new_food_name],
+                                            brand:        params[:new_food_brand],
+                                            amount:       params[:new_food_amount],
+                                            fat:          params[:new_food_fat],
+                                            carbs:        params[:new_food_carbs],
+                                            protien:      params[:new_food_protien],
+                                            measure_type: params[:new_food_measure_type])
+        @meal_food.save!
+
+        @custom_food = current_user.custom_foods.build(name:         params[:new_food_name],
+                                                       brand:        params[:new_food_brand],
+                                                       amount:       params[:new_food_amount],
+                                                       fat:          params[:new_food_fat],
+                                                       carbs:        params[:new_food_carbs],
+                                                       protien:      params[:new_food_protien],
+                                                       measure_type: params[:new_food_measure_type])  
+        @custom_food.save!  
+
+        respond_to do |format|
+          format.html {redirect_to meal_path(current_user.id)}
+          format.js
+        end                       
+      end
+    end
   end
 
   def destroy
     @meal_food = current_user.meal_foods.find(params[:id])
     @meal_food.destroy
     respond_to do |format|
-      format.html { redirect_to meal_path(current_user.id)}
+      format.html {redirect_to meal_path(current_user.id)}
       format.js
     end 
 

@@ -1,10 +1,12 @@
 class Food < ActiveRecord::Base
-  attr_accessible :brand, 
-                  :carbs, 
-                  :fat, 
-                  :name, 
-                  :protien, 
-                  :type
+   attr_accessible :name, :amount, :measure_type, :brand, :fat, :carbs, :protien
+
+  validates :amount, presence: true
+  validates :measure_type, presence: true
+  validates :fat, presence: true
+  validates :carbs, presence: true
+  validates :protien, presence: true
+  validates :brand, presence: true 
                           
   # def self.inherited(child)  
   #  child.instance_eval do
