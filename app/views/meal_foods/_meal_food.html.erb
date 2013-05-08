@@ -1,6 +1,7 @@
-<tr class="food-tr-<%= meal_food.id %>">
-  <td><%= meal_food.name   %></td>
-  <td><%= meal_food.amount %></td>
+<tr class="food food-tr-<%= meal_food.id %>">
+  <td><%= meal_food.name  %></td>
+  <td><%= meal_food.brand %></td>
+  <td><%= pluralize(meal_food.amount, meal_food.measure_type) %></td>
   <td><%= meal_food.fat    %></td>
   <td><%= meal_food.carbs  %></td>
   <td><%= meal_food.protien %> </td>

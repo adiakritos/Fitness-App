@@ -338,7 +338,7 @@ aside {
   width:550px;
   margin:auto;
 
-  td{ text-align:center; }
+  td{  }
   .remove-td-center { text-align:left; }
   
   #parent-meals-table{ width:100%; }
@@ -347,7 +347,7 @@ aside {
 
   .parent-meals-thead-tr{ }
           
-  #parent-meals-first-tr{ }
+  #parent-meals-first-tr{ text-align:left; }
 
   #parent-meals-second-tr{ }
 
@@ -361,5 +361,4 @@ aside {
 /* Foods */
 
   #search_food_text_field{ margin:auto; }
-
 
