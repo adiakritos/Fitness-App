@@ -19,7 +19,7 @@ module StatusUpdatesHelper
   end
 
   def deficit_pct(deficit_amnt, tdee)
-    daily_cal_def = ((deficit_amnt.to_d * 3500)/7)
+    daily_cal_def = ((deficit_amnt.to_f * 3500)/7)
     return (daily_cal_def.to_d/tdee.to_d)
   end
 
@@ -77,32 +77,33 @@ module StatusUpdatesHelper
         @first = current_user.status_update.first
 
         @last  = current_user.status_update.last
-        @beginning_date = current_user.status_update
-                          .first.created_at.strftime("%m/%d/%Y")
-        @last_date      = current_user.status_update
-                          .last.created_at.strftime("%m/%d/%Y")
+
+        @beginning_date       = current_user.status_update
+                               .first.created_at.strftime("%m/%d/%Y")
+        @last_date            = current_user.status_update
+                               .last.created_at.strftime("%m/%d/%Y")
         @total_weight_change  = BigDecimal(@first.current_weight - 
-                                          @last.current_weight, 3)
+                                           @last.current_weight, 3)
         @total_fat_change     = BigDecimal(@first.current_fat_weight - 
-                                          @last.current_fat_weight, 3)
+                                           @last.current_fat_weight, 3)
         @total_lbm_change     = BigDecimal(@first.current_lbm - 
-                                          @last.current_lbm, 3)
+                                           @last.current_lbm, 3)
         @recent_fat_change    = BigDecimal(@first.current_fat_weight -
-                                          @first.previous_status_update.current_fat_weight, 3)
+                                           @first.previous_status_update.current_fat_weight, 3)
         @recent_lbm_change    = BigDecimal(@first.current_lbm -
-                                          @first.previous_status_update.current_lbm, 2)
+                                           @first.previous_status_update.current_lbm, 2)
         @recent_weight_change = BigDecimal(@first.current_weight -
-                                          @first.previous_status_update.current_weight, 2) 
-        @lbm             = @first.current_lbm
-        @activity_factor = current_user.activity_factor
-        @bmr             = bmr(@lbm)
-        @total_weight    = @first.current_weight
-        @target_bf_pct   = (current_user.target_bf_pct) 
-        @target_weight   = target_weight(@total_weight, @target_bf_pct, @lbm)
-        @fat_to_burn     = fat_to_burn(@total_weight, @target_weight)
-        @tdee            = tdee(@bmr, @activity_factor)
-        @deficit_amnt    = current_user.deficit_amnt
-        @deficit_pct     = deficit_pct(@deficit_amnt, @tdee)
+                                           @first.previous_status_update.current_weight, 2) 
+        @lbm                  = @first.current_lbm
+        @activity_factor      = current_user.activity_factor
+        @bmr                  = bmr(@lbm)
+        @total_weight         = @first.current_weight
+        @target_bf_pct        = (current_user.target_bf_pct) 
+        @target_weight        = target_weight(@total_weight, @target_bf_pct, @lbm)
+        @fat_to_burn          = fat_to_burn(@total_weight, @target_weight)
+        @tdee                 = tdee(@bmr, @activity_factor)
+        @deficit_amnt         = current_user.deficit_amnt
+        @deficit_pct          = deficit_pct(@deficit_amnt, @tdee)
         @daily_calorie_target = daily_calorie_target(@tdee, @deficit_pct)
         @daily_intake         = daily_intake(@tdee, @daily_calorie_target)
         @weekly_burn_rate     = weekly_burn_rate(@tdee, @daily_calorie_target)
@@ -118,7 +119,17 @@ module StatusUpdatesHelper
       end           
     end
   end
-                            
+
+  def pct_carbs_satisfied
+     #how many carbs are needed?
+     #cals_needed = @tdee.to_i * (1 - @deficit_pct.to_f)
+     #carbs_needed = cals_needed * 4
+     #how many carbs are provided?
+     #carbs_provided = total_of(:carbs)
+     #what is the pct satisfied?
+     # pct_fulfilled = carbs_provided.to_f/carbs_needed.to_f
+     return 
+  end                         
 
 
 

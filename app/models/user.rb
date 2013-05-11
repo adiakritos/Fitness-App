@@ -38,20 +38,9 @@ class User < ActiveRecord::Base
  # validates :goal,           presence: true
  # validates :measurement,    presence: true
  # validates :bmr_formula,    presence: true
- # validates :fat_factor,     presence: true
- # validates :protein_factor, presence: true
+  validates :fat_factor,     presence: true, on: :update
+  validates :protein_factor, presence: true, on: :update
  
-                  
- # def default_values
- #   self.goal = "Cut"
- #   self.measurement = "US"
- #   self.bmr_formula = "katch"
- #   self.fat_factor = 0.655
- #   self.protein_factor = 1.25 
- #   self.deficit_pct = 0.10
- #   self.target_bf_pct = 0.10
- #   self.activity_factor = 1.3
- # end                   
   
  def new?
    self.created_at <= 1.minutes.ago.to_date ? true : nil
@@ -61,6 +50,8 @@ class User < ActiveRecord::Base
    self.activity_factor = 3
    self.deficit_amnt = 1
    self.target_bf_pct = 10 
+   self.fat_factor = 0.45
+   self.protein_factor = 1
  end
  
 

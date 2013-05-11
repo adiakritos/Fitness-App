@@ -11,15 +11,15 @@
                 <th> Amount  </th>  
                 <th> Fat     </th>  
                 <th> Carbs   </th>  
-                <th> Protien </th>  
+                <th> Protein </th>  
             </tr>
             <tr id=parent-meals-second-tr class=parent-meals-thead-tr>
-                <td>      </td>
-                <td>      </td>
-                <td>      </td>
-                <td> 95%  </td>
-                <td> 110% </td>
-                <td> 101% </td>
+                <td>  </td>
+                <td>  </td>
+                <td>  </td>
+                <td> <%= pct_fat_satisfied     %>% </td>
+                <td> <%= pct_carbs_satisfied   %>% </td>
+                <td> <%= pct_protein_satisfied %>% </td>
             </tr>
         </thead>
         <%= render @meals %>

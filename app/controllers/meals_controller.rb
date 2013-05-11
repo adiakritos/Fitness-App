@@ -1,5 +1,6 @@
 require 'rubygems' 
 class MealsController < ApplicationController
+  include StatusUpdatesHelper
   before_filter :correct_user, only: [:create, :update, :destroy]
   before_filter :user_signed_in?
   # Pages
