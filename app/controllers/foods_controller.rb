@@ -70,7 +70,7 @@ class FoodsController < ApplicationController
         end 
 
     #When user submits the modal box 
-      else !@new_food.nil?
+      elsif !@new_food.nil?
         @meal_food = @meal.meal_foods.build(name:         params[:new_food_name],
                                             brand:        params[:new_food_brand],
                                             amount:       params[:new_food_amount],
@@ -78,7 +78,6 @@ class FoodsController < ApplicationController
                                             carbs:        params[:new_food_carbs],
                                             protien:      params[:new_food_protien],
                                             measure_type: params[:new_food_measure_type])
-        @meal_food.save!
 
         @custom_food = current_user.custom_foods.build(name:         params[:new_food_name],
                                                        brand:        params[:new_food_brand],
@@ -87,12 +86,20 @@ class FoodsController < ApplicationController
                                                        carbs:        params[:new_food_carbs],
                                                        protien:      params[:new_food_protien],
                                                        measure_type: params[:new_food_measure_type])  
-        @custom_food.save!  
+        if @meal_food.valid? & @custom_food.valid?
+          @meal_food.save!
+          @custom_food.save!  
+        else
+          flash[:error] = "Error creating food: Make sure name, brand, and measure-types are included. All amounts are numbers and can only be written to a single decimal place. Ex: 10.4"
+        end
 
         respond_to do |format|
           format.html {redirect_to meal_path(current_user.id)}
           format.js
-        end                       
+        end        
+
+      else
+        flash[:error] = @meal_food.errors
       end
     end
   end

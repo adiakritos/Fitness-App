@@ -17,9 +17,9 @@
                 <td>  </td>
                 <td>  </td>
                 <td>  </td>
-                <td> <%= pct_fat_satisfied     %>% </td>
-                <td> <%= pct_carbs_satisfied   %>% </td>
-                <td> <%= pct_protein_satisfied %>% </td>
+                <td> <%= pct_fat_satisfied                         %>% </td>
+                <td> <%= pct_carbs_satisfied(@tdee, @deficit_pct)  %>% </td>
+                <td> <%= pct_protein_satisfied                     %>% </td>
             </tr>
         </thead>
         <%= render @meals %>

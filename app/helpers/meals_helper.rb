@@ -1,6 +1,4 @@
 module MealsHelper
-
-
   def total_of(macro)
     current_user.meal_foods.map(&macro).inject(:+)
   end
@@ -18,7 +16,16 @@ module MealsHelper
      return BigDecimal(pct_fulfilled, 2)*100
   end     
 
-
+  def pct_carbs_satisfied( tdee, deficit_pct )
+     #how many carbs are needed?
+     cals_needed = tdee.to_f * (1 - deficit_pct.to_f)
+     carbs_needed = cals_needed * 4
+     #how many carbs are provided?
+     carbs_provided = total_of(:carbs)
+     #what is the pct satisfied?
+     pct_fulfilled = carbs_provided.to_f/carbs_needed.to_f
+     return tdee 
+  end  
 
   def pct_protein_satisfied
     #how much protien is needed?

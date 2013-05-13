@@ -4,14 +4,14 @@
   <h2>Whoa! Looks Like That's Not In The Database!</h2>
   <p>Quick! Be the first to submit! You can use it after you make it. I'll add it to the DB asap.</p>
 
-  <%= form_tag({controller: "foods", action: "create"}, method: "post", class: "new_food_form", remote: true) do %> 
-    <%= text_field_tag 'new_food_name', nil, placeholder: "Name - Ex: 'Beef Patty'",     class: "modal-text-field" %>
-    <%= text_field_tag 'new_food_brand', nil, placeholder: "Brand - Ex: 'Midwest'",      class: "modal-text-field" %>
-    <%= text_field_tag 'new_food_amount', nil, placeholder: "Serving Size - Ex: '4'",    class: "modal-text-field" %>
+  <%= form_tag({controller: "foods", action: "create"}, method: "post", class: "new_food_form") do %> 
+    <%= text_field_tag 'new_food_name', nil, placeholder: "Name - Ex: 'Beef Patty'",       class: "modal-text-field" %>
+    <%= text_field_tag 'new_food_brand', nil, placeholder: "Brand - Ex: 'Midwest'",        class: "modal-text-field" %>
+    <%= text_field_tag 'new_food_amount', nil, placeholder: "Serving Size - Ex: '4'",      class: "modal-text-field" %>
     <%= text_field_tag 'new_food_measure_type', nil, placeholder: "Measurment - Ex: 'oz'", class: "modal-text-field" %>
-    <%= text_field_tag 'new_food_fat', nil, placeholder: "Fat in grams - Ex: '20'",      class: "modal-text-field" %>
-    <%= text_field_tag 'new_food_carbs', nil, placeholder: "Carbs in grams - Ex: '0'",   class: "modal-text-field" %>
-    <%= text_field_tag 'new_food_protien', nil, placeholder: "Protien grams - Ex: '45'", class: "modal-text-field" %>
+    <%= text_field_tag 'new_food_fat', nil, placeholder: "Fat in grams - Ex: '20'",        class: "modal-text-field" %>
+    <%= text_field_tag 'new_food_carbs', nil, placeholder: "Carbs in grams - Ex: '0'",     class: "modal-text-field" %>
+    <%= text_field_tag 'new_food_protien', nil, placeholder: "Protien grams - Ex: '45'",   class: "modal-text-field" %>
     <%= submit_tag "Make it!", class: "submit" %>
   <% end %>
 

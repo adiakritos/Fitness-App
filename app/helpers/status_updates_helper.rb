@@ -43,31 +43,31 @@ module StatusUpdatesHelper
   def total_progress
     if user_signed_in?
       if current_user.status_update.empty?
-        @total_weight_change = 0
-        @total_fat_change = 0
-        @total_lbm_change = 0
+        @total_weight_change   = 0
+        @total_fat_change      = 0
+        @total_lbm_change      = 0
 
-        @time_to_goal = 0
-        @fat_to_burn = 0
-        @target_bf_pct = 0
-        @lbm             = 0
-        @activity_factor = 0
-        @bmr             = 0
-        @total_weight    = 0
-        @target_weight   = 0
-        @fat_to_burn     = 0
-        @tdee            = 0
-        @deficit_amnt    = 0
-        @deficit_pct     = 0
-        @daily_calorie_target = 0
-        @daily_intake         = 0
-        @weekly_burn_rate     = 0
-        @time_to_goal         = 0
-
-        @current_weight       = 0
-        @current_bf_pct       = 0
-        @current_lbm          = 0
-        @current_fat_weight   = 0
+        @time_to_goal          = 0
+        @fat_to_burn           = 0
+        @target_bf_pct         = 0
+        @lbm                   = 0
+        @activity_factor       = 0
+        @bmr                   = 0
+        @total_weight          = 0
+        @target_weight         = 0
+        @fat_to_burn           = 0
+        @tdee                  = 0
+        @deficit_amnt          = 0
+        @deficit_pct           = 0
+        @daily_calorie_target  = 0
+        @daily_intake          = 0
+        @weekly_burn_rate      = 0
+        @time_to_goal          = 0
+                              
+        @current_weight        = 0
+        @current_bf_pct        = 0
+        @current_lbm           = 0
+        @current_fat_weight    = 0
 
         @daily_caloric_deficit = 0
       end
@@ -119,19 +119,4 @@ module StatusUpdatesHelper
       end           
     end
   end
-
-  def pct_carbs_satisfied
-     #how many carbs are needed?
-     #cals_needed = @tdee.to_i * (1 - @deficit_pct.to_f)
-     #carbs_needed = cals_needed * 4
-     #how many carbs are provided?
-     #carbs_provided = total_of(:carbs)
-     #what is the pct satisfied?
-     # pct_fulfilled = carbs_provided.to_f/carbs_needed.to_f
-     return 
-  end                         
-
-
-
-
 end   
