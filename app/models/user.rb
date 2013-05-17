@@ -43,7 +43,7 @@ class User < ActiveRecord::Base
 
  def sanitize
    #inputs
-   self.activity_factor       = 3
+   self.activity_factor       = 1.3
    self.deficit_amnt          = 1
    self.target_bf_pct         = 10 
    self.fat_factor            = 0.45
@@ -165,4 +165,44 @@ class User < ActiveRecord::Base
   def daily_intake
      '%.2f' % (self.tdee.to_d - self.daily_calorie_target.to_d)
   end                       
+
+  def total_grams_of(macro)
+    self.meal_foods.map(&macro).inject(:+)
+  end 
+
+  def pct_fat_satisfied
+     #how much of a macro is needed?
+     #  fat_needed = fat factor * current lbm
+     fat_needed = self.fat_factor * self.current_lbm
+     #how much is in the meal?
+     fat_provided = self.total_grams_of(:fat)
+     #percent needed
+     pct_fulfilled = fat_provided.to_f/fat_needed.to_f
+     BigDecimal(pct_fulfilled, 2)*100
+  end 
+
+  def pct_protein_satisfied
+    #how much protien is needed?
+    protein_needed = self.protein_factor * self.current_lbm
+    #how much protien is provided?
+    protein_provided = total_grams_of(:protien)
+    #pct of protien satisfied?
+    pct_fulfilled = protein_provided.to_f/protein_needed.to_f
+    BigDecimal(pct_fulfilled, 2)*100
+  end    
+
+  def pct_carbs_satisfied
+     #how many carbs are needed?
+      cals_required = self.tdee.to_f - (self.tdee.to_f * self.deficit_pct.to_f)
+      fat_cals = total_grams_of(:fat) * 9
+      protien_cals = total_grams_of(:protien) * 4
+     #how many carbs are provided?
+      cals_provided = fat_cals + protien_cals
+      cals_balance = cals_required - cals_provided
+      carbs_needed = cals_balance/4
+      carbs_provided = total_grams_of(:carbs)
+       BigDecimal(carbs_provided / carbs_needed, 2) * 100
+
+      
+  end 
 end
