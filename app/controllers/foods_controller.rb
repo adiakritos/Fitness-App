@@ -97,9 +97,6 @@ class FoodsController < ApplicationController
           format.html {redirect_to meal_path(current_user.id)}
           format.js
         end        
-
-      else
-        flash[:error] = @meal_food.errors
       end
     end
   end
@@ -127,4 +124,12 @@ class FoodsController < ApplicationController
     @meal = current_user.meals.find_by_id(params[:meal_id])
   end
   
+  def update
+
+    respond_to do |format|
+      format.html {redirect_to meal_path(current_user.id)}
+      format.js
+    end
+    
+  end
 end

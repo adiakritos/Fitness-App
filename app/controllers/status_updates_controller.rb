@@ -4,7 +4,6 @@ class StatusUpdatesController < ApplicationController
   include StatusUpdatesHelper
 
   before_filter :correct_user, only: [:destroy, :delete_all]
-  before_filter :total_progress, only: :new
 
   def create
     @status_update = current_user.status_update.build(params[:status_update])

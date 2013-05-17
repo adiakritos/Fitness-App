@@ -1,6 +1,5 @@
 class RegistrationsController < Devise::RegistrationsController
   include ApplicationHelper
-  before_filter :total_progress
 
   def update
     # required for settings form to submit when password is left blank

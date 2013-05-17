@@ -12,9 +12,9 @@
            <th> Weight </th>
          </tr>
          <tr>
-           <td><%= pluralize(@recent_fat_change, 'lbs') %></td>
-           <td><%= pluralize(@recent_lbm_change, 'lbs') %></td>
-           <td><%= pluralize(@recent_weight_change, 'lbs') %></td> 
+           <td><%= pluralize(current_user.recent_fat_change, 'lbs') %></td>
+           <td><%= pluralize(current_user.recent_lbm_change, 'lbs') %></td>
+           <td><%= pluralize(current_user.recent_weight_change, 'lbs') %></td> 
          </tr>
         </table> 
         <%= link_to "Body Comp History", status_update_path(current_user.id)%>
