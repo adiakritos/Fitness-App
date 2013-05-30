@@ -45,14 +45,24 @@ class StatusUpdate < ActiveRecord::Base
    end  
 
    def default_values
-     self.current_bf_pct = 0  if self.current_bf_pct == nil
-     self.current_weight = 0   if self.current_weight == nil
-     self.current_lbm = 0        if self.current_lbm == nil
-     self.current_fat_weight = 0 if self.current_fat_weight == nil
+     if self.created_at == nil
+     self.current_bf_pct = 0 
+     self.current_weight = 0 
+     self.current_lbm = 0    
+     self.current_fat_weight = 0
+     self.change_in_weight,
+                   :change_in_bf_pct,
+                   :change_in_lbm,
+                   :change_in_fat_weight,
+                   :total_weight_change,
+                   :total_bf_pct_change,
+                   :total_lbm_change,
+                   :total_fat_change, 
+     end
    end
         
    def previous_status_update
-     previous_status_update = user.status_update.where( "created_at < ? ", self.created_at ).first   
+     previous_status_update = user.status_updates.where( "created_at < ? ", self.created_at ).first   
      if previous_status_update == nil
        return self
      else

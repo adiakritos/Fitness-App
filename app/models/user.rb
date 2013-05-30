@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
 
   before_create :sanitize
 
-  has_many :status_update, dependent: :destroy
+  has_many :status_updates, dependent: :destroy
   has_many :meals, dependent: :destroy
   has_many :custom_foods, dependent: :destroy
   has_many :meal_foods, through: :meals
@@ -51,11 +51,15 @@ class User < ActiveRecord::Base
  end
 
   def end_date             
-    (self.start_date + self.time_to_goal.to_i.weeks).strftime("%m/%d/%Y")
+    if status_updates.count == 0
+      Time.now.strftime("%m/%d/%Y")
+    else
+      (self.start_date + self.time_to_goal.to_i.weeks).strftime("%m/%d/%Y")
+    end
   end
 
   def start_date           
-    self.status_update.first.created_at
+    self.status_updates.first.created_at
   end
 
   def daily_caloric_deficit 
@@ -111,19 +115,19 @@ class User < ActiveRecord::Base
   end
 
   def last_date
-    self.status_update.last.created_at.strftime("%m/%d/%Y") 
+    self.status_updates.last.created_at.strftime("%m/%d/%Y") 
   end
 
   def beginning_date
-    self.status_update.first.created_at.strftime("%m/%d/%Y") 
+    self.status_updates.first.created_at.strftime("%m/%d/%Y") 
   end
 
   def latest_status_update
-    self.status_update.first 
+    self.status_updates.first 
   end
 
   def oldest_status_update
-    self.status_update.last
+    self.status_updates.last
   end
 
   def bmr

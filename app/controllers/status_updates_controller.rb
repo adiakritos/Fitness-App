@@ -6,7 +6,7 @@ class StatusUpdatesController < ApplicationController
   before_filter :correct_user, only: [:destroy, :delete_all]
 
   def create
-    @status_update = current_user.status_update.build(params[:status_update])
+    @status_update = current_user.status_updates.build(params[:status_update])
     if @status_update.save
       flash[:success] = "Status Update Saved!"
      # redirect_to status_update_path(current_user.id)
@@ -18,12 +18,12 @@ class StatusUpdatesController < ApplicationController
   end 
   
   def new
-    @status_update = current_user.status_update.build if user_signed_in?
+    @status_update = current_user.status_updates.build if user_signed_in?
   end
 
   def show
     @user = User.find(params[:id])
-    @status_updates = @user.status_update
+    @status_updates = @user.status_updates
   end
 
   def destroy
@@ -33,7 +33,7 @@ class StatusUpdatesController < ApplicationController
   end
 
   def delete_all
-    @all_status_updates = current_user.status_update
+    @all_status_updates = current_user.status_updates
     @all_status_updates.delete_all
     flash[:success] = "All status updates deleted!"
     redirect_to status_update_path(current_user.id)
@@ -42,7 +42,7 @@ class StatusUpdatesController < ApplicationController
   private
 
   def correct_user
-    @status_update = current_user.status_update.find_by_id(params[:id])
+    @status_update = current_user.status_updates.find_by_id(params[:id])
     redirect_to root_url if @status_update.nil?
   end 
   
