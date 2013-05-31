@@ -1,5 +1,7 @@
 class Food < ActiveRecord::Base
-   attr_accessible :name, :amount, :measure_type, :brand, :fat, :carbs, :protien
+  after_initialize :default_values
+
+  attr_accessible :name, :amount, :measure_type, :brand, :fat, :carbs, :protien
 
   validates :name,         presence: true
   validates :brand,        presence: true
@@ -8,14 +10,16 @@ class Food < ActiveRecord::Base
   validates :fat,          presence: true
   validates :carbs,        presence: true
   validates :protien,      presence: true
-                          
-  # def self.inherited(child)  
-  #  child.instance_eval do
-  #    def model_name
-  #      Food.model_name
-  #    end
-  #  end
-  #  super 
-  #end
+
+  def default_values
+    self.name         = 'default food name'
+    self.brand        = 'default food brand'
+    self.amount       = 0
+    self.measure_type = 'oz'
+    self.fat          = 0
+    self.carbs        = 0
+    self.protien      = 0
+  end
+  
   
 end

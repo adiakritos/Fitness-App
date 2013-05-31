@@ -8,7 +8,7 @@ class StatusUpdatesController < ApplicationController
   def create
     @status_update = current_user.status_updates.build(params[:status_update])
     if @status_update.save
-      flash[:success] = "Status Update Saved!"
+      flash[:success] = "Status Update Saved! #{params[:status_update]}"
      # redirect_to status_update_path(current_user.id)
       redirect_to new_status_update_path
     else
@@ -34,7 +34,7 @@ class StatusUpdatesController < ApplicationController
 
   def delete_all
     @all_status_updates = current_user.status_updates
-    @all_status_updates.delete_all
+    @all_status_updates.destroy_all
     flash[:success] = "All status updates deleted!"
     redirect_to status_update_path(current_user.id)
   end

@@ -1,23 +1,19 @@
 <tr>
- <td class = "timestamp">
-   <%= status_update.created_at.strftime("%m/%d/%Y") %>
- </td>
- <td> <%= status_update.current_weight %></td> 
- <td> <%= BigDecimal(status_update.current_bf_pct * 100, 3) %></td> 
- <td> <%= BigDecimal(status_update.current_lbm, 3) %></td>  
- <td> <%= BigDecimal(status_update.current_fat_weight, 3) %></td>
- <td> <%= BigDecimal(status_update.current_weight - 
-                     status_update.previous_status_update.current_weight, 3) %></td>
- <td> <%= BigDecimal(status_update.current_lbm - 
-                     status_update.previous_status_update.current_lbm, 3) %></td>
- <td> <%= BigDecimal(status_update.current_fat_weight -
-                     status_update.previous_status_update.current_fat_weight, 3 ) %></td>
+ <td class = "timestamp"><%= status_update.created_at.strftime("%m/%d/%Y") %> </td>
+ <!-- CURRENT --> 
+ <td> <%= status_update.current_weight %>                                     </td> 
+ <td> <%= BigDecimal(status_update.current_bf_pct * 100, 3) %>                </td> 
+ <td> <%= BigDecimal(status_update.current_lbm, 3) %>                         </td>  
+ <td> <%= BigDecimal(status_update.current_fat_weight, 3) %>                  </td>
 
- <% if current_user==(status_update.user) %> 
- <td>
-       <%= link_to "delete", status_update, method: :delete %>
-                                            
- </td>
- <%  end  %>         
+ <!-- CHANGES -->
+ <td> <%= status_update.weight_change %>                                      </td>
+ <td> <%= status_update.lbm_change %>                                         </td>
+ <td> <%= status_update.fat_change %>                                         </td>
 
+  <% if current_user==(status_update.user) %> 
+    <td>
+          <%= link_to "delete", status_update, method: :delete %>
+    </td>
+  <%  end  %>         
 </tr>                                    

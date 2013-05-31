@@ -123,11 +123,19 @@ class User < ActiveRecord::Base
   end
 
   def latest_status_update
-    self.status_updates.first 
+    if self.status_updates.count == 0
+      temp_status_update
+    else
+      self.status_updates.first 
+    end
   end
 
   def oldest_status_update
-    self.status_updates.last
+    if self.status_updates.count == 0
+      temp_status_update
+    else
+      self.status_updates.last
+    end 
   end
 
   def bmr
@@ -171,7 +179,11 @@ class User < ActiveRecord::Base
   end                       
 
   def total_grams_of(macro)
-    self.meal_foods.map(&macro).inject(:+)
+    if self.meal_foods.count == 0
+      10
+    else
+      self.meal_foods.map(&macro).inject(:+)
+    end
   end 
 
   def pct_fat_satisfied
@@ -206,7 +218,9 @@ class User < ActiveRecord::Base
       carbs_needed = cals_balance/4
       carbs_provided = total_grams_of(:carbs)
        BigDecimal(carbs_provided / carbs_needed, 2) * 100
-
-      
   end 
+
+  def temp_status_update
+     self.status_updates.build
+  end
 end
