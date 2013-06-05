@@ -38,10 +38,11 @@ class StatusUpdatesController < ApplicationController
     @all_status_updates = current_user.status_updates
     @all_status_updates.destroy_all
     if @all_status_updates.count == 0
-       flash[:success] = "All status updates deleted!"
-       redirect_to status_update_path(current_user.id)
+      flash[:success] = "All status updates deleted!"
+      redirect_to status_update_path(current_user.id)
     else
       flash[:error] = "Could not reset"
+      redirect_to status_update_path(current_user.id)
     end
   end
 
