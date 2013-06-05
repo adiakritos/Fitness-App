@@ -1,6 +1,4 @@
 module StatusUpdatesHelper
 
-  
-
 
 end   

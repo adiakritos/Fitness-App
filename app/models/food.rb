@@ -1,5 +1,4 @@
 class Food < ActiveRecord::Base
-  after_initialize :default_values
 
   attr_accessible :name, :amount, :measure_type, :brand, :fat, :carbs, :protien
 
@@ -11,15 +10,4 @@ class Food < ActiveRecord::Base
   validates :carbs,        presence: true
   validates :protien,      presence: true
 
-  def default_values
-    self.name         = 'default food name'
-    self.brand        = 'default food brand'
-    self.amount       = 0
-    self.measure_type = 'oz'
-    self.fat          = 0
-    self.carbs        = 0
-    self.protien      = 0
-  end
-  
-  
 end

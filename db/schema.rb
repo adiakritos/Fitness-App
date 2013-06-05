@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130517130316) do
+ActiveRecord::Schema.define(:version => 20130604163034) do
 
   create_table "foods", :force => true do |t|
     t.string   "name"
@@ -62,6 +62,7 @@ ActiveRecord::Schema.define(:version => 20130517130316) do
     t.float    "total_bf_pct_change"
     t.float    "total_lbm_change"
     t.float    "total_fat_change"
+    t.string   "temporary"
   end
 
   add_index "status_updates", ["user_id", "created_at"], :name => "index_status_updates_on_user_id_and_created_at"

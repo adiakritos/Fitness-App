@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+        :recoverable, :rememberable, :trackable, :validatable
 
   before_create :sanitize
 
@@ -35,20 +35,18 @@ class User < ActiveRecord::Base
   validates :fat_factor,            presence: true, on: :update
   validates :protein_factor,        presence: true, on: :update
 
-  
+  def new?
+    self.created_at <= 1.minutes.ago.to_date ? true : false
+  end
 
- def new?
-   self.created_at <= 1.minutes.ago.to_date ? true : false
- end
-
- def sanitize
-   #inputs
-   self.activity_factor       = 1.3
-   self.deficit_amnt          = 1
-   self.target_bf_pct         = 10 
-   self.fat_factor            = 0.45
-   self.protein_factor        = 1
- end
+  def sanitize
+    #inputs
+    self.activity_factor       = 1.3
+    self.deficit_amnt          = 1
+    self.target_bf_pct         = 10 
+    self.fat_factor            = 0.45
+    self.protein_factor        = 1
+  end
 
   def end_date             
     if status_updates.count == 0
@@ -124,7 +122,7 @@ class User < ActiveRecord::Base
 
   def latest_status_update
     if self.status_updates.count == 0
-      temp_status_update
+      create_temporary_status_update
     else
       self.status_updates.first 
     end
@@ -132,7 +130,7 @@ class User < ActiveRecord::Base
 
   def oldest_status_update
     if self.status_updates.count == 0
-      temp_status_update
+      create_temporary_status_update
     else
       self.status_updates.last
     end 
@@ -141,41 +139,41 @@ class User < ActiveRecord::Base
   def bmr
     cur_lbm = self.current_lbm
     cur_lbm *= 0.45
-     '%.2f' % (370 + (21.6 * cur_lbm.to_d))
+    '%.2f' % (370 + (21.6 * cur_lbm.to_d))
   end
 
   def target_weight
     tar_bf_pct = self.target_bf_pct /= 100
-     '%.2f' %  ((self.total_weight * tar_bf_pct)+ self.current_lbm)
+    '%.2f' %  ((self.total_weight * tar_bf_pct)+ self.current_lbm)
   end 
 
   def fat_to_burn
-     '%.2f' % (self.total_weight.to_d - self.target_weight.to_d)
+    '%.2f' % (self.total_weight.to_d - self.target_weight.to_d)
   end
 
   def tdee
-     '%.2f' % (self.bmr.to_d * self.activity_factor.to_d)
+    '%.2f' % (self.bmr.to_d * self.activity_factor.to_d)
   end
 
   def deficit_pct
     daily_cal_def = ((self.deficit_amnt.to_f * 3500)/7)
-     (daily_cal_def.to_d/self.tdee.to_d)
+    (daily_cal_def.to_d/self.tdee.to_d)
   end
 
   def daily_calorie_target
-     '%.2f' % (self.tdee.to_d * self.deficit_pct.to_d)  
+    '%.2f' % (self.tdee.to_d * self.deficit_pct.to_d)  
   end
 
   def weekly_burn_rate
-     '%.2f' % (self.daily_calorie_target.to_d*7) 
+    '%.2f' % (self.daily_calorie_target.to_d*7) 
   end
 
   def time_to_goal
-     '%.2f' %  (self.fat_to_burn.to_d*3500/self.weekly_burn_rate.to_d) 
+    '%.2f' %  (self.fat_to_burn.to_d*3500/self.weekly_burn_rate.to_d) 
   end                  
 
   def daily_intake
-     '%.2f' % (self.tdee.to_d - self.daily_calorie_target.to_d)
+    '%.2f' % (self.tdee.to_d - self.daily_calorie_target.to_d)
   end                       
 
   def total_grams_of(macro)
@@ -187,14 +185,14 @@ class User < ActiveRecord::Base
   end 
 
   def pct_fat_satisfied
-     #how much of a macro is needed?
-     #  fat_needed = fat factor * current lbm
-     fat_needed = self.fat_factor * self.current_lbm
-     #how much is in the meal?
-     fat_provided = self.total_grams_of(:fat)
-     #percent needed
-     pct_fulfilled = fat_provided.to_f/fat_needed.to_f
-     BigDecimal(pct_fulfilled, 2)*100
+    #how much of a macro is needed?
+    #  fat_needed = fat factor * current lbm
+    fat_needed = self.fat_factor * self.current_lbm
+    #how much is in the meal?
+    fat_provided = self.total_grams_of(:fat)
+    #percent needed
+    pct_fulfilled = fat_provided.to_f/fat_needed.to_f
+    BigDecimal(pct_fulfilled, 2)*100
   end 
 
   def pct_protein_satisfied
@@ -208,19 +206,24 @@ class User < ActiveRecord::Base
   end    
 
   def pct_carbs_satisfied
-     #how many carbs are needed?
-      cals_required = self.tdee.to_f - (self.tdee.to_f * self.deficit_pct.to_f)
-      fat_cals = total_grams_of(:fat) * 9
-      protien_cals = total_grams_of(:protien) * 4
-     #how many carbs are provided?
-      cals_provided = fat_cals + protien_cals
-      cals_balance = cals_required - cals_provided
-      carbs_needed = cals_balance/4
-      carbs_provided = total_grams_of(:carbs)
-       BigDecimal(carbs_provided / carbs_needed, 2) * 100
+      #how many carbs are needed?
+        cals_required = self.tdee.to_f - (self.tdee.to_f * self.deficit_pct.to_f)
+        fat_cals = total_grams_of(:fat) * 9
+        protien_cals = total_grams_of(:protien) * 4
+      #how many carbs are provided?
+        cals_provided = fat_cals + protien_cals
+        cals_balance = cals_required - cals_provided
+        carbs_needed = cals_balance/4
+        carbs_provided = total_grams_of(:carbs)
+        BigDecimal(carbs_provided / carbs_needed, 2) * 100
   end 
-
-  def temp_status_update
-     self.status_updates.build
+  
+  def create_temporary_status_update
+    @status_update = self.status_updates.build(current_bf_pct:     '1', 
+                                               current_weight:     '0', 
+                                               current_lbm:        '0', 
+                                               current_fat_weight: '0', 
+                                               temporary:          'true')  
+    @status_update.save
   end
 end
