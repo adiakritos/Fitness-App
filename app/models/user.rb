@@ -178,7 +178,7 @@ class User < ActiveRecord::Base
 
   def total_grams_of(macro)
     if self.meal_foods.count == 0
-      10
+      0
     else
       self.meal_foods.map(&macro).inject(:+)
     end
@@ -190,9 +190,12 @@ class User < ActiveRecord::Base
     fat_needed = self.fat_factor * self.current_lbm
     #how much is in the meal?
     fat_provided = self.total_grams_of(:fat)
-    #percent needed
-    pct_fulfilled = fat_provided.to_f/fat_needed.to_f
-    BigDecimal(pct_fulfilled, 2)*100
+
+    if fat_provided == 0 
+      return 0
+    elsif fat_provided != 0
+      pct_fulfilled = BigDecimal(fat_provided/fat_needed, 1)*100
+    end
   end 
 
   def pct_protein_satisfied
@@ -201,8 +204,7 @@ class User < ActiveRecord::Base
     #how much protien is provided?
     protein_provided = total_grams_of(:protien)
     #pct of protien satisfied?
-    pct_fulfilled = protein_provided.to_f/protein_needed.to_f
-    BigDecimal(pct_fulfilled, 2)*100
+    pct_fulfilled = BigDecimal(protein_provided/protein_needed, 1)*100
   end    
 
   def pct_carbs_satisfied
@@ -215,7 +217,7 @@ class User < ActiveRecord::Base
         cals_balance = cals_required - cals_provided
         carbs_needed = cals_balance/4
         carbs_provided = total_grams_of(:carbs)
-        BigDecimal(carbs_provided / carbs_needed, 2) * 100
+        carbs_fulfilled = BigDecimal(carbs_provided / carbs_needed, 1)*100
   end 
   
   def create_temporary_status_update
