@@ -7,14 +7,49 @@
     <div id=registration-form-right>
       <h3> Calorie Usage </h3>
       <ul>
-        <li>End Date from Today: <%= @end_date %> </li>
-        <li>Total daily Energy Expn: <%= @tdee %> </li>
-        <li>Daily Target Intake: <%= @daily_intake %> </li>
-        <li>Daily Caloric Deficit: <%= @daily_caloric_deficit %> </li>
+        <li>BMR :: 1700</li>
+        <li>TDEE :: 2500</li>
+        <li>TDEE +10% :: 2700</li>
+        <li>TDEE -10% :: 2000</li>
+        <li>Est. Weight Change / Week :: 1lb </li>
       </ul>
 
       <hr>
 
+      <h3>Macro Breakdown</h3>
+      <table>
+        <tr>
+          <td></td>
+          <td>grams</td>
+          <td>calories</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Fat</td>
+          <td>50 grams</td>
+          <td>300 cals</td>
+          <td>10%</td>
+        </tr>
+        <tr>
+          <td>Protein</td>
+          <td>120 grams</td>
+          <td>300 cals</td>
+          <td>35%</td>
+        </tr>
+        <tr>
+          <td>Carbs</td>
+          <td>300 grams</td>
+          <td>1600 cals</td>
+          <td>60%</td>
+        </tr>      
+        <tr>
+          <td></td>
+          <td></td>
+          <td>2500 cals</td>
+          <td>100%</td>
+        </tr>      
+      </table>
+      <!--
       <h3>Activity Level Factor </h3>
       <ul>
         <li> 1.2 :: Sedentary (Desk Job) </li>
@@ -23,7 +58,7 @@
         <li> 1.6-1.75 :: Very Active (Train 6-7 days/week) </li>
         <li> 1.8-1.9 :: Extremely Active (Atheltic Endurance) </li>
       </ul>
-
+      -->
     </div>
 
 
@@ -38,14 +73,17 @@
         <h2>User Settings</h2>
         </br>
         <%= fields_for :user do |a| %>
-          <%= a.label :target_bf_percent %>
-          <%= a.text_field :target_bf_pct %> %
-
-          <%= a.label :Weight_deficit_per_week %>
-          <%= a.text_field :deficit_amnt %> pounds
-
           <%= a.label :activity_level %>
           <%= a.text_field :activity_factor %>
+          
+          <%= a.label :target_caloric_intake %>
+          <%= a.text_field :target_caloric_intake %>
+
+          <%= a.label :fat_factor %>
+          <%= a.text_field :fat_factor %>
+
+          <%= a.label :protien_factor %>
+          <%= a.text_field :protien_factor %>
         <% end %>
 
         </br></br> 
