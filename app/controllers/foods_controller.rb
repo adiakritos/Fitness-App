@@ -36,7 +36,6 @@ class FoodsController < ApplicationController
      #create custom_food and meal_food
       
       @meal_food = @meal.meal_foods.build(name:         @site_food.name,
-                                          brand:        @site_food.brand,
                                           amount:       @site_food.amount,
                                           fat:          @site_food.fat,
                                           carbs:        @site_food.carbs,
@@ -45,7 +44,6 @@ class FoodsController < ApplicationController
       @meal_food.save!
 
       @custom_food = current_user.custom_foods.build(name:         @site_food.name,
-                                                     brand:        @site_food.brand,
                                                      amount:       @site_food.amount,
                                                      fat:          @site_food.fat,
                                                      carbs:        @site_food.carbs,
@@ -72,7 +70,6 @@ class FoodsController < ApplicationController
     #When user submits the modal box 
       elsif !@new_food.nil?
         @meal_food = @meal.meal_foods.build(name:         params[:new_food_name],
-                                            brand:        params[:new_food_brand],
                                             amount:       params[:new_food_amount],
                                             fat:          params[:new_food_fat],
                                             carbs:        params[:new_food_carbs],
@@ -80,7 +77,6 @@ class FoodsController < ApplicationController
                                             measure_type: params[:new_food_measure_type])
 
         @custom_food = current_user.custom_foods.build(name:         params[:new_food_name],
-                                                       brand:        params[:new_food_brand],
                                                        amount:       params[:new_food_amount],
                                                        fat:          params[:new_food_fat],
                                                        carbs:        params[:new_food_carbs],

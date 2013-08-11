@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130810152642) do
+ActiveRecord::Schema.define(:version => 20130810191233) do
 
   create_table "foods", :force => true do |t|
     t.string   "name"
@@ -88,6 +88,7 @@ ActiveRecord::Schema.define(:version => 20130810152642) do
     t.float    "deficit_amnt"
     t.float    "target_bf_pct"
     t.float    "activity_factor"
+    t.integer  "target_caloric_intake"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

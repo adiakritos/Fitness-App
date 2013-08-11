@@ -5,47 +5,42 @@
 
   
     <div id=registration-form-right>
-      <h3> Calorie Usage </h3>
+      <h3> Caloric Intakes </h3>
       <ul>
-        <li>BMR :: 1700</li>
-        <li>TDEE :: 2500</li>
-        <li>TDEE +10% :: 2700</li>
-        <li>TDEE -10% :: 2000</li>
-        <li>Est. Weight Change / Week :: 1lb </li>
+        <li>BMR :: <%= current_user.bmr %> cals</li>
+        <li>TDEE :: <%= (current_user.tdee).round %> cals</li>
+        <li>TDEE +10% :: <%= current_user.tdee_plus_ten %> cals</li>
+        <li>TDEE -10% :: <%= current_user.tdee_minus_ten %> cals</li>
+        <li>Est. Weight Change / Week :: <%= current_user.weekly_burn_rate %>lb </li>
       </ul>
 
       <hr>
 
       <h3>Macro Breakdown</h3>
       <table>
-        <tr>
-          <td></td>
-          <td>grams</td>
-          <td>calories</td>
-          <td></td>
-        </tr>
+       
         <tr>
           <td>Fat</td>
-          <td>50 grams</td>
-          <td>300 cals</td>
-          <td>10%</td>
+          <td><%= (current_user.fat_grams).round %> grams</td>
+          <td><%= (current_user.fat_cals).round %> cals</td>
+          <td><%= current_user.fat_pct%>%</td>
         </tr>
         <tr>
           <td>Protein</td>
-          <td>120 grams</td>
-          <td>300 cals</td>
-          <td>35%</td>
+          <td><%= (current_user.protein_grams).round %> grams</td>
+          <td><%= (current_user.protein_cals).round %> cals</td>
+          <td><%= current_user.protein_pct%>%</td>
         </tr>
         <tr>
           <td>Carbs</td>
-          <td>300 grams</td>
-          <td>1600 cals</td>
-          <td>60%</td>
+          <td><%= (current_user.carb_grams).round %> grams</td>
+          <td><%= (current_user.carb_cals).round %> cals</td>
+          <td><%= current_user.carb_pct%>%</td>
         </tr>      
         <tr>
           <td></td>
           <td></td>
-          <td>2500 cals</td>
+          <td><%= current_user.target_caloric_intake %> cals</td>
           <td>100%</td>
         </tr>      
       </table>
@@ -82,8 +77,8 @@
           <%= a.label :fat_factor %>
           <%= a.text_field :fat_factor %>
 
-          <%= a.label :protien_factor %>
-          <%= a.text_field :protien_factor %>
+          <%= a.label :protein_factor %>
+          <%= a.text_field :protein_factor %>
         <% end %>
 
         </br></br> 
