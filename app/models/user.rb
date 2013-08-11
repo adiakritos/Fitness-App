@@ -214,4 +214,77 @@ class User < ActiveRecord::Base
     '%.1f' % ((self.carb_cals/self.target_caloric_intake)*100)
   end
 
+
+
+  def latest_status_update
+    if self.status_updates.count == 0
+      create_temporary_status_update
+    else
+      self.status_updates.first 
+    end
+  end
+
+  def oldest_status_update
+    if self.status_updates.count == 0
+      create_temporary_status_update
+    else
+      self.status_updates.last
+    end 
+  end     
+
+   def total_grams_of(macro)
+    if self.meal_foods.count == 0
+      0
+    else
+      self.meal_foods.map(&macro).inject(:+)
+    end
+  end 
+
+  def pct_fat_satisfied
+    #how much of a macro is needed?
+    #  fat_needed = fat factor * current lbm
+    fat_needed = self.fat_factor * self.current_lbm
+    #how much is in the meal?
+    fat_provided = self.total_grams_of(:fat)
+
+    if fat_provided == 0 
+      return 0
+    elsif fat_provided != 0
+      pct_fulfilled = BigDecimal(fat_provided/fat_needed, 1)*100
+    end
+  end 
+
+  def pct_protein_satisfied
+    #how much protien is needed?
+    protein_needed = self.protein_factor * self.current_lbm
+    #how much protien is provided?
+    protein_provided = total_grams_of(:protien)
+    #pct of protien satisfied?
+    pct_fulfilled = BigDecimal(protein_provided/protein_needed, 1)*100
+  end    
+
+  def pct_carbs_satisfied
+      #how many carbs are needed?
+        cals_required = self.tdee.to_f - (self.tdee.to_f * self.deficit_pct.to_f)
+        fat_cals = total_grams_of(:fat) * 9
+        protien_cals = total_grams_of(:protien) * 4
+      #how many carbs are provided?
+        cals_provided = fat_cals + protien_cals
+        cals_balance = cals_required - cals_provided
+        carbs_needed = cals_balance/4
+        carbs_provided = total_grams_of(:carbs)
+        carbs_fulfilled = BigDecimal(carbs_provided / carbs_needed, 1)*100
+  end 
+  
+  def create_temporary_status_update
+    @status_update = self.status_updates.build(current_bf_pct:     '1', 
+                                               current_weight:     '0', 
+                                               current_lbm:        '0', 
+                                               current_fat_weight: '0', 
+                                               temporary:          'true')  
+    @status_update.save
+  end                   
+
 end
+
+
