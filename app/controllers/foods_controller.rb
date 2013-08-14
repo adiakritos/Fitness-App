@@ -16,8 +16,7 @@ class FoodsController < ApplicationController
         flash[:error] = "#{@meal_id}"
       else
         @meal_food = @meal.meal_foods.build(name:         @custom_food.name, 
-                                            brand:        @custom_food.brand,
-                                            amount:       @custom_food.amount,
+                                            serving_size: @custom_food.serving_size,
                                             fat:          @custom_food.fat,
                                             carbs:        @custom_food.carbs,
                                             protien:      @custom_food.protien,
@@ -36,7 +35,7 @@ class FoodsController < ApplicationController
      #create custom_food and meal_food
       
       @meal_food = @meal.meal_foods.build(name:         @site_food.name,
-                                          amount:       @site_food.amount,
+                                          serving_size: @site_food.serving_size,
                                           fat:          @site_food.fat,
                                           carbs:        @site_food.carbs,
                                           protien:      @site_food.protien,
@@ -44,7 +43,7 @@ class FoodsController < ApplicationController
       @meal_food.save!
 
       @custom_food = current_user.custom_foods.build(name:         @site_food.name,
-                                                     amount:       @site_food.amount,
+                                                     serving_size: @site_food.serving_size,
                                                      fat:          @site_food.fat,
                                                      carbs:        @site_food.carbs,
                                                      protien:      @site_food.protien,
@@ -70,14 +69,14 @@ class FoodsController < ApplicationController
     #When user submits the modal box 
       elsif !@new_food.nil?
         @meal_food = @meal.meal_foods.build(name:         params[:new_food_name],
-                                            amount:       params[:new_food_amount],
+                                            serving_size: params[:new_food_serving_size],
                                             fat:          params[:new_food_fat],
                                             carbs:        params[:new_food_carbs],
                                             protien:      params[:new_food_protien],
                                             measure_type: params[:new_food_measure_type])
 
         @custom_food = current_user.custom_foods.build(name:         params[:new_food_name],
-                                                       amount:       params[:new_food_amount],
+                                                       serving_size: params[:new_food_serving_size],
                                                        fat:          params[:new_food_fat],
                                                        carbs:        params[:new_food_carbs],
                                                        protien:      params[:new_food_protien],
@@ -120,12 +119,11 @@ class FoodsController < ApplicationController
     @meal = current_user.meals.find_by_id(params[:meal_id])
   end
   
-  def update
-
-    respond_to do |format|
-      format.html {redirect_to meal_path(current_user.id)}
-      format.js
-    end
-    
+  def update               
+    @servings = params[:meal_food][:servings]
+    @meal_food = current_user.meal_foods.find(params[:id])
+    @meal_food.update_attributes(servings: @servings)  
+    redirect_to meal_path(current_user.id)
   end
+
 end

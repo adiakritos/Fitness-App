@@ -1,1 +1,2 @@
-//When a meal_food "amount" cell is clicked, replace that cell's content with a text field
+// Place all the behaviors and hooks related to the matching controller here.
+// All this logic will automatically be available in application.js.

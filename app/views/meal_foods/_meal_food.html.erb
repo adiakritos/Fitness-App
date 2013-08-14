@@ -1,9 +1,13 @@
 <tr class="food food-tr-<%= meal_food.id %>">
   <td><%= meal_food.name  %></td>
-  <td><%= render 'meal_foods/servings_box' %></td>
-  <td><%= pluralize(meal_food.amount, meal_food.measure_type) %></td>
-  <td><%= meal_food.fat    %></td>
-  <td><%= meal_food.carbs  %></td>
-  <td><%= meal_food.protien %> </td>
+  <td>
+    <%= form_for meal_food, url: food_url(meal_food.id)  do |f| %>
+      <%= f.number_field :servings %>
+    <% end %>
+  </td>
+  <td><%= meal_food.dynamic_serving_size %> <%= meal_food.measure_type %></td>
+  <td><%= meal_food.dynamic_fat    %></td>
+  <td><%= meal_food.dynamic_carbs  %></td>
+  <td><%= meal_food.dynamic_protien %> </td>
   <td><%= link_to "x", food_path(meal_food.id), method: :delete, remote: true %> </td>
 </tr>
