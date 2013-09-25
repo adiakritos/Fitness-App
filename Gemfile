@@ -1,26 +1,26 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.11'
-gem 'bcrypt-ruby', '3.0.1'
-gem 'faker', '1.0.1'
+gem 'rails', '3.2.14'
+gem 'bcrypt-ruby'
+gem 'faker'
 gem 'devise'
 gem 'fastercsv' # Only required on Ruby 1.8 and below
 gem 'rails_admin'
 gem 'jbuilder'
 gem 'gon'
 gem 'dynamic_form'
-gem 'pg', '0.12.2'
+gem 'pg'
 gem 'closure-compiler'
-gem 'jquery-rails', '2.0.2'
+gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'rails3-jquery-autocomplete'
 
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'sass-rails',   '3.2.4'
-  gem 'coffee-script', '2.2.0'
-  gem 'uglifier', '1.2.3'
+  gem 'sass-rails', '~> 3.2.4'
+  gem 'coffee-script', '~> 2.2.0'
+  gem 'uglifier', '~> 1.2.3'
 end
 
 group :development, :test do
