@@ -9,20 +9,11 @@ gem 'rails_admin'
 gem 'jbuilder'
 gem 'gon'
 gem 'dynamic_form'
-
+gem 'pg', '0.12.2'
 gem 'closure-compiler'
-
-group :development, :test do
-  gem 'sqlite3', '1.3.5'
-  gem 'rspec-rails', '2.10.0'
-  gem 'awesome_print'
-  gem 'wirble'
-  gem 'thin'
-end
-
-group :development do
-  gem "better_errors"
-end
+gem 'jquery-rails', '2.0.2'
+gem 'jquery-ui-rails'
+gem 'rails3-jquery-autocomplete'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -32,18 +23,17 @@ group :assets do
   gem 'uglifier', '1.2.3'
 end
 
-gem 'jquery-rails', '2.0.2'
-gem 'jquery-ui-rails'
-gem 'rails3-jquery-autocomplete'
+group :development, :test do
+  gem "better_errors"
+  gem 'sqlite3', '1.3.5'
+  gem 'rspec-rails', '2.10.0'
+  gem 'awesome_print'
+  gem 'wirble'
+  gem 'thin'
+end
 
 group :test do
   gem 'capybara', '1.1.2'
   gem 'factory_girl_rails'
   gem 'spork', '~> 1.0rc'
 end
-
-
-group :production do
-  gem 'pg', '0.12.2'
-end
-
