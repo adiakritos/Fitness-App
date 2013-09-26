@@ -9,7 +9,9 @@ include StatusUpdatesHelper
     end
   end 
   
-
+  def round( input )
+    '%.2f' % input
+  end  
   
 end
 
