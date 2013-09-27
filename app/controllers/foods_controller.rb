@@ -1,6 +1,6 @@
 class FoodsController < ApplicationController
   before_filter :user_signed_in?
-  #functions
+
   def create
     @meal_id = params[:meal_id]
     @new_food = params[:new_food_name]

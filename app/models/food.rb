@@ -35,10 +35,14 @@ class Food < ActiveRecord::Base
 
   def update_macros
     @servings = self.servings
-    self.dynamic_fat     = self.fat * @servings
-    self.dynamic_protien = self.protien * @servings
-    self.dynamic_carbs   = self.carbs * @servings
-    self.dynamic_serving_size = self.serving_size * @servings
+    self.dynamic_fat     = round(self.fat * @servings)
+    self.dynamic_protien = round(self.protien * @servings)
+    self.dynamic_carbs   = round(self.carbs * @servings)
+    self.dynamic_serving_size = round(self.serving_size * @servings)
+  end
+
+  def round( input )
+    '%.1f' % input
   end
 
 end

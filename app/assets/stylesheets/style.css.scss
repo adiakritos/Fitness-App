@@ -356,6 +356,12 @@ aside {
   .meal-thead { background:black; } 
  
   .meal-thead-name { color:white; } 
+
+  .edit_meal_food{ margin-bottom:0px;
+    input[type="number"]{ margin-bottom:0px; width:40px; }
+    
+  }
+
 }
 
 /* Foods */

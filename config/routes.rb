@@ -9,6 +9,7 @@ App3::Application.routes.draw do
   end
 
   resources :meals  
+
   resources :foods do
     collection do
       get :search
