@@ -42,7 +42,7 @@ class Food < ActiveRecord::Base
   end
 
   def round( input )
-    '%.2f' % input
+    '%.3f' % input
   end
 
 end
