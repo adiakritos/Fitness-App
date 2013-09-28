@@ -5,7 +5,7 @@ require "rvm/capistrano"
 default_run_options[:pty]   = true
 ssh_options[:forward_agent] = true
 ssh_options[:auth_methods]  = ["publickey"]
-ssh_options[:keys]          = ["#{ENV['HOME']}/.ssh/fitness_app_key_pair.pem"]
+ssh_options[:keys]          = ["#{ENV['HOME']}/.ssh/getjoocy.com"]
 
 # RVM/Capistrano
 before 'deploy:setup',  'rvm:install_rvm'
