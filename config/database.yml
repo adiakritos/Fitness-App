@@ -15,7 +15,7 @@ production:
   database: fitness_production
   host: # fill me in
   port: 3306
-  username: 6NuihKg3
+  username: NuihKg3
   password: 9vyE49nf43hQMMGk
   pool: 5
   timeout: 5000
