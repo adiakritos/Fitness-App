@@ -26,9 +26,9 @@ set :user,          'www'
 set :use_sudo,      false   
 set :deploy_to,     "/var/www/apps/#{application}"                        
 
-role :web, "54.200.58.197"
-role :app, "54.200.58.197"
-role :db,  "54.200.58.197", primary: true
+role :web, "getjoocy.com"
+role :app, "getjoocy.com"
+role :db,  "getjoocy.com", primary: true
 
 # Passenger
 after "deploy", "passenger:restart"
