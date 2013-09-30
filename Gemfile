@@ -9,7 +9,7 @@ gem 'rails_admin'
 gem 'jbuilder'
 gem 'gon'
 gem 'dynamic_form'
-gem "therubyracer", :require => 'v8'
+gem 'therubyracer', :require => 'v8'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'rails3-jquery-autocomplete'
@@ -23,7 +23,7 @@ end
 group :development, :test do
   gem 'capistrano'
   gem 'rvm-capistrano'
-  gem "better_errors"
+  gem 'better_errors'
   gem 'rspec-rails', '2.10.0'
   gem 'awesome_print'
   gem 'wirble'
