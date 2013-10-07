@@ -12,7 +12,6 @@ class User < ActiveRecord::Base
   has_many :custom_foods, dependent: :destroy
   has_many :meal_foods, through: :meals
 
-
   attr_accessor :user_password, :user_password_confirmation, :current_password
   attr_accessible :email,
                   :password,
@@ -37,7 +36,6 @@ class User < ActiveRecord::Base
   validates :fat_factor,            presence: true, on: :update
   validates :protein_factor,        presence: true, on: :update
   validates :target_caloric_intake, presence: true, on: :update
-
   
 
  def new?
@@ -219,7 +217,7 @@ class User < ActiveRecord::Base
 
 #UPDATE MACRO REQUIREMENT METHODS
 
-   def total_grams_of(macro)
+  def total_grams_of(macro)
     if self.meal_foods.count == 0
       0
     else
@@ -228,35 +226,38 @@ class User < ActiveRecord::Base
   end 
 
   def pct_fat_satisfied
-    @fat_provided     = self.total_grams_of(:fat)
+    @fat_provided     = self.total_grams_of(:dynamic_fat)
     @fat_grams_needed = self.fat_grams
 
     if @fat_provided == 0 
       return 0
     elsif @fat_provided != 0
-      pct_fulfilled = '%.2f' % ((@fat_provided/@fat_grams_needed)*100)
+      #self.pct_fat_satisfied = pct_fulfilled
+      '%.2f' % ((@fat_provided/@fat_grams_needed)*100)
     end
   end 
 
   def pct_protein_satisfied
-    @protein_provided     = total_grams_of(:protien)
+    @protein_provided     = total_grams_of(:dynamic_protien)
     @protein_grams_needed = self.protein_grams
 
     if @protein_provided == 0 
       return 0
     elsif @protein_provided != 0
-      pct_fulfilled = '%.2f' % ((@protein_provided/@protein_grams_needed)*100)
+      #self.pct_protein_satisfied = pct_fulfilled
+      '%.2f' % ((@protein_provided/@protein_grams_needed)*100)
     end
   end    
 
   def pct_carbs_satisfied
-    @carbs_provided = total_grams_of(:carbs)
+    @carbs_provided = total_grams_of(:dynamic_carbs)
     @carbs_needed   = self.carb_grams
 
     if @carbs_provided == 0 
       return 0
     elsif @carbs_provided != 0
-      @carbs_fulfilled = '%.2f' % ((@carbs_provided/@carbs_needed)*100)
+      #self.pct_carbs_satisfied = @carbs_fulfilled
+      '%.2f' % ((@carbs_provided/@carbs_needed)*100)
     end
   end 
 

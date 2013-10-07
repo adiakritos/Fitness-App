@@ -103,7 +103,6 @@ class FoodsController < ApplicationController
       format.html {redirect_to meal_path(current_user.id)}
       format.js
     end 
-
   end
    
   def search

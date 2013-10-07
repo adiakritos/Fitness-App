@@ -1,14 +1,14 @@
 class DeviseCreateUsers < ActiveRecord::Migration
   def change
     create_table(:users) do |t|
-      t.string :measurement
-      t.string :bmr_formula
-      t.float  :fat_factor
-      t.float  :protein_factor
-      t.string :goal
-      t.float  :deficit_amnt 
-      t.float  :target_bf_pct
-      t.float  :activity_factor
+      t.string  :measurement
+      t.string  :bmr_formula
+      t.float   :fat_factor
+      t.float   :protein_factor
+      t.string  :goal
+      t.float   :deficit_amnt 
+      t.float   :target_bf_pct
+      t.float   :activity_factor
       t.integer :target_caloric_intake
 
       ## Database authenticatable
