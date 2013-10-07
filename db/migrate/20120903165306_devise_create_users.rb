@@ -42,13 +42,22 @@ class DeviseCreateUsers < ActiveRecord::Migration
 
       ## Token authenticatable
       # t.string :authentication_token
-
+      t.references :meal
+      t.references :status_update
+      t.references :custom_food
+      t.references :meal_food
 
       t.timestamps
     end
 
     add_index :users, :email,                :unique => true
     add_index :users, :reset_password_token, :unique => true
+    
+    add_index :users, :meal_id
+    add_index :users, :status_update_id
+    add_index :users, :custom_food_id
+    add_index :users, :meal_food_id
+
     # add_index :users, :confirmation_token,   :unique => true
     # add_index :users, :unlock_token,         :unique => true
     # add_index :users, :authentication_token, :unique => true

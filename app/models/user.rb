@@ -8,9 +8,9 @@ class User < ActiveRecord::Base
   before_create :sanitize
 
   has_many :status_updates, dependent: :destroy
-  has_many :meals, dependent: :destroy
-  has_many :custom_foods, dependent: :destroy
-  has_many :meal_foods, through: :meals
+  has_many :meals,          dependent: :destroy
+  has_many :custom_foods,   dependent: :destroy
+  has_many :meal_foods,     through: :meals
 
   attr_accessor :user_password, :user_password_confirmation, :current_password
   attr_accessible :email,
@@ -281,10 +281,10 @@ class User < ActiveRecord::Base
     end 
   end         
   def create_temporary_status_update
-    @status_update = self.status_updates.build(current_bf_pct:     '1', 
-                                               current_weight:     '0', 
-                                               current_lbm:        '0', 
-                                               current_fat_weight: '0', 
+    @status_update = self.status_updates.build(current_bf_pct:     '15', 
+                                               current_weight:     '185', 
+                                               current_lbm:        '140', 
+                                               current_fat_weight: '40', 
                                                temporary:          'true')  
     @status_update.save
   end                   

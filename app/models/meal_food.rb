@@ -1,8 +1,6 @@
 class MealFood < Food
-  has_one :user
-
+  belongs_to :meal
+  belongs_to :user
   
-
-
 end
 

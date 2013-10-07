@@ -14,14 +14,14 @@
 ActiveRecord::Schema.define(:version => 20130404171931) do
 
   create_table "foods", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "meal_id"
     t.string   "name"
     t.string   "brand"
     t.float    "fat"
     t.float    "carbs"
     t.float    "protien"
     t.string   "type"
-    t.integer  "user_id"
-    t.integer  "meal_id"
     t.string   "measure_type"
     t.float    "serving_size"
     t.float    "servings"
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(:version => 20130404171931) do
     t.datetime "updated_at",           :null => false
   end
 
+  add_index "foods", ["meal_id"], :name => "index_foods_on_meal_id"
   add_index "foods", ["user_id"], :name => "index_foods_on_user_id"
 
   create_table "meals", :force => true do |t|
@@ -96,11 +97,19 @@ ActiveRecord::Schema.define(:version => 20130404171931) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.integer  "meal_id"
+    t.integer  "status_update_id"
+    t.integer  "custom_food_id"
+    t.integer  "meal_food_id"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
   end
 
+  add_index "users", ["custom_food_id"], :name => "index_users_on_custom_food_id"
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
+  add_index "users", ["meal_food_id"], :name => "index_users_on_meal_food_id"
+  add_index "users", ["meal_id"], :name => "index_users_on_meal_id"
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+  add_index "users", ["status_update_id"], :name => "index_users_on_status_update_id"
 
 end
