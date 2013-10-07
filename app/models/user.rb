@@ -11,7 +11,8 @@ class User < ActiveRecord::Base
   has_many :meals, dependent: :destroy
   has_many :custom_foods, dependent: :destroy
   has_many :meal_foods, through: :meals
-  # after_initialize :default_values
+
+
   attr_accessor :user_password, :user_password_confirmation, :current_password
   attr_accessible :email,
                   :password,
@@ -216,21 +217,7 @@ class User < ActiveRecord::Base
 
 
 
-  def latest_status_update
-    if self.status_updates.count == 0
-      create_temporary_status_update
-    else
-      self.status_updates.first 
-    end
-  end
-
-  def oldest_status_update
-    if self.status_updates.count == 0
-      create_temporary_status_update
-    else
-      self.status_updates.last
-    end 
-  end     
+#UPDATE MACRO REQUIREMENT METHODS
 
    def total_grams_of(macro)
     if self.meal_foods.count == 0
@@ -247,7 +234,7 @@ class User < ActiveRecord::Base
     if @fat_provided == 0 
       return 0
     elsif @fat_provided != 0
-      pct_fulfilled = BigDecimal(@fat_provided/@fat_grams_needed, 1)*100
+      pct_fulfilled = '%.2f' % ((@fat_provided/@fat_grams_needed)*100)
     end
   end 
 
@@ -258,7 +245,7 @@ class User < ActiveRecord::Base
     if @protein_provided == 0 
       return 0
     elsif @protein_provided != 0
-      pct_fulfilled = BigDecimal(@protein_provided/@protein_grams_needed, 1)*100
+      pct_fulfilled = '%.2f' % ((@protein_provided/@protein_grams_needed)*100)
     end
   end    
 
@@ -269,10 +256,29 @@ class User < ActiveRecord::Base
     if @carbs_provided == 0 
       return 0
     elsif @carbs_provided != 0
-      @carbs_fulfilled = BigDecimal(@carbs_provided / @carbs_needed, 1)*100
+      @carbs_fulfilled = '%.2f' % ((@carbs_provided/@carbs_needed)*100)
     end
   end 
+
+
+
+#STATUS UPDATE METHODS
   
+  def latest_status_update
+    if self.status_updates.count == 0
+      create_temporary_status_update
+    else
+      self.status_updates.first 
+    end
+  end
+
+  def oldest_status_update
+    if self.status_updates.count == 0
+      create_temporary_status_update
+    else
+      self.status_updates.last
+    end 
+  end         
   def create_temporary_status_update
     @status_update = self.status_updates.build(current_bf_pct:     '1', 
                                                current_weight:     '0', 
@@ -281,7 +287,6 @@ class User < ActiveRecord::Base
                                                temporary:          'true')  
     @status_update.save
   end                   
-
 end
 
 
