@@ -14,6 +14,7 @@ class CreateStatusUpdates < ActiveRecord::Migration
       t.float :total_bf_pct_change
       t.float :total_lbm_change
       t.float :total_fat_change
+      t.string :temporary
       t.timestamps
     end
 

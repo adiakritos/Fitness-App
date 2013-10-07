@@ -6,7 +6,11 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.float  :fat_factor
       t.float  :protein_factor
       t.string :goal
-      
+      t.float  :deficit_amnt 
+      t.float  :target_bf_pct
+      t.float  :activity_factor
+      t.integer :target_caloric_intake
+
       ## Database authenticatable
       t.string :email,              :null => false, :default => ""
       t.string :encrypted_password, :null => false, :default => ""

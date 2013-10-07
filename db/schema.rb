@@ -11,25 +11,26 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130816014341) do
+ActiveRecord::Schema.define(:version => 20130404171931) do
 
   create_table "foods", :force => true do |t|
     t.string   "name"
+    t.string   "brand"
     t.float    "fat"
     t.float    "carbs"
     t.float    "protien"
     t.string   "type"
-    t.datetime "created_at",           :null => false
-    t.datetime "updated_at",           :null => false
     t.integer  "user_id"
     t.integer  "meal_id"
-    t.float    "serving_size"
     t.string   "measure_type"
+    t.float    "serving_size"
     t.float    "servings"
     t.float    "dynamic_fat"
     t.float    "dynamic_protien"
     t.float    "dynamic_carbs"
     t.float    "dynamic_serving_size"
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
   end
 
   create_table "meals", :force => true do |t|
@@ -51,8 +52,6 @@ ActiveRecord::Schema.define(:version => 20130816014341) do
   add_index "rails_admin_histories", ["item", "table", "month", "year"], :name => "index_rails_admin_histories"
 
   create_table "status_updates", :force => true do |t|
-    t.datetime "created_at",           :null => false
-    t.datetime "updated_at",           :null => false
     t.integer  "user_id"
     t.float    "current_weight"
     t.float    "current_bf_pct"
@@ -67,11 +66,22 @@ ActiveRecord::Schema.define(:version => 20130816014341) do
     t.float    "total_lbm_change"
     t.float    "total_fat_change"
     t.string   "temporary"
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
   end
 
-  add_index "status_updates", ["user_id", "created_at"], :name => "index_status_updates_on_user_id_and_created_at"
+  add_index "status_updates", ["user_id"], :name => "index_status_updates_on_user_id"
 
   create_table "users", :force => true do |t|
+    t.string   "measurement"
+    t.string   "bmr_formula"
+    t.float    "fat_factor"
+    t.float    "protein_factor"
+    t.string   "goal"
+    t.float    "deficit_amnt"
+    t.float    "target_bf_pct"
+    t.float    "activity_factor"
+    t.integer  "target_caloric_intake"
     t.string   "email",                  :default => "", :null => false
     t.string   "encrypted_password",     :default => "", :null => false
     t.string   "reset_password_token"
@@ -84,15 +94,6 @@ ActiveRecord::Schema.define(:version => 20130816014341) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
-    t.string   "goal"
-    t.string   "measurement"
-    t.string   "bmr_formula"
-    t.float    "fat_factor"
-    t.float    "protein_factor"
-    t.float    "deficit_amnt"
-    t.float    "target_bf_pct"
-    t.float    "activity_factor"
-    t.integer  "target_caloric_intake"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
