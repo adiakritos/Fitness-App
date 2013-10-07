@@ -18,5 +18,7 @@ class CreateFoods < ActiveRecord::Migration
       t.float   :dynamic_serving_size
       t.timestamps
     end
+
+    add_index :foods, :user_id
   end
 end

@@ -33,10 +33,14 @@ ActiveRecord::Schema.define(:version => 20130404171931) do
     t.datetime "updated_at",           :null => false
   end
 
+  add_index "foods", ["user_id"], :name => "index_foods_on_user_id"
+
   create_table "meals", :force => true do |t|
     t.integer "user_id"
     t.string  "meal_name"
   end
+
+  add_index "meals", ["user_id"], :name => "index_meals_on_user_id"
 
   create_table "rails_admin_histories", :force => true do |t|
     t.text     "message"
