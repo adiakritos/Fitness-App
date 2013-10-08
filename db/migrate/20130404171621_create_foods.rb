@@ -7,7 +7,7 @@ class CreateFoods < ActiveRecord::Migration
       t.string     :brand
       t.float      :fat
       t.float      :carbs
-      t.float      :protien
+      t.float      :protein
       t.string     :type
       t.string     :measure_type
       t.float      :serving_size

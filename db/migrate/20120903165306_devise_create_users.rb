@@ -1,6 +1,10 @@
 class DeviseCreateUsers < ActiveRecord::Migration
   def change
     create_table(:users) do |t|
+      t.references :meal
+      t.references :status_update
+      t.references :custom_food
+      t.references :meal_food
       t.string  :measurement
       t.string  :bmr_formula
       t.float   :fat_factor
@@ -18,7 +22,6 @@ class DeviseCreateUsers < ActiveRecord::Migration
       ## Recoverable
       t.string   :reset_password_token
       t.datetime :reset_password_sent_at
-
       ## Rememberable
       t.datetime :remember_created_at
 
@@ -42,11 +45,6 @@ class DeviseCreateUsers < ActiveRecord::Migration
 
       ## Token authenticatable
       # t.string :authentication_token
-      t.references :meal
-      t.references :status_update
-      t.references :custom_food
-      t.references :meal_food
-
       t.timestamps
     end
 
