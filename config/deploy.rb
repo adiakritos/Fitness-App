@@ -41,6 +41,16 @@ end
 
 # Database
 namespace :database do
+  desc "Drop database"
+  task :drop do
+    run "cd #{current_path} && bundle exec rake db:drop RAILS_ENV=#{rails_env}"
+  end
+
+  desc "Create database"
+  task :create do
+    run "cd #{current_path} && bundle exec rake db:create RAILS_ENV=#{rails_env}"
+  end
+
   desc "Seed database"
   task :seed do
     run "cd #{current_path} && bundle exec rake db:seed RAILS_ENV=#{rails_env}"
