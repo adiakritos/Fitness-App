@@ -238,7 +238,7 @@ class User < ActiveRecord::Base
   end 
 
   def pct_protein_satisfied
-    @protein_provided     = total_grams_of(:dynamic_protien)
+    @protein_provided     = total_grams_of(:dynamic_protein)
     @protein_grams_needed = self.protein_grams
 
     if @protein_provided == 0 

@@ -2,57 +2,78 @@ namespace :db do
   desc  "Fill database with sample data"
   task populate: :environment do
 
-    5.times do |n|
-      email = "example-#{n+1}@railstutorial.org"
+    1000.times do |n|
+      email = "#{n+1}@foobar.com"
       password  = "foobar"
       User.create!(email: email,
                    password: password,
                    password_confirmation: password)
+      puts "Created #{n + 1} Users"
     end
 
 
-    users = User.all(limit:6)
+    #users = User.all(limit:6)
+    users = User.all
 
     #Creating Test Status Updates
-    15.times do |n|
+    users.each do |user|
+
+     19.times do |n|
       weight = 200 - n
       bf_pct = 19 - n - 0.5
-      users.each  do |user|
-        user.status_update.create!(current_weight:weight,
-                                   current_bf_pct: bf_pct )
-      end
-    end
-
+      user.status_updates.create!(current_weight: weight,
+                                 current_bf_pct: bf_pct,
+                                 temporary: 'false')
+     end
 
     #Create Test Meals
     
-    users.each do |user|
-        3.times do |n|
-        name = "Meal: #{n}" 
-        user.meals.create!(meal_name: name)
-      end
-    end
+     6.times do |n|
+       name = "Meal: #{n}" 
+       user.meals.create!(meal_name: name)
+     end
 
 
     #Create Test Foods for users
-      
-    users.each do |user|
-        user.meals.each do |meal|
-          2.times do |n|
-            name = "A food"
-            meal.meal_foods.create!(name:name)
-          end
-        end
+     @name = "A food"
+     @serving_size = 1.5
+     @measure_type = 'oz'
+     @fat          = 10
+     @protein      = 45
+     @carbs        = 5
 
-        3.times do |n|
+      user.meals.each do |meal|
+        2.times do |n|
           name = "A food"
-          user.custom_foods.create!(name:name)
+          meal.meal_foods.create!(name:@name,
+                                  serving_size:@serving_size,
+                                  measure_type:@measure_type,
+                                  fat:         @fat,
+                                  protein:     @protein,
+                                  carbs:       @carbs)
         end
-    end
+      end
 
-    10.times do |food|
-      name = "Apple #{food}"
-      SiteFood.create(name: name)
+      3.times do |n|
+        user.custom_foods.create!(name:@name,               
+                                  serving_size:@serving_size,
+                                  measure_type:@measure_type,
+                                  fat:         @fat,         
+                                  protein:     @protein,     
+                                  carbs:       @carbs)       
+                                  
+      end
+
+      5.times do |food|
+        name = "Apple #{food}"
+        SiteFood.create(name:@name,               
+                        serving_size:@serving_size,
+                        measure_type:@measure_type,
+                        fat:         @fat,         
+                        protein:     @protein,     
+                        carbs:       @carbs)       
+      end
+    puts "Populated User #{user.id}"
     end
 
   end

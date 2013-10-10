@@ -13,7 +13,7 @@ class CreateFoods < ActiveRecord::Migration
       t.float      :serving_size
       t.float      :servings
       t.float      :dynamic_fat
-      t.float      :dynamic_protien
+      t.float      :dynamic_protein
       t.float      :dynamic_carbs
       t.float      :dynamic_serving_size
       t.timestamps

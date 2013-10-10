@@ -22,6 +22,7 @@ end
 
 group :development, :test do
   gem 'capistrano'
+  gem 'faker'
   gem 'rvm-capistrano'
   gem 'better_errors'
   gem 'rspec-rails', '2.10.0'

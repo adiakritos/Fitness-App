@@ -20,13 +20,13 @@ ActiveRecord::Schema.define(:version => 20130404171931) do
     t.string   "brand"
     t.float    "fat"
     t.float    "carbs"
-    t.float    "protien"
+    t.float    "protein"
     t.string   "type"
     t.string   "measure_type"
     t.float    "serving_size"
     t.float    "servings"
     t.float    "dynamic_fat"
-    t.float    "dynamic_protien"
+    t.float    "dynamic_protein"
     t.float    "dynamic_carbs"
     t.float    "dynamic_serving_size"
     t.datetime "created_at",           :null => false
@@ -78,6 +78,10 @@ ActiveRecord::Schema.define(:version => 20130404171931) do
   add_index "status_updates", ["user_id"], :name => "index_status_updates_on_user_id"
 
   create_table "users", :force => true do |t|
+    t.integer  "meal_id"
+    t.integer  "status_update_id"
+    t.integer  "custom_food_id"
+    t.integer  "meal_food_id"
     t.string   "measurement"
     t.string   "bmr_formula"
     t.float    "fat_factor"
@@ -97,10 +101,6 @@ ActiveRecord::Schema.define(:version => 20130404171931) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.integer  "meal_id"
-    t.integer  "status_update_id"
-    t.integer  "custom_food_id"
-    t.integer  "meal_food_id"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
   end

@@ -9,9 +9,9 @@ class Food < ActiveRecord::Base
                   :measure_type, 
                   :fat, 
                   :carbs, 
-                  :protien, 
+                  :protein, 
                   :dynamic_fat, 
-                  :dynamic_protien, 
+                  :dynamic_protein, 
                   :dynamic_carbs
 
   validates :name,             presence: true
@@ -19,15 +19,15 @@ class Food < ActiveRecord::Base
   validates :measure_type,     presence: true
   validates :fat,              presence: true
   validates :carbs,            presence: true
-  validates :protien,          presence: true
+  validates :protein,          presence: true
   validates :servings,         presence: true, on: :update
   validates :dynamic_carbs,    presence: true, on: :update
   validates :dynamic_fat,      presence: true, on: :update
-  validates :dynamic_protien,  presence: true, on: :update
+  validates :dynamic_protein,  presence: true, on: :update
 
   def set_defaults
     self.servings = 1
-    self.dynamic_protien = self.protien 
+    self.dynamic_protein = self.protein 
     self.dynamic_carbs   = self.carbs 
     self.dynamic_fat     = self.fat 
     self.dynamic_serving_size = self.serving_size
@@ -36,7 +36,7 @@ class Food < ActiveRecord::Base
   def update_macros
     @servings = self.servings
     self.dynamic_fat     = round(self.fat * @servings)
-    self.dynamic_protien = round(self.protien * @servings)
+    self.dynamic_protein = round(self.protein * @servings)
     self.dynamic_carbs   = round(self.carbs * @servings)
     self.dynamic_serving_size = round(self.serving_size * @servings)
   end
