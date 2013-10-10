@@ -13,6 +13,7 @@ gem 'therubyracer', :require => 'v8'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'rails3-jquery-autocomplete'
+gem 'roo'
 
 group :assets do
   gem 'sass-rails', '~> 3.2.4'
@@ -22,7 +23,6 @@ end
 
 group :development, :test do
   gem 'capistrano'
-  gem 'faker'
   gem 'rvm-capistrano'
   gem 'better_errors'
   gem 'rspec-rails', '2.10.0'
@@ -33,6 +33,7 @@ end
 
 group :test do
   gem 'capybara', '1.1.2'
+  gem 'faker'
   gem 'factory_girl_rails'
   gem 'spork', '~> 1.0rc'
 end
