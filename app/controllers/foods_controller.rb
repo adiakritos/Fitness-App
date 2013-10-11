@@ -19,7 +19,7 @@ class FoodsController < ApplicationController
                                             serving_size: @custom_food.serving_size,
                                             fat:          @custom_food.fat,
                                             carbs:        @custom_food.carbs,
-                                            protien:      @custom_food.protien,
+                                            protein:      @custom_food.protein,
                                             measure_type: @custom_food.measure_type)
 
         @meal_food.save!
@@ -38,7 +38,7 @@ class FoodsController < ApplicationController
                                           serving_size: @site_food.serving_size,
                                           fat:          @site_food.fat,
                                           carbs:        @site_food.carbs,
-                                          protien:      @site_food.protien,
+                                          protein:      @site_food.protein,
                                           measure_type: @site_food.measure_type)
       @meal_food.save!
 
@@ -46,7 +46,7 @@ class FoodsController < ApplicationController
                                                      serving_size: @site_food.serving_size,
                                                      fat:          @site_food.fat,
                                                      carbs:        @site_food.carbs,
-                                                     protien:      @site_food.protien,
+                                                     protein:      @site_food.protein,
                                                      measure_type: @site_food.measure_type) 
       @custom_food.save!  
 
@@ -72,14 +72,14 @@ class FoodsController < ApplicationController
                                             serving_size: params[:new_food_serving_size],
                                             fat:          params[:new_food_fat],
                                             carbs:        params[:new_food_carbs],
-                                            protien:      params[:new_food_protien],
+                                            protein:      params[:new_food_protien],
                                             measure_type: params[:new_food_measure_type])
 
         @custom_food = current_user.custom_foods.build(name:         params[:new_food_name],
                                                        serving_size: params[:new_food_serving_size],
                                                        fat:          params[:new_food_fat],
                                                        carbs:        params[:new_food_carbs],
-                                                       protien:      params[:new_food_protien],
+                                                       protein:      params[:new_food_protien],
                                                        measure_type: params[:new_food_measure_type])  
         if @meal_food.valid? & @custom_food.valid?
           @meal_food.save!
