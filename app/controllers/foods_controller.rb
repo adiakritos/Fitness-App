@@ -109,7 +109,7 @@ class FoodsController < ApplicationController
     @user = current_user
     #@foods = Food.order(:name).where("name like? AND type = ? AND user_id = ? OR type = ?",
     #                               "%#{params[:term]}%", "CustomFood", current_user.id, "SiteFood").limit(4)
-    # I want the customfoods where their id matches the users, and all the sitefoods
+    # I want the customfoods where their id matches the user, and all the sitefoods
     @foods = Food.order(:name).where("name like ?", "%#{params[:term]}%" ).where("user_id = ? OR type = ?", current_user.id, "SiteFood").limit(3)
     render json: @foods.map{|t| {label: t.name, type: t.type}}
   end
