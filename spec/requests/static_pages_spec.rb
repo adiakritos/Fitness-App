@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "StaticPages" do
+describe "Static Pages" do
 
   subject { page }
 
@@ -11,7 +11,7 @@ describe "StaticPages" do
     end
   end
 
-  describe "faq page" do
+  describe "FAQ page" do
     it "should have title content with 'home' in it" do
       visit faq_path
       should have_selector( 'title', :text => "| FAQ")
