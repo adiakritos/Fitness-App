@@ -13,15 +13,17 @@ gem 'therubyracer', :require => 'v8'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'rails3-jquery-autocomplete'
-gem 'roo'
 
 group :assets do
   gem 'sass-rails', '~> 3.2.4'
   gem 'coffee-script', '~> 2.2.0'
   gem 'uglifier', '~> 1.2.3'
+  gem 'nokogiri'
 end
 
 group :development, :test do
+  gem 'pry', '~> 0.9.12.2'
+  gem 'pry-rails'
   gem 'capistrano'
   gem 'bullet'
   gem 'rvm-capistrano'
@@ -30,6 +32,7 @@ group :development, :test do
   gem 'awesome_print'
   gem 'wirble'
   gem 'thin'
+  gem 'guard'
   gem 'guard-rspec'
   gem 'rb-fsevent', :require => false if RUBY_PLATFORM =~ /darwin/i  
 end
