@@ -4,6 +4,7 @@ class Food < ActiveRecord::Base
   before_update :update_macros
 
   attr_accessible :name, 
+                  :brand,
                   :servings, 
                   :serving_size, 
                   :measure_type, 
@@ -15,6 +16,7 @@ class Food < ActiveRecord::Base
                   :dynamic_carbs
 
   validates :name,             presence: true
+  validates :brand,            presence: true
   validates :serving_size,     presence: true
   validates :measure_type,     presence: true
   validates :fat,              presence: true
@@ -26,6 +28,7 @@ class Food < ActiveRecord::Base
   validates :dynamic_protein,  presence: true, on: :update
 
   def set_defaults
+    self.brand    = "generic"
     self.servings = 1
     self.dynamic_protein = self.protein 
     self.dynamic_carbs   = self.carbs 

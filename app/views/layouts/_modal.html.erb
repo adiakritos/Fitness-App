@@ -6,6 +6,7 @@
 
   <%= form_tag({controller: "foods", action: "create"}, method: "post", class: "new_food_form") do %> 
     <%= text_field_tag 'new_food_name',         nil, placeholder: "Name - Ex: 'Beef Patty'",  class: "modal-text-field" %>
+    <%= text_field_tag 'new_food_brand',        nil, placeholder: "Brand - Ex: 'Generic'",    class: "modal-text-field" %>
     <%= text_field_tag 'new_food_serving_size', nil, placeholder: "Serving Size - Ex: '4'",   class: "modal-text-field" %>
     <%= text_field_tag 'new_food_measure_type', nil, placeholder: "Measurment - Ex: 'oz'",    class: "modal-text-field" %>
     <%= text_field_tag 'new_food_fat',          nil, placeholder: "Fat in grams - Ex: '20'",  class: "modal-text-field" %>
