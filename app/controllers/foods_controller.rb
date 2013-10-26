@@ -16,6 +16,7 @@ class FoodsController < ApplicationController
         flash[:error] = "#{@meal_id}"
       else
         @meal_food = @meal.meal_foods.build(name:         @custom_food.name, 
+                                            brand:        @custom_food.brand,
                                             serving_size: @custom_food.serving_size,
                                             fat:          @custom_food.fat,
                                             carbs:        @custom_food.carbs,
@@ -35,6 +36,7 @@ class FoodsController < ApplicationController
      #create custom_food and meal_food
       
       @meal_food = @meal.meal_foods.build(name:         @site_food.name,
+                                          brand:        @site_food.brand,
                                           serving_size: @site_food.serving_size,
                                           fat:          @site_food.fat,
                                           carbs:        @site_food.carbs,
@@ -43,6 +45,7 @@ class FoodsController < ApplicationController
       @meal_food.save!
 
       @custom_food = current_user.custom_foods.build(name:         @site_food.name,
+                                                     brand:        @site_food.brand,
                                                      serving_size: @site_food.serving_size,
                                                      fat:          @site_food.fat,
                                                      carbs:        @site_food.carbs,
@@ -69,6 +72,7 @@ class FoodsController < ApplicationController
     #When user submits the modal box 
       elsif !@new_food.nil?
         @meal_food = @meal.meal_foods.build(name:         params[:new_food_name],
+                                            brand:        params[:new_food_brand],
                                             serving_size: params[:new_food_serving_size],
                                             fat:          params[:new_food_fat],
                                             carbs:        params[:new_food_carbs],
@@ -76,6 +80,7 @@ class FoodsController < ApplicationController
                                             measure_type: params[:new_food_measure_type])
 
         @custom_food = current_user.custom_foods.build(name:         params[:new_food_name],
+                                                       brand:        params[:new_food_brand],
                                                        serving_size: params[:new_food_serving_size],
                                                        fat:          params[:new_food_fat],
                                                        carbs:        params[:new_food_carbs],

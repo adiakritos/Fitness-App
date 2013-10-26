@@ -6,7 +6,6 @@ describe "StatusUpdatePages" do
 
  describe "Dashboard" do
    let(:user) { FactoryGirl.create(:user) }
-   login_as(:user, scope: :user)
    
  end
 

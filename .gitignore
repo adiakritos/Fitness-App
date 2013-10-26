@@ -7,8 +7,14 @@ capybara-*.html
 .rspec
 /.bundle
 /vendor/bundle
+<<<<<<< HEAD
 /log/*
 *.log
+||||||| merged common ancestors
+/log/*
+=======
+/log/*.log
+>>>>>>> fix_food_parse_error
 /tmp/*
 /db/*.sqlite3
 /public/system/*
