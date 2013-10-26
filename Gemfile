@@ -32,8 +32,9 @@ group :development, :test do
   gem 'awesome_print'
   gem 'wirble'
   gem 'thin'
-  gem 'guard'
+  gem 'guard', '>=2.1.0'
   gem 'guard-rspec'
+  gem 'guard-livereload'
   gem 'rb-fsevent', :require => false if RUBY_PLATFORM =~ /darwin/i  
 end
 
