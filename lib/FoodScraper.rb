@@ -40,7 +40,8 @@ class FoodScraper
   end
 
   def food_exists?(name, brand)
-    SiteFood.find_by_name(name)
+    
+     SiteFood.find_by_name(name)
 
 
   end

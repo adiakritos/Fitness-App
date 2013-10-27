@@ -1,6 +1,6 @@
 require 'spec_helper'
 include Warden::Test::Helpers
-Warden.test_mode!
+#Warden.test_mode!
 
 describe "User pages" do
 

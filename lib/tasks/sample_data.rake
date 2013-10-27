@@ -2,7 +2,7 @@ namespace :db do
   desc  "Fill database with sample data"
   task populate: :environment do
 
-    1000.times do |n|
+    100.times do |n|
       email = "#{n+1}@foobar.com"
       password  = "foobar"
       User.create!(email: email,
@@ -35,7 +35,8 @@ namespace :db do
 
 
     #Create Test Foods for users
-     @name = "A food"
+     @name         = "A food"
+     @brand        = "Generic"
      @serving_size = 1.5
      @measure_type = 'oz'
      @fat          = 10
@@ -46,6 +47,7 @@ namespace :db do
         2.times do |n|
           name = "A food"
           meal.meal_foods.create!(name:@name,
+                                  brand:@brand,
                                   serving_size:@serving_size,
                                   measure_type:@measure_type,
                                   fat:         @fat,
@@ -56,6 +58,7 @@ namespace :db do
 
       3.times do |n|
         user.custom_foods.create!(name:@name,               
+                                  brand:@brand,
                                   serving_size:@serving_size,
                                   measure_type:@measure_type,
                                   fat:         @fat,         
@@ -67,6 +70,7 @@ namespace :db do
       5.times do |food|
         name = "Apple #{food}"
         SiteFood.create(name:@name,               
+                        brand:@brand,
                         serving_size:@serving_size,
                         measure_type:@measure_type,
                         fat:         @fat,         
