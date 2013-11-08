@@ -19,7 +19,7 @@ App3::Application.routes.draw do
 
   devise_for :users, :controllers => { :registrations => "registrations" }
   
-  root to: 'static_pages#home'
+  root to: 'static_pages#signup'
   match '/faq', to: 'static_pages#faq'
   match '/contact', to: 'static_pages#contact'
 
