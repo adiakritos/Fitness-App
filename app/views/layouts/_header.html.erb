@@ -2,9 +2,9 @@
   <%= link_to "Get Joocy!", root_path, id:'logo'%>
 <nav>
       <ul class="nav pull-left">
-          <li><%= link_to "Home",  root_path %></li>
-          <li><%= link_to "FAQ",   faq_path %></li>
-<li> <%= link_to "Contact", contact_path %> </li> 
+          <li><% link_to "Home",  root_path %></li>
+          <li><% link_to "FAQ",   faq_path %></li>
+          <li><% link_to "Contact", contact_path %> </li> 
       </ul>
 
 <ul class="nav pull-right">
@@ -14,8 +14,8 @@
     <%= link_to "Sign out", destroy_user_session_path, method: "delete" %>      
   </li>
 <% else %>
-  <li><%= link_to "Sign-in", new_user_session_path %></li>
-  <li> <%= link_to "Sign up", new_user_registration_path %> </li>
+  <li><% link_to "Sign-in", new_user_session_path %></li>
+  <li><% link_to "Sign up", new_user_registration_path %> </li>
 <% end %>
       </ul>
   </nav>
