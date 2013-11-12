@@ -94,6 +94,7 @@ GEM
     gon (4.1.1)
       actionpack (>= 2.3.0)
       json
+    google-analytics-rails (0.0.4)
     guard (2.1.1)
       formatador (>= 0.2.4)
       listen (~> 2.1)
@@ -138,6 +139,7 @@ GEM
     method_source (0.8.2)
     mime-types (1.25)
     mini_portile (0.5.1)
+    mixpanel-ruby (1.2.0)
     multi_json (1.8.1)
     mysql2 (0.3.13)
     nested_form (0.3.2)
@@ -285,12 +287,14 @@ DEPENDENCIES
   factory_girl_rails
   faker
   gon
+  google-analytics-rails
   guard (>= 2.1.0)
   guard-livereload
   guard-rspec
   jbuilder
   jquery-rails
   jquery-ui-rails
+  mixpanel-ruby
   mysql2
   nokogiri
   pry (~> 0.9.12.2)

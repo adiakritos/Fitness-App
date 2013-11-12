@@ -19,6 +19,8 @@ group :assets do
   gem 'coffee-script', '~> 2.2.0'
   gem 'uglifier', '~> 1.2.3'
   gem 'nokogiri'
+  gem 'mixpanel-ruby'
+  gem 'google-analytics-rails'
 end
 
 group :development, :test do
