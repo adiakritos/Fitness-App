@@ -1,5 +1,7 @@
 App3::Application.routes.draw do
 
+  get "sessions_controller/create"
+
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
 
   resources :status_updates do 
