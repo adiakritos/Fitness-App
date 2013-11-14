@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130404171931) do
+ActiveRecord::Schema.define(:version => 20131114042520) do
 
   create_table "foods", :force => true do |t|
     t.integer  "user_id"
@@ -42,6 +42,11 @@ ActiveRecord::Schema.define(:version => 20130404171931) do
   end
 
   add_index "meals", ["user_id"], :name => "index_meals_on_user_id"
+
+  create_table "messages", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "rails_admin_histories", :force => true do |t|
     t.text     "message"
