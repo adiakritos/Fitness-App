@@ -17,12 +17,14 @@ App3::Application.routes.draw do
       get :search
     end
   end
-      
+
+  match 'contact' => 'contact#new', :as => 'contact', :via => :get
+  match 'contact' => 'contact#create', :as => 'contact', :via => :post 
 
   devise_for :users, :controllers => { :registrations => "registrations" }
   devise_for :users, :controllers => { :sessions => "sessions" }
 
-  root to: 'static_pages#signup'
+  root to: 'static_pages#home'
   match '/faq', to: 'static_pages#faq'
   match '/contact', to: 'static_pages#contact'
 

@@ -13,6 +13,7 @@ gem 'therubyracer', :require => 'v8'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'rails3-jquery-autocomplete'
+gem 'simple_form'
 
 group :assets do
   gem 'sass-rails', '~> 3.2.4'

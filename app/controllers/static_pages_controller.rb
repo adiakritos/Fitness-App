@@ -9,10 +9,6 @@ class StaticPagesController < ApplicationController
     
   end      
 
-  def contact
-    
-  end
-
   def signup
 
   end
