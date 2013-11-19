@@ -76,7 +76,7 @@ class FoodsController < ApplicationController
                                             serving_size: params[:new_food_serving_size],
                                             fat:          params[:new_food_fat],
                                             carbs:        params[:new_food_carbs],
-                                            protein:      params[:new_food_protien],
+                                            protein:      params[:new_food_protein],
                                             measure_type: params[:new_food_measure_type])
 
         @custom_food = current_user.custom_foods.build(name:         params[:new_food_name],
@@ -84,7 +84,7 @@ class FoodsController < ApplicationController
                                                        serving_size: params[:new_food_serving_size],
                                                        fat:          params[:new_food_fat],
                                                        carbs:        params[:new_food_carbs],
-                                                       protein:      params[:new_food_protien],
+                                                       protein:      params[:new_food_protein],
                                                        measure_type: params[:new_food_measure_type])  
         if @meal_food.valid? & @custom_food.valid?
           @meal_food.save!
