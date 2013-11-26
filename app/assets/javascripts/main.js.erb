@@ -1,0 +1,59 @@
+
+var fitnessApp = (function() {
+
+    // FOODS
+    var foods = (function() {
+
+        var autocomplete = function() {
+            $.widget( "custom.catcomplete", $.ui.autocomplete, {
+                _renderMenu: function( ul, items ) {
+                    var that = this,
+                        currentType = "";
+                    $.each( items, function( index, item ) {
+                        if ( item.type != currentType ) {
+                            ul.append( "<li class='ui-autocomplete-type'>" + item.type + "</li>" );
+                            currentType = item.type;
+                        }
+                        that._renderItem( ul, item );
+                    });
+                }
+            });
+
+            $(this).on('ajax:success', function() {
+                $(".auto-complete").catcomplete({
+                    source: $(".auto-complete").data('catcomplete-source')
+                });
+            });
+        };
+
+        var init = function() {
+            autocomplete();
+        };
+
+        return {
+            init: init
+        };
+    })();
+
+    // OTHER
+    var other = (function() {
+        var init = function() {
+            // stuff
+        };
+
+        return {
+            init: init
+        };
+    })();
+
+    // APP INIT
+    var init = (function() {
+        $(document).ready(function() {
+            foods.init();
+            other.init();
+        });
+    })();
+
+})();
+
+
