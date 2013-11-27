@@ -3,8 +3,7 @@
 <head>
   <title><%= full_title(yield(:title)) %></title>    
   <%= csrf_meta_tags %>
-  <%= include_gon %>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= stylesheet_link_tag "application", :media => "all" %>
 </head>
 <body>
   <div class=container>
@@ -36,8 +35,8 @@
   </div>
 
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
 
+  <%= include_gon %>
   <%= javascript_include_tag 'application' %>  
 
   <script>
