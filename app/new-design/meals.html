@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Dashboard Design</title>
+  <!-- CSRF META TAG -->
+  <!-- OTHER META TAGS -->
+
+  <link rel="stylesheet" href="css/normalize.css" type="text/css">
+  <link rel="stylesheet" href="css/main.css" type="text/css">
+
+  <link href="favicon.ico" rel="shortcut icon" type="image/x-icon">
+  <link href="http://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet" type="text/css">
+  <link href='http://fonts.googleapis.com/css?family=Pathway+Gothic+One' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <div class="header clearfix">
+    <div class="header-inner">
+      <h1 class="logo">GET JOOCY!</h1>
+      <ul class="nav">
+        <li><a href="index.html">Dashboard</a></li>
+        <li><a href="meals.html">Meals</a></li>
+        <li><a href="foods.html">Foods</a></li>
+        <li><a href="#">Settings</a></li>
+        <li><a href="#">Support</a></li>
+        <li><a href="#">Login/out</a></li>
+      </ul> 
+    </div>
+  </div>       
+
+  <div class="wrapper">
+
+    <div class="main clearfix">
+      <h1>Meals</h1>
+      <div class="widget notification" style="display:none;"> 
+        <p>This is a notification</p>
+      </div>  
+      <div class="content">
+        
+        <div class="widget">
+
+          <table>
+
+            <thead>
+              <tr>
+                <th></th>  
+                <th>Servings</th>
+                <th>Serving Size</th>  
+                <th>Fat</th>  
+                <th>Carbs</th>  
+                <th>Protein</th>  
+                </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>53.65%</td>
+                <td>0%</td>
+                <td>30.18%</td>
+              </tr>
+            </thead>
+
+            <thead class=meal-thead id=meal-thead-3>
+              <td class=meal-thead-name colspan="7">Lunch</td>
+              <th><a href="/meals/3" data-method="delete" data-remote="true" rel="nofollow">x</a> </th>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td>Chicken</td>
+                <td>
+                  <form  action="" method="post">
+                    <input name="meal_food[servings]" step="0.05" type="number" value="1.0" />
+                  </form>
+                </td>
+                <td>4.0 oz</td>
+                <td>20.0</td>
+                <td>0.0</td>
+                <td>25.0</td>
+                <td><a href="" data-method="delete" data-remote="true" rel="nofollow">x</a></td>
+              </tr>
+
+              <tr>
+                <td><a href="" data-remote="true">add food</a></td> 
+              </tr>
+              <tr>
+                <th><a href="" data-remote="true">new meal</a> </th>
+              </tr>
+          </table>
+        </div>
+      </div>
+
+     <div class="sidebar">
+
+       <div class="widget">
+         <h3>Meal Building Tips <span>-</span></h3> 
+         <h4>For Each Meal - Choose: </h4>
+         <ul>
+           <li>1 Protein</li>
+           <li>1 Startchy Carb</li>
+           <li>1 Fibrous Carb</li>
+           <li>Keep your macros close 100%</li>
+         </ul>
+       </div>
+
+       <div class="widget">
+
+         
+       </div>
+
+     </div>
+
+    </div>
+
+  </div>
+
+  <div class="footer">
+    <p>Copyright &copy; 2013 GetJoocy.com - All Rights Reserved.</p>
+  </div>
+
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+  <script src="amcharts/amcharts.js"></script>
+  <script src="amcharts/serial.js"></script>
+  <script src="js/progress-chart.js"></script>
+  <script src="js/main.js"></script>
+
+</body>
+</html>
+
