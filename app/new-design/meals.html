@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Dashboard Design</title>
+  <!-- CSRF META TAG -->
+  <!-- OTHER META TAGS -->
+
+  <link rel="stylesheet" href="css/normalize.css" type="text/css">
+  <link rel="stylesheet" href="css/main.css" type="text/css">
+
+  <link href="favicon.ico" rel="shortcut icon" type="image/x-icon">
+  <link href="http://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet" type="text/css">
+  <link href='http://fonts.googleapis.com/css?family=Pathway+Gothic+One' rel='stylesheet' type='text/css'>
+</head>
+<body>
+   
+
+  <div class="wrapper">
+    <div class="header container clearfix">
+      <h1 class="logo">GET JOOCY!</h1>
+      <ul class="nav">
+        <li><a href="index.html">Dashboard</a></li>
+        <li><a href="meals.html">Meals</a></li>
+        <li><a href="foods.html">Foods</a></li>
+        <li><a href="#">Tutorials</a></li>
+        <li><a href="#">Settings</a></li>
+        <li><a href="#">Login/out</a></li>
+      </ul> 
+    </div>      
+    <div class="main clearfix">
+      <div class="container">
+
+          <div class="content">
+            <div class="widget">
+              <table>
+                <thead>
+                  <tr>
+                    <td colspan="4">53.65%</td>
+                    <td>0%</td>
+                    <td>30.18%</td>
+                  </tr>
+                  <tr>
+                    <th colspan="2">Servings</th>
+                    <th>Serving Size</th>  
+                    <th>Fat</th>  
+                    <th>Carbs</th>  
+                    <th>Protein</th>  
+                  </tr>
+                </thead>
+
+                <thead class=meal-thead id=meal-thead-3>
+                    <td class="meal-thead-name">
+                        <form action="#">
+                            <input type="text" value="Choose Meal Name" onclick="this.select()"/>
+                        </form>
+                    </td>
+                  <td colspan="6" style="text-align:right;"><a href="/meals/3" data-method="delete" data-remote="true" rel="nofollow">x</a></td>
+                </thead>
+
+                <tbody>
+                  <tr>
+                    <td class="text-left">Chicken</td>
+                    <td>
+                      <form  action="#" method="post">
+                        <input class="food-servings" name="meal_food[servings]" step="0.01" type="number" value="1.0" />
+                      </form>
+                    </td>
+                    <td>4.0 oz</td>
+                    <td>20.0</td>
+                    <td>0.0</td>
+                    <td>25.0</td>
+                    <td><a href="" data-method="delete" data-remote="true" rel="nofollow">x</a></td>
+                  </tr>
+
+                  <tr>
+                    <td class="text-left"><a href="" data-remote="true">add food</a></td> 
+                  </tr>
+                  <tr>
+                    <td class="text-left"><a href="" data-remote="true">new meal</a> </td>
+                  </tr>
+              </table>
+            </div>
+          </div>
+
+         <div class="sidebar">
+           <div class="widget widget-coaching">
+            <h4>Coaching</h4>
+            <p>Coaching advice goes here, maybe flashed in yellow, and maybe the sidebar will 'stick' as they scroll.</p>
+          </div>   
+           <div class="widget">
+             <h4>Meal Building Tips <span>-</span></h4> 
+             <h5>For Each Meal, Choose: </h5>
+             <ul>
+               <li>1 Protein</li>
+               <li>1 Startchy Carb</li>
+               <li>1 Fibrous Carb</li>
+               <li>Keep your macros close to 100%</li>
+             </ul>
+           </div>
+        </div>
+     </div>
+
+    </div>
+
+    <div class="container">
+      <div class="footer">
+          <p>Copyright &copy; 2013 GetJoocy.com - All Rights Reserved.</p>
+      </div>
+    </div> 
+  </div>
+
+
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+  <script src="amcharts/amcharts.js"></script>
+  <script src="amcharts/serial.js"></script>
+  <script src="js/progress-chart.js"></script>
+  <script src="js/main.js"></script>
+
+</body>
+</html>
+

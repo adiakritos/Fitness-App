@@ -4,13 +4,12 @@ App3::Application.routes.draw do
 
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
 
+  resources :meals  
   resources :status_updates do 
     collection do 
       delete :delete_all
     end
   end
-
-  resources :meals  
 
   resources :foods do
     collection do
@@ -18,14 +17,14 @@ App3::Application.routes.draw do
     end
   end
 
-  match 'contact' => 'contact#new', :as => 'contact', :via => :get
+  match 'contact' => 'contact#new',    :as => 'contact', :via => :get
   match 'contact' => 'contact#create', :as => 'contact', :via => :post 
 
   devise_for :users, :controllers => { :registrations => "registrations" }
-  devise_for :users, :controllers => { :sessions => "sessions" }
+  devise_for :users, :controllers => { :sessions      => "sessions" }
 
-  root to: 'static_pages#home'
-  match '/faq', to: 'static_pages#faq'
+  root              to: 'static_pages#home'
+  match '/faq',     to: 'static_pages#faq'
   match '/contact', to: 'static_pages#contact'
 
   
