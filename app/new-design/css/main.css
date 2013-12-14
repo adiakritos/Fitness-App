@@ -1,11 +1,9 @@
 /* main */
 
-html {
-    -webkit-font-smoothing: antialiased;
-}
 body {
     font-size: 14px;
     color: #111;
+    font-family: sans-serif;
 }
 
 a {
@@ -13,19 +11,8 @@ a {
     text-decoration: none;
 }
 
-h1, h3, h4 {
-    font-family: 'Roboto', sans-serif;
-    letter-spacing: .5px;
-}
-
-
 a:hover {
     text-decoration: underline;
-}
-
-p, li, td, a {
-    font-size:.9rem;
-    font-family: Arial, sans-serif;
 }
 
 ul {
@@ -37,7 +24,6 @@ ul {
     -webkit-margin-start: 0px;
     -webkit-margin-end: 0px;
     -webkit-padding-start: 40px;
-    margin-top:-10px;
 }
 
 li {
@@ -46,6 +32,12 @@ li {
     margin-bottom: 5px;
     display: list-item;
     text-align: -webkit-match-parent;
+}
+
+small {
+    font-size: 11px;
+    margin: 0;
+    display: block;
 }
 
 /* helpers */
@@ -67,14 +59,23 @@ li {
 /* begin */
 
 .wrapper {
-    width: 960px;
+    width: 100%;
     margin: 0 auto;
     margin-top: 0px;
     background: #fff;
     padding: 0px 20px 20px 20px;
 }
 
+.container {
+    width:960px;
+    margin: 0 auto;
+}
+
 .widget {
+    padding: 10px;
+}
+
+.widget-inner {
     padding: 10px;
 }
 
@@ -82,7 +83,6 @@ li {
     margin: 0;
     margin-bottom: 8px;
     font-size: 16px;
-    color: #8B0000;
 }
 
 .content {
@@ -91,21 +91,19 @@ li {
 }
 
 .content .widget {
-    margin-bottom: 10px;
+    padding: 0;
+    margin-bottom: 5px;
 }
 
-.notification {
-    margin-bottom: 10px;
-}
-
-.content .widget h4 {
-  color: #FFF;
-  background-color: #1B1D1F;
+.widget h3 {
+  color: #fff;
+  background-color: #1b1d1f;
   margin: 0;
   margin-bottom: 12px;
-  font-size: 16px;
+  line-height: 1;
+  font-size: 13px;
   font-weight: bold;
-  padding: 0px 0px 2px 8px;
+  padding: 8px 12px;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
@@ -113,21 +111,18 @@ li {
 
 .widget h4 span,
 .widget h3 span {
-    color: orange;
-    padding-left: 5px;
+    color: gray;
 }
 
-.content .widget-progress .toggle-chart,
-.sidebar .widget          .toggle-calculator {
+.widget h3 .active {
+    color: orange;
+}
+
+.bold-link {
     font-size: 12px;
     font-weight: bold;
-    display: block;
-    margin-top: 10px;
 }
 
-.sidebar .widget .bodyfat-calc-form p {
-    margin-top: 5px;
-}
 /* sidebar */
 
 .sidebar {
@@ -136,10 +131,25 @@ li {
     margin-bottom: 20px;
 }
 
+.sidebar h4 {
+    font-size: 15px;
+    margin: 0;
+    margin-bottom: 10px;
+}
+
+.sidebar h5 {
+    margin:0;
+}
+
+.sidebar p {
+    font-size: 12px;
+    margin: 0;
+    margin-bottom: 8px;
+}
+
 .sidebar .widget {
     margin-bottom: 5px;
 }
-
 
 .nav {
     list-style-type: none;
@@ -160,14 +170,9 @@ li {
 
 .header {
     border-bottom: 2px solid #eee;
-    padding-bottom: 10px;
-}
-
-.header-inner {
-    width:960px;
-    padding-top: 10px;
-    margin: 0 auto;
-
+    padding: 10px 0;
+    margin-bottom: 20px;
+    margin-bottom: 20px;
 }
 
 .logo {
@@ -180,45 +185,50 @@ li {
 }
 
 .header .nav a {
+    letter-spacing: 0;
     display: block;
     color: #000;
-    font-family: roboto, sans-serif;
-    font-size: 1rem;
-    padding: 5px 10px;
+    font-size: 15px;
+    padding: 6px 8px;
     margin-left: 5px;
     border-radius:2px;
-    -webkit-transition: all .15s ease-in-out;
-       -moz-transition: all .15s ease-in-out;
-        -ms-transition: all .15s ease-in-out;
-         -o-transition: all .15s ease-in-out;
-            transition: all .15s ease-in-out;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    -webkit-transition: all .1s ease-in-out;
+       -moz-transition: all .1s ease-in-out;
+        -ms-transition: all .1s ease-in-out;
+         -o-transition: all .1s ease-in-out;
+            transition: all .1s ease-in-out;
 }
 
 .header .nav a:hover {
     text-decoration: none;
-    background: #1B1D1F;
-    font-weight:bold;
-    color:white;
+    background: #000;
+    color: white;
 }
 
 .footer {
-    text-align: center;
-    padding: 20px 0;
+    margin:20px 0px 20px 0px;
+    padding: 20px 20px 20px 20px;
     background: #1B1D1F;
-    font-size: 13px;
+    border-radius:3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
 }
 
 .footer p {
+    font-size: 13px;
     margin: 0;
     color: #BEBDBD;
 }
 
 /* forms */
+
 select,
-form input[type="text"],
-form input[type="password"],
-form input[type="email"],
-form textarea {
+input[type="text"],
+input[type="password"],
+input[type="email"],
+textarea {
     padding: 4px 10px;
     margin-bottom: 5px;
     font-size: 13px;
@@ -235,24 +245,90 @@ form textarea {
 }
 
 select,
-form input[type="submit"] {
+input[type="submit"] {
     display: block;
 }
 
 /* tables */
 
 table {
-    text-align: left;
+    text-align: right;
     width: 100%;
+    font-size: 12px;
 }
 
-td, th {
+tr {
+    border-bottom: 1px solid #f7f7f7;
+}
+
+thead tr {
+    border-bottom: 5px solid white;
+}
+
+th, td {
+    padding: 5px 8px;
+}
+
+th {
+    background: #eee;
+}
+
+td.left,
+th.left {
+    text-align: left;
+}
+
+/* home page */
+
+.content .widget-update {
+    margin-bottom: 10px;
+    background: #FFFFDD;
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fffde8', endColorstr='#ffffff',GradientType=0 );
+}
+
+.widget-update .widget-inner {
+    padding-top: 0px;
+}
+
+.widget-update small {
+    margin-bottom: 6px;
+    font-size: 11px;
+}
+
+.widget-update input {
+    display: inline;
+    font-size: 13px;
     padding: 3px 5px;
 }
 
+/* meals */
 
-.meal-thead {
-background-color: #1B1D1F;
-color: #FFF;
-font-weight: bold;
+.meal-thead td{
+    text-align: left;
+    padding-left: 14px;
+    background-color: #000; 
+    color: white;
+    font-weight: bold;
+}
+
+.meal-thead-name input {
+    background: none; 
+    color: white;
+    border:none;
+    padding: 0px;
+    margin: 0px;
+    width:130px;
+}
+
+.meal-thead-name input:focus{
+    outline:none;
+}
+
+.food-servings {
+    width: 50px;
+    text-align: right;
+}
+
+.text-left {
+    text-align: left;
 }
