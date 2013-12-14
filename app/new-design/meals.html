@@ -30,55 +30,52 @@
     </div>      
     <div class="main clearfix">
       <div class="container">
-
           <div class="content">
             <div class="widget">
+              <h3>Meal Builder</h3>
               <table>
                 <thead>
                   <tr>
-                    <td colspan="4">53.65%</td>
-                    <td>0%</td>
-                    <td>30.18%</td>
-                  </tr>
-                  <tr>
-                    <th colspan="2">Servings</th>
+                    <th class="left">Name</th>
+                    <th class="left">Servings</th>
                     <th>Serving Size</th>  
                     <th>Fat</th>  
                     <th>Carbs</th>  
                     <th>Protein</th>  
+                    <th></th>
                   </tr>
                 </thead>
-
-                <thead class=meal-thead id=meal-thead-3>
-                    <td class="meal-thead-name">
-                        <form action="#">
-                            <input type="text" value="Choose Meal Name" onclick="this.select()"/>
-                        </form>
-                    </td>
-                  <td colspan="6" style="text-align:right;"><a href="/meals/3" data-method="delete" data-remote="true" rel="nofollow">x</a></td>
-                </thead>
-
                 <tbody>
                   <tr>
-                    <td class="text-left">Chicken</td>
-                    <td>
-                      <form  action="#" method="post">
-                        <input class="food-servings" name="meal_food[servings]" step="0.01" type="number" value="1.0" />
-                      </form>
+                    <td class="left">Chicken</td>
+                    <td class="left">
+                      <form action="#" method="post"><input step="0.01" type="number" value="1.0"></form>
                     </td>
                     <td>4.0 oz</td>
                     <td>20.0</td>
                     <td>0.0</td>
                     <td>25.0</td>
-                    <td><a href="" data-method="delete" data-remote="true" rel="nofollow">x</a></td>
-                  </tr>
-
-                  <tr>
-                    <td class="text-left"><a href="" data-remote="true">add food</a></td> 
+                    <td><a href="#">x</a></td>
                   </tr>
                   <tr>
-                    <td class="text-left"><a href="" data-remote="true">new meal</a> </td>
+                    <td class="left">
+                      <form action="#"><input type="text" placeholder="Choose Meal Name"></form>
+                    </td>
+                    <td class="left">
+                      <form action="#" method="post"><input step="0.01" type="number" value="1.0"></form>
+                    </td>
+                    <td colspan="5"></td>
                   </tr>
+                </tbody>
+                <tfoot class="totals">
+                  <tr>
+                    <td colspan="3"></td>
+                    <td><span>20%</span></td>
+                    <td><span>90%</span></td>
+                    <td><span class="notice-red">110%</span></td>
+                    <td></td>
+                  </tr>
+                </tfoot>
               </table>
             </div>
           </div>
@@ -89,8 +86,8 @@
             <p>Coaching advice goes here, maybe flashed in yellow, and maybe the sidebar will 'stick' as they scroll.</p>
           </div>   
            <div class="widget">
-             <h4>Meal Building Tips <span>-</span></h4> 
-             <h5>For Each Meal, Choose: </h5>
+             <h4>Meal Building Tips</h4> 
+             <h5>For Each Meal, Choose:</h5>
              <ul>
                <li>1 Protein</li>
                <li>1 Startchy Carb</li>

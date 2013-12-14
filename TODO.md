@@ -1,5 +1,6 @@
 ## Current Todo
 
+* https://github.com/mathiasbynens/jquery-placeholder
 * Begin Marketing
     * Setup Homepage Opt-in
     * Setup Split Testing

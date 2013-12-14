@@ -244,6 +244,10 @@ textarea {
     border-radius: 3px;
 }
 
+input[type="number"] {
+    width: 50px;
+}
+
 select,
 input[type="submit"] {
     display: block;
@@ -276,6 +280,26 @@ th {
 td.left,
 th.left {
     text-align: left;
+}
+
+table a {
+    font-weight: bold;
+}
+
+.totals {
+    border-top: 2px solid #111;
+}
+
+.totals tr {
+    border-bottom: 0;
+}
+
+.totals td {
+    font-weight: bold;
+}
+
+span.notice-red {
+    color: red;
 }
 
 /* home page */
