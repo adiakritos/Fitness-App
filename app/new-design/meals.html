@@ -31,52 +31,98 @@
     <div class="main clearfix">
       <div class="container">
           <div class="content">
-            <div class="widget">
+            <div class="widget widget-meal-builder">
               <h3>Meal Builder</h3>
-              <table>
-                <thead>
-                  <tr>
-                    <th class="left">Name</th>
-                    <th class="left">Servings</th>
-                    <th>Serving Size</th>  
-                    <th>Fat</th>  
-                    <th>Carbs</th>  
-                    <th>Protein</th>  
-                    <th></th>
-                  </tr>
-                </thead>
+
+              <div class="meal meal1">
+                <h4><img src="img/meal.png" width="20" height="20" alt="">Breakfast</h4>
+                <table>
+                  <thead>
+                    <tr>
+                      <th class="left">Name</th>
+                      <th class="left">Servings</th>
+                      <th>Serving Size</th>  
+                      <th>Fat</th>  
+                      <th>Carbs</th>  
+                      <th>Protein</th>  
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="left">Chicken</td>
+                      <td class="left">
+                        <form action="#" method="post"><input step="0.01" type="number" value="1.0"></form>
+                      </td>
+                      <td>4.0 oz</td>
+                      <td>20.0</td>
+                      <td>0.0</td>
+                      <td>25.0</td>
+                      <td><a href="#">x</a></td>
+                    </tr>
+                    <tr>
+                      <td class="left">
+                        <form action="#"><input type="text" placeholder="Choose Meal Name"></form>
+                      </td>
+                      <td class="left">
+                        <form action="#" method="post"><input step="0.01" type="number" value="1.0"></form>
+                      </td>
+                      <td colspan="5"></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div class="meal meal2">
+                <h4><img src="img/meal.png" width="20" height="20" alt="">Breakfast</h4>
+                <table>
+                  <thead>
+                    <tr>
+                      <th class="left">Name</th>
+                      <th class="left">Servings</th>
+                      <th>Serving Size</th>  
+                      <th>Fat</th>  
+                      <th>Carbs</th>  
+                      <th>Protein</th>  
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="left">Chicken</td>
+                      <td class="left">
+                        <form action="#" method="post"><input step="0.01" type="number" value="1.0"></form>
+                      </td>
+                      <td>4.0 oz</td>
+                      <td>20.0</td>
+                      <td>0.0</td>
+                      <td>25.0</td>
+                      <td><a href="#">x</a></td>
+                    </tr>
+                    <tr>
+                      <td class="left">
+                        <form action="#"><input type="text" placeholder="Choose Meal Name"></form>
+                      </td>
+                      <td class="left">
+                        <form action="#" method="post"><input step="0.01" type="number" value="1.0"></form>
+                      </td>
+                      <td colspan="5"></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <table class="totals">
                 <tbody>
-                  <tr>
-                    <td class="left">Chicken</td>
-                    <td class="left">
-                      <form action="#" method="post"><input step="0.01" type="number" value="1.0"></form>
-                    </td>
-                    <td>4.0 oz</td>
-                    <td>20.0</td>
-                    <td>0.0</td>
-                    <td>25.0</td>
-                    <td><a href="#">x</a></td>
-                  </tr>
-                  <tr>
-                    <td class="left">
-                      <form action="#"><input type="text" placeholder="Choose Meal Name"></form>
-                    </td>
-                    <td class="left">
-                      <form action="#" method="post"><input step="0.01" type="number" value="1.0"></form>
-                    </td>
-                    <td colspan="5"></td>
-                  </tr>
-                </tbody>
-                <tfoot class="totals">
-                  <tr>
                     <td colspan="3"></td>
                     <td><span>20%</span></td>
                     <td><span>90%</span></td>
                     <td><span class="notice-red">110%</span></td>
                     <td></td>
                   </tr>
-                </tfoot>
+                </tbody>
               </table>
+
             </div>
           </div>
 

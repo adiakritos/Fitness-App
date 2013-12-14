@@ -286,6 +286,15 @@ table a {
     font-weight: bold;
 }
 
+table input[type="text"],
+table input[type="number"] {
+    font-size: 12px;
+}
+
+table input[type="text"] {
+    padding: 3px 5px;
+}
+
 .totals {
     border-top: 2px solid #111;
 }
@@ -327,32 +336,30 @@ span.notice-red {
 
 /* meals */
 
-.meal-thead td{
-    text-align: left;
-    padding-left: 14px;
-    background-color: #000; 
-    color: white;
-    font-weight: bold;
+.widget-meal-builder .meal {
+    margin-bottom: 20px;
+    padding-left: 10px;
+    border-left-width: 5px;
+    border-left-style: solid;
+    border-color: #C7E9EC;
 }
 
-.meal-thead-name input {
-    background: none; 
-    color: white;
-    border:none;
-    padding: 0px;
-    margin: 0px;
-    width:130px;
+.widget-meal-builder h4 {
+    color: #444;
+    margin: 0 0 14px 0;
+    font-size: 16px;
+    font-weight: normal;
 }
 
-.meal-thead-name input:focus{
-    outline:none;
+.widget-meal-builder h4 img {
+    vertical-align: bottom;
+    margin-right: 4px;
 }
 
-.food-servings {
-    width: 50px;
-    text-align: right;
+.widget-meal-builder .meal1 {
+    border-color: #C7E9EC;
 }
 
-.text-left {
-    text-align: left;
+.widget-meal-builder .meal2 {
+    border-color: #D8CDE7;
 }
