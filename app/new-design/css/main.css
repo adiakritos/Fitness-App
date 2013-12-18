@@ -309,15 +309,11 @@ table input[type="text"] {
 }
 
 .notice-red {
-    color: red;
+    color: #DF0000;
 }
 
 .notice-green {
-    color: #01D101;
-}
-
-.notice-yellow {
-    color: ;
+    color: #00B400;
 }
 
 /* home page */
