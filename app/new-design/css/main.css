@@ -282,6 +282,10 @@ th.left {
     text-align: left;
 }
 
+.nopad-left {
+    padding-left: 0;
+}
+
 table a {
     font-weight: bold;
 }
@@ -380,6 +384,14 @@ table input[type="text"] {
 
 .widget-meal-builder .meal0 {
     border-color: #eee;
+}
+
+.widget-meal-builder .meal0 img {
+    vertical-align: top;
+}
+
+.widget-meal-builder .meal0 input {
+    margin-top: 0px;
 }
 
 .widget-meal-builder .meal1 {
