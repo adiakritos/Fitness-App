@@ -316,6 +316,23 @@ table input[type="text"] {
     color: #00B400;
 }
 
+/* pagination */
+
+.pagination {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 12px;
+    color: #999;
+}
+
+.pagination span {
+    padding: 0 4px;
+}
+
+.pagination a {
+    color: #000;
+}
+
 /* home page */
 
 .content .widget-update {
