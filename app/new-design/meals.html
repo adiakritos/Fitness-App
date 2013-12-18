@@ -32,14 +32,17 @@
       <div class="container">
           <div class="content">
             <div class="widget widget-meal-builder">
-              <h3>Meal Builder</h3>
+              <h3>Meal Plan Creator</h3>
 
               <div class="meal meal1">
-                <h4><img src="img/meal.png" width="20" height="20" alt="">Breakfast</h4>
+                <form action="#">
+                  <img src="img/meal.png" width="20" height="20" alt="">
+                    <input class="meal-name" type="text" value="Breakfast" onclick="this.select()">
+                </form> 
                 <table>
                   <thead>
                     <tr>
-                      <th class="left">Name</th>
+                      <th width="230" class="left">Name</th>
                       <th class="left">Servings</th>
                       <th>Serving Size</th>  
                       <th>Fat</th>  
@@ -62,10 +65,9 @@
                     </tr>
                     <tr>
                       <td class="left">
-                        <form action="#"><input type="text" placeholder="Choose Meal Name"></form>
+                        <form action="#"><input type="text" placeholder="Add a Food"></form>
                       </td>
-                      <td class="left">
-                        <form action="#" method="post"><input step="0.01" type="number" value="1.0"></form>
+                      <td>
                       </td>
                       <td colspan="5"></td>
                     </tr>
@@ -74,11 +76,14 @@
               </div>
 
               <div class="meal meal2">
-                <h4><img src="img/meal.png" width="20" height="20" alt="">Breakfast</h4>
+                <form action="#">
+                  <img src="img/meal.png" width="20" height="20" alt="">
+                    <input class="meal-name" type="text" value="Snack 1" onclick="this.select()">
+                </form>
                 <table>
                   <thead>
                     <tr>
-                      <th class="left">Name</th>
+                      <th width="230" class="left">Name</th>
                       <th class="left">Servings</th>
                       <th>Serving Size</th>  
                       <th>Fat</th>  
@@ -101,10 +106,9 @@
                     </tr>
                     <tr>
                       <td class="left">
-                        <form action="#"><input type="text" placeholder="Choose Meal Name"></form>
+                        <form action="#"><input type="text" placeholder="Add a Food"></form>
                       </td>
-                      <td class="left">
-                        <form action="#" method="post"><input step="0.01" type="number" value="1.0"></form>
+                      <td>
                       </td>
                       <td colspan="5"></td>
                     </tr>
@@ -112,16 +116,24 @@
                 </table>
               </div>
 
-              <table class="totals">
-                <tbody>
-                    <td colspan="3"></td>
-                    <td><span>20%</span></td>
-                    <td><span>90%</span></td>
-                    <td><span class="notice-red">110%</span></td>
-                    <td></td>
-                  </tr>
-                </tbody>
+              <div class="meal meal0">
+                <table class="totals">
+                  <tbody>
+                    <tr>
+                      <td class="left" width="296" colspan="3">
+                        <form action="#"><input type="text" placeholder="Add a Meal"></form>
+                      </td>
+                      <td>20%</td>
+                      <td>90%</td>
+                      <td>110%</td>
+                      <td>
+                        <img src="img/question.png" width="13" height="13" alt="">
+                      </td>
+
+                    </tr>
+                  </tbody>
               </table>
+            </div>
 
             </div>
           </div>
@@ -160,6 +172,9 @@
   <script src="amcharts/serial.js"></script>
   <script src="js/progress-chart.js"></script>
   <script src="js/main.js"></script>
+  <script type="text/javascript" src="js/html5shiv.js"></script>
+  <script type="text/javascript" src="js/html5shiv-printshiv.js"></script>
+  <script type="text/javascript" src="js/jquery.qtip-1.0.0-rc3.min.js"></script>
 
 </body>
 </html>

@@ -293,6 +293,7 @@ table input[type="number"] {
 
 table input[type="text"] {
     padding: 3px 5px;
+    margin-top: 4px;
 }
 
 .totals {
@@ -307,8 +308,16 @@ table input[type="text"] {
     font-weight: bold;
 }
 
-span.notice-red {
+.notice-red {
     color: red;
+}
+
+.notice-green {
+    color: #01D101;
+}
+
+.notice-yellow {
+    color: ;
 }
 
 /* home page */
@@ -356,10 +365,36 @@ span.notice-red {
     margin-right: 4px;
 }
 
+.widget-meal-builder .meal0 {
+    border-color: #fff;
+}
+
 .widget-meal-builder .meal1 {
     border-color: #C7E9EC;
 }
 
 .widget-meal-builder .meal2 {
     border-color: #D8CDE7;
+}
+
+input.meal-name {
+    color: #444;
+    width: 150px;
+    margin: 0 0 14px 0;
+    font-size: 16px;
+    font-weight: normal;
+    outline: none;
+    border: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    -ms-box-shadow: none;
+    -o-box-shadow: none;
+    box-shadow: none;
+    position: relative;
+    bottom: 4px;
+    right: 8px;
+}
+
+input:focus {
+    border-bottom: 1px solid #999;
 }
