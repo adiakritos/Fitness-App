@@ -295,11 +295,8 @@ table a {
 table input[type="text"],
 table input[type="number"] {
     font-size: 12px;
-}
-
-table input[type="text"] {
     padding: 3px 5px;
-    margin-top: 4px;
+    margin: 0;
 }
 
 .totals {
@@ -312,6 +309,7 @@ table input[type="text"] {
 
 .totals td {
     font-weight: bold;
+    padding-top: 12px;
 }
 
 .notice-red {
@@ -405,28 +403,18 @@ table input[type="text"] {
     border-color: #D8CDE7;
 }
 
-input.meal-name {
+.widget-meal-builder h4 {
     color: #444;
-    width: 150px;
     margin: 0 0 14px 0;
     font-size: 16px;
     font-weight: normal;
-    outline: none;
-    border: none;
-    -webkit-box-shadow: none;
-    -moz-box-shadow: none;
-    -ms-box-shadow: none;
-    -o-box-shadow: none;
-    box-shadow: none;
-    position: relative;
-    bottom: 4px;
-    right: 8px;
-}
-
-input:focus {
-    border-bottom: 1px solid #999;
+    margin: 0 0 14px 0;
 }
 
 .widget-macro-settings input[type="number"] {
     width: 100px;
+}
+
+.widget-meal-builder .add-meal {
+    padding: 10px 0;
 }
