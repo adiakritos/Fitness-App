@@ -301,6 +301,7 @@ table input[type="number"] {
 
 .totals {
     border-bottom: 2px solid #111;
+    margin-bottom: 20px;
 }
 
 .totals tr {
@@ -309,7 +310,6 @@ table input[type="number"] {
 
 .totals td {
     font-weight: bold;
-    padding-top: 12px;
 }
 
 .notice-red {
