@@ -17,3 +17,6 @@ Rails:
  * Prefer and/or over &&/||
  * Order of models:
    * define constants
+
+
+

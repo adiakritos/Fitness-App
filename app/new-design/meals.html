@@ -14,7 +14,6 @@
   <link href='http://fonts.googleapis.com/css?family=Pathway+Gothic+One' rel='stylesheet' type='text/css'>
 </head>
 <body>
-   
 
   <div class="wrapper">
     <div class="header container clearfix">
@@ -31,9 +30,43 @@
     <div class="main clearfix">
       <div class="container">
           <div class="content">
+
+           <div class="widget widget-important">
+             <h3>Macro Settings</h3>
+             <div class="widget-inner widget-macro-settings">
+               <small>Set your fat and protein grams per pound of *lean* mass.</small>
+               <form action="#" method="post" accept-charset="UTF-8">
+                   <input type="number" name="fat_factor" placeholder="Fat Factor" />
+                   <input type="number" name="protein_factor" placeholder="Protein Factor" />
+                   <input type="submit" value="Set" />
+                 
+               </form>
+             </div>
+
+           </div>
+
             <div class="widget widget-meal-builder">
               <h3>Meal Plan Creator</h3>
 
+              <div class="meal meal0">
+               <table class="totals">
+                 <thead>
+                   <tr>
+                     <td class="left nopad-left" width="313" colspan="3">
+                       <form action="#">
+                         <img src="img/meal.png" width="20" height="20" alt=""> 
+                         <input type="text" placeholder="Select or Create a Meal">
+                       </form>
+                     </td>
+                     <td>Totals</td>
+                     <td>20%</td>
+                     <td>90%</td>
+                     <td>110%</td>
+                     <td><img src="img/question.png" width="13" height="13" alt=""></td>
+                  </tr>
+                </thead>
+               </table>
+              </div>   
               <div class="meal meal1">
                 <form action="#">
                   <img src="img/meal.png" width="20" height="20" alt="">
@@ -64,8 +97,19 @@
                       <td><a href="#">x</a></td>
                     </tr>
                     <tr>
+                      <td class="left">Banana</td>
                       <td class="left">
-                        <form action="#"><input type="text" placeholder="Add a Food"></form>
+                        <form action="#" method="post"><input step="0.01" type="number" value="1.0"></form>
+                      </td>
+                      <td>1.0 oz</td>
+                      <td>3.0</td>
+                      <td>0.0</td>
+                      <td>25.0</td>
+                      <td><a href="#">x</a></td>
+                    </tr>
+                    <tr>
+                      <td class="left">
+                        <form action="#"><input type="text" placeholder="Select or Create a Food"></form>
                       </td>
                       <td>
                       </td>
@@ -106,7 +150,7 @@
                     </tr>
                     <tr>
                       <td class="left">
-                        <form action="#"><input type="text" placeholder="Add a Food"></form>
+                        <form action="#"><input type="text" placeholder="Select or Create a Food"></form>
                       </td>
                       <td>
                       </td>
@@ -116,31 +160,15 @@
                 </table>
               </div>
 
-              <div class="meal meal0">
-                <table class="totals">
-                  <tbody>
-                    <tr>
-                      <td class="left nopad-left" width="296" colspan="3">
-                        <form action="#">
-                          <img src="img/meal.png" width="20" height="20" alt=""> 
-                          <input type="text" placeholder="Add a Meal">
-                        </form>
-                      </td>
-                      <td>20%</td>
-                      <td>90%</td>
-                      <td>110%</td>
-                      <td>
-                        <img src="img/question.png" width="13" height="13" alt="">
-                      </td>
-                    </tr>
-                  </tbody>
-              </table>
-            </div>
+              
 
             </div>
           </div>
 
          <div class="sidebar">
+
+             <!--  
+
            <div class="widget widget-coaching">
             <h4>Coaching</h4>
             <p>Coaching advice goes here, maybe flashed in yellow, and maybe the sidebar will 'stick' as they scroll.</p>
@@ -155,6 +183,9 @@
                <li>Keep your macros close to 100%</li>
              </ul>
            </div>
+
+        -->
+
         </div>
      </div>
 

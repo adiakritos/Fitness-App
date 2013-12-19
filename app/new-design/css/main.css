@@ -40,6 +40,7 @@ small {
     display: block;
 }
 
+
 /* helpers */
 
 .clearfix:before,
@@ -228,6 +229,7 @@ select,
 input[type="text"],
 input[type="password"],
 input[type="email"],
+input[type="number"],
 textarea {
     padding: 4px 10px;
     margin-bottom: 5px;
@@ -301,7 +303,7 @@ table input[type="text"] {
 }
 
 .totals {
-    border-top: 2px solid #111;
+    border-bottom: 2px solid #111;
 }
 
 .totals tr {
@@ -339,25 +341,31 @@ table input[type="text"] {
 
 /* home page */
 
-.content .widget-update {
+.content .widget-important {
     margin-bottom: 10px;
     background: #FFFFDD;
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fffde8', endColorstr='#ffffff',GradientType=0 );
 }
 
-.widget-update .widget-inner {
+.widget-important .widget-inner {
     padding-top: 0px;
 }
 
-.widget-update small {
+.widget-important small {
     margin-bottom: 6px;
     font-size: 11px;
 }
 
-.widget-update input {
+.widget-important input,
+.widget-important select{
     display: inline;
     font-size: 13px;
     padding: 3px 5px;
+}
+
+.widget-update {
+    width:540px;
+    margin: 0 auto;
 }
 
 /* meals */
@@ -422,4 +430,17 @@ input.meal-name {
 
 input:focus {
     border-bottom: 1px solid #999;
+}
+
+.widget-macro-settings input {
+    width: 100px;
+}
+
+.widget-macro-settings input[type="submit"] {
+    width: 50px;
+}
+
+.widget-macro-settings {
+    width:300px;
+    margin: 0 auto;
 }

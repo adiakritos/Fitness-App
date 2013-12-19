@@ -34,24 +34,31 @@
     <div class="main clearfix">
       <div class="container">
         <div class="content">
-          <div class="widget widget-update gradient">
+          <div class="widget widget-important">
             <h3>Update Your Stats</h3>
-            <div class="widget-inner">
-              <small>Enter your most recent measurements here.</small>
+            <div class="widget-inner widget-update">
+              <small>Enter your recent measurements here.</small>
               <form action="" method="">
                 <input name="total-weight"    type="text" placeholder="Total Weight">
                 <input name="bodyfat-percent" type="text" placeholder="Body Fat Percentage">
+                <select>
+                    <option value="nul">Select Phase</option>
+                    <option value="cutting">Cutting</option>
+                    <option value="bulking">Bulking</option>
+                    <option value="maintenance">Maintenance</option>
+                    <option value="off_season">Off Season</option>
+                </select>
                 <input type="submit" value="Update"> 
               </form>  
             </div>
           </div>
 
           <div class="widget widget-progress">
-            <h3>Current Progress</h3>
+            <h3>Progress</h3>
             <table>
               <thead>
                 <tr>
-                  <th></th>
+                  <th class="left">Change</th>
                   <th>Weight</th>
                   <th>Fat</th>
                   <th>Lean Mass</th>
@@ -60,14 +67,21 @@
               </thead> 
               <tbody>
                 <tr>
-                  <td class="left"><strong>Recent Change</strong></td>
+                  <td class="left"><strong>Recent</strong></td>
                   <td>-1.3lbs</td>
                   <td class="notice-red">+1.1lbs</td>
                   <td class="notice-green">+0.3lbs</td>
                   <td class="notice-green">-0.1%</td>
                 </tr>
                 <tr>
-                  <td class="left"><strong>Totals</strong></td>
+                  <td class="left"><strong>Since Start of: Cut </strong></td>
+                  <td>-10.3lbs</td>
+                  <td>-9.2lbs</td>
+                  <td>-0.3lbs</td>
+                  <td>-3.4%</td>
+                </tr>
+                <tr>
+                  <td class="left"><strong>Current Stats</strong></td>
                   <td>173.3lbs</td>
                   <td>12.2lbs</td>
                   <td>28.3lbs</td>
@@ -130,12 +144,13 @@
         </div>
 
         <div class="sidebar">
-
+          <!--
           <div class="widget widget-coaching">
             <h4>Coaching</h4>
             <p>Coaching advice goes here, maybe flashed in yellow, and maybe the sidebar will 'stick' as they scroll.</p>
           </div>
-
+          -->
+          <!--
           <div class="widget">
             <h4>Body Fat Calculator</h4>
             <form action="#" method="#">
@@ -151,6 +166,7 @@
               <input type="submit" value="Calculate"> 
             </form>
           </div>
+          -->
         </div>
 
       </div>
