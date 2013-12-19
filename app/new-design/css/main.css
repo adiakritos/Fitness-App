@@ -383,6 +383,10 @@ table input[type="number"] {
     margin-right: 4px;
 }
 
+.widget-meal-builder .meal tr:last-child {
+    border-bottom: 0;
+}
+
 .widget-meal-builder .meal0 {
     border-color: #eee;
 }
