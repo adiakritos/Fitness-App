@@ -363,11 +363,6 @@ table input[type="text"] {
     padding: 3px 5px;
 }
 
-.widget-update {
-    width:540px;
-    margin: 0 auto;
-}
-
 /* meals */
 
 .widget-meal-builder .meal {
@@ -432,15 +427,6 @@ input:focus {
     border-bottom: 1px solid #999;
 }
 
-.widget-macro-settings input {
+.widget-macro-settings input[type="number"] {
     width: 100px;
-}
-
-.widget-macro-settings input[type="submit"] {
-    width: 50px;
-}
-
-.widget-macro-settings {
-    width:300px;
-    margin: 0 auto;
 }
