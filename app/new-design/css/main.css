@@ -361,6 +361,10 @@ table input[type="number"] {
     padding: 3px 5px;
 }
 
+.widget-progress table {
+    margin-bottom: 20px;
+}
+
 /* meals */
 
 .widget-meal-builder .meal {
