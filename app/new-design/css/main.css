@@ -399,6 +399,10 @@ table input[type="number"] {
     margin-top: 0px;
 }
 
+.widget-meal-builder .meal0 h4 {
+    color: #999;
+}
+
 .widget-meal-builder .meal1 {
     border-color: #C7E9EC;
 }
