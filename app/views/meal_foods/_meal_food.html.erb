@@ -1,13 +1,14 @@
-<tr class="food food-tr-<%= meal_food.id %>">
-  <td><%= meal_food.name  %></td>
-  <td>
-    <%= form_for meal_food, url: food_url(meal_food.id) do |f| %>
-      <%= f.number_field :servings, step: 0.05 %>
+<tr class="meal-food">
+  <td class="left"><%= meal_food.name %></td>
+  <td class="left">
+    <%= form_for meal_food, action: :update do |f| %>
+      <%= f.text_field :servings %>
     <% end %>
   </td>
-  <td><%= meal_food.dynamic_serving_size %> <%= meal_food.measure_type %></td>
-  <td><%= meal_food.dynamic_fat    %></td>
-  <td><%= meal_food.dynamic_carbs  %></td>
-  <td><%= meal_food.dynamic_protein %> </td>
-  <td><%= link_to "x", food_path(meal_food.id), method: :delete, remote: true %> </td>
+  <td><%= meal_food.serving_size %> <%= meal_food.units %></td>
+  <td><%= meal_food.dynamic_fat %>g</td>
+  <td><%= meal_food.dynamic_carbs %>g</td>
+  <td><%= meal_food.dynamic_protein %>g</td>
+  <td><%= meal_food.dynamic_sodium %>mg</td>
+  <td><%= link_to "&times;".html_safe, meal_food_path(meal_food.id), method: :delete, class: "delete-food" %></td>
 </tr>

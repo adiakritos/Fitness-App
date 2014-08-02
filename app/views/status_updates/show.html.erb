@@ -1,6 +1,103 @@
-<% provide(:title, "Log" ) %>
-<% provide(:heading, "Your Progress Log") %>
-
-<div id="log-page-container">  
-  <%= render 'layouts/log' %>
+<div class="widget widget-important">
+    <h3>Update Your Stats</h3>
+    <div class="widget-inner widget-update">
+        <small>Enter your recent measurements here.</small>
+        <%= form_for @status_update, action: :create do |s| %>
+            <%= s.text_field :total_weight, placeholder: 'Total Weight' %>
+            <%= s.text_field :body_fat_pct, placeholder: 'Body Fat %' %>
+            <%= select(:status_update, :phase, [['Choose...', 'M'],['Cutting', 'C'],['Bulking', 'B'],['Maintenance', 'M'],['Off Season', 'O']], {} ) %>
+            <%= s.hidden_field :entry_date, value: Date.today %>
+            <%= submit_tag :update %>
+        <% end %>
+    </div>
 </div>
+<div class="widget widget-progress">
+    <h3>Progress</h3>
+    <table>
+        <thead>
+            <tr>
+                <th width="230" class="left">Change</th>
+                <th>Weight</th>
+                <th>Fat</th>
+                <th>Lean Mass</th>
+                <th>Body Fat %</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="left"><strong>Since Last Update</strong></td>
+                <td><%= sprintf('%.2f',@recent_stat.weight_change) %>lbs</td>
+                <td class="color-code-fat"><%= sprintf('%.2f', @recent_stat.fat_change) %>lbs</td>
+                <td class="color-code-lbm"><%= sprintf('%.2f', @recent_stat.lbm_change) %>lbs</td>
+                <td class="color-code-bfp"><%= sprintf('%.2f', @recent_stat.bfp_change * 100) %>%</td>
+            </tr>
+            <tr>
+                <td class="left"><strong>Since Start of Current Phase</strong></td>
+                <td><%= sprintf('%.2f', @recent_stat.total_weight_change) %>lbs</td>
+                <td><%= sprintf('%.2f', @recent_stat.total_fat_change) %>lbs</td>
+                <td><%= sprintf('%.2f', @recent_stat.total_lbm_change) %>lbs</td>
+                <td><%= sprintf('%.2f', @recent_stat.total_bfp_change * 100) %>%</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table>
+        <thead>
+            <tr>
+                <th width="230" class="left">Current</th>
+                <th>Weight</th>
+                <th>Fat</th>
+                <th>Lean Mass</th>
+                <th>Body Fat %</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="left"><strong>Totals as of Today</strong></td>
+                <td><%= sprintf('%.2f', @recent_stat.total_weight) %>lbs</td>
+                <td><%= sprintf('%.2f', @recent_stat.fat_weight) %>lbs</td>
+                <td><%= sprintf('%.2f', @recent_stat.lbm_weight) %>lbs</td>
+                <td><%= sprintf('%.2f',@recent_stat.body_fat_pct * 100) %>%</td>
+            </tr>
+        </tbody>
+    </table>
+    <!-- <p><a class="bold-link toggle-chart">Show/Hide Chart</a></p> --> 
+    <div id="chartdiv" style="display:none; height: 400px;"></div>
+</div>
+
+<div class="widget widget-status-updates">
+    <h3>Recent Status Updates</h3>
+    <table>
+        <thead>
+            <tr>
+                <th class="left">Entry Date</th>
+                <th class="left">Phase</th>
+                <th>Weight</th>
+                <th>Weight Change</th>
+                <th>LBM</th>
+                <th>LBM Change</th>
+                <th>Total LBM Change</th>
+                <th>Body Fat %</th>
+                <th>Fat Change</th>
+                <th>Total Fat Change</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody class='status-update-list'>
+            <% if @status_updates != nil %>
+                <%= render(partial: "status_update", collection: @status_updates) %>
+            <% else %>
+            <% end %>
+        </tbody>
+    </table>
+
+    <%= link_to "See Full History", status_updates_path, class:"history" %>
+</div>
+
+<div class="pagination">
+    <!--  <span>&laquo; Newer</span>
+    <span>1</span>
+    <span><a href="#">2</a></span>
+    <span><a href="#">3</a></span>
+    <span><a href="#">Older &raquo;</a></span> -->
+</div> 

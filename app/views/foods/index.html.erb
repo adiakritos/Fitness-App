@@ -1,0 +1,136 @@
+<div class="widget">
+  <h3>About This Area</h3> 
+  <small>This is an area for food experimentation.</small>
+  <small>Any foods you have included in your meal plan will be listed here upon submitting a status update.</small>
+  <%= form_tag import_foods_path, multipart: true do %>
+    <%= file_field_tag :file %>
+    <%= submit_tag %>
+  <% end %>
+</div>
+<div class="widget widget-search-database clearfix">
+  <h3>Search Nutritional Info</h3> 
+  <div class="widget-left widget-half">
+    <small>Search entire database for foods to see their nutritional facts.</small>
+    <%= form_tag search_global_foods_path, remote: true  do %>
+      <div id="search-foods">
+    <% end %>
+    </div>
+  </div>
+  <div class="widget-right widget-half">
+    <table>
+      <tbody>
+        <tr>
+          <td>Calories</td>
+          <td>0</td>
+          <td>Sodium</td>
+          <td>mg</td>
+        </tr>
+        <tr>
+          <td>Total Fat</td>
+          <td>0 g</td>
+          <td>Potassium</td>
+          <td>0 mg</td>
+        </tr>
+        <tr>
+          <td>Saturated</td>
+          <td>0 g</td>
+          <td>Total Carbs</td>
+          <td>0 g</td>
+        </tr>
+        <tr>
+          <td>Polyunsaturated</td>
+          <td>0 g</td>
+          <td>Dietary Fiber</td>
+          <td>0 g</td>
+        </tr>
+        <tr>
+          <td>Monounsaturated</td>
+          <td>0 g</td>
+          <td>Sugars</td>
+          <td>0 g</td>
+        </tr>
+        <tr>
+          <td>Trans</td>
+          <td>0 g</td>
+          <td>Protein</td>
+          <td>0 g</td>
+        </tr>
+        <tr>
+          <td>Cholesterol</td>
+          <td>0 mg</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td>Vitamin A</td>
+          <td>0%</td>
+          <td>Calcium</td>
+          <td>0%</td>
+        </tr>
+        <tr>
+          <td>Vitamin C</td>
+          <td>0%</td>
+          <td>Iron</td>
+          <td>0%</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>   
+</div>
+<div class="widget">
+  <h3>My Foods</h3> 
+  <table>
+    <thead>
+      <tr>
+        <th class="left">Food Name</th>
+        <th>Fat</th>
+        <th>Carbs</th>
+        <th>Protein</th>
+        <th>Sodium</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="user-food">
+        <td class="left">Fish Filets - Nordic Adventures</td>
+        <td>0 g</td>
+        <td>12 g</td>
+        <td>25 g</td>
+        <td>200 mg</td>
+        <td><a href="#" class="delete-food">&times</a></td>
+      </tr>
+      <tr class="user-food">
+        <td class="left">Oily meatballs from hell</td>
+        <td>0 g</td>
+        <td>12 g</td>
+        <td>25 g</td>
+        <td>200 mg</td>
+        <td><a href="#" class="delete-food">&times</a></td>
+      </tr>
+      <tr class="user-food">
+        <td class="left">Rice Cakes - Quaker Oats</td>
+        <td>0 g</td>
+        <td>12 g</td>
+        <td>25 g</td>
+        <td>200 mg</td>
+        <td><a href="#" class="delete-food">&times</a></td>
+      </tr>
+      <tr class="user-food">
+        <td class="left">100% Optimum Whey - Chocolate</td>
+        <td>0 g</td>
+        <td>12 g</td>
+        <td>25 g</td>
+        <td>200 mg</td>
+        <td><a href="#" class="delete-food">&times</a></td>
+      </tr>
+      <tr class="user-food">
+        <td class="left">Ezekial Raison Bread</td>
+        <td>0 g</td>
+        <td>12 g</td>
+        <td>25 g</td>
+        <td>200 mg</td>
+        <td><a href="#" class="delete-food">&times</a></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

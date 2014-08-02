@@ -1,33 +1,101 @@
-<% provide(:title, "Meals") %> 
-<% provide(:heading, "Meals") %> 
+<div class="widget widget-macro-settings widget-important">
+  <h3>Macro Settings</h3>
+  <div class="widget-inner clearfix">
+    <small>NOTE: TDEE stands for <em>Total Daily Energy Expenditure</em>, in calories. Your fat and protein needs are found from total pounds of <strong>lean</strong> mass.</small>
+    <%= form_for current_client, action: :update, html: {class: "form-small clearfix"} do |s| %>
+      <table>
+        <tr>
+          <td><small><label>Fat Factor</label></small></td>
+          <td><small><label>Protein Factor</label></small></td>
+          <td><small><label>Activity Level</label></small></td>
+          <td><small><label>Target Calories</label></small></td>
+          <td colspan="2"></td>
+        </tr>
+        <tr>
+          <td><%= s.text_field :fat_factor,      placeholder: '.45' %></td>
+          <td><%= s.text_field :protein_factor,  placeholder: '.9' %></td>
+          <td><%= s.text_field :activity_level,  placeholder: '1.4' %></td>
+          <td><%= s.text_field :target_calories, placeholder: '2300' %></td>
+          <td><%= submit_tag :update %></td>
+        </tr>
+      </table>
+      <% end %>           
+      <br>
+      <table>
+          <tr class="table-labels">
+              <td colspan="6">Requirements</td>
+          </tr>
+          <tr>
+              <td><small>Req. Fat</small></td>
+              <td><small>Req. Carbs</small></td>
+              <td><small>Req. Protein</small></td>
+              <td><small>TDEE</small></td>
+          </tr>
+          <tr>
+              <td><small><%= round(current_client.required_fat) %></small></td>
+              <td><small><%= round(current_client.required_carbs) %></small></td>
+              <td><small><%= round(current_client.required_protein) %></small></td>
+              <td><small><%= round(current_client.tdee) %></small></td>
+          </tr>
+      </table>
 
-<div id=meals-page-container>
+      <table>
+          <tr class="table-labels">
+              <td colspan="3">Current Settings</td>
+          </tr> 
+          <tr>
+              <td><small>Fat Factor</small></td>
+              <td><small>Protein Factor</small></td>
+              <td><small>Activity Level</small></td>
+              <td><small>Target Calories</small></td>
+              <td><strong>Target Calories</strong></td> 
+          </tr>
+          <tr>
+              <td><small><%= round(current_client.fat_factor) %></small></td>
+              <td><small><%= round(current_client.protein_factor) %></small></td>
+              <td><small><%= round(current_client.activity_level) %></small></td>
+              <td><small><%= round(current_client.target_calories) %></small></td>
+              <td><small><%= sprintf('%+g', round(current_client.pct_of_target_cals)) %>% of TDEE</small></td>
+          </tr>
+      </table>
 
-    <table id=parent-meals-table >
-        <thead id=parent-meals-thead>
-            <tr id=parent-meals-first-tr class=parent-meals-thead-tr>
-                <th>         </th>  
-                <th> Servings</th>
-                <th> Serving Size  </th>  
-                <th> Fat     </th>  
-                <th> Carbs   </th>  
-                <th> Protein </th>  
-            </tr>
-            <tr id=parent-meals-second-tr class=parent-meals-thead-tr>
-                <td>  </td>
-                <td>  </td>
-                <td>  </td>
-                <td> <%=  current_user.pct_fat_satisfied      %>% </td>
-                <td> <%=  current_user.pct_carbs_satisfied    %>% </td>
-                <td> <%=  current_user.pct_protein_satisfied  %>% </td>
-            </tr>
-        </thead>
-        <%= render @meals %>
-        <tbody>
-            <th class=remove-td-center id='new-meal-button'><%= link_to "new meal", new_meal_path, remote: true %> </th>
-        </tbody>
-    </table>
-
-    <%= render 'layouts/modal' %>
-
+  </div>
 </div>
+
+<div class="widget widget-meal-builder">
+  <h3>Meal Plan Creator</h3>
+
+  <div class="totals">
+    <table>
+      <thead>
+        <tr>
+          <td width="200"></td>
+          <td>2307/2300 cals</td>
+          <td>Totals</td>
+          <td><%= current_client.pct_fat_satisfied %>%</td>
+          <td><%= current_client.pct_carbs_satisfied %>%</td>
+          <td><%= current_client.pct_protein_satisfied %>%</td>
+          <td><%= current_client.total_grams_of(:sodium) %>mg</td>
+        </tr>
+      </thead>
+    </table>
+  </div>   
+
+  <div class="meals-container">
+      <% if @meals != nil %>
+          <%= render(partial: "meal", collection: @meals) %>
+      <% else %>
+          <p style="text-align:center">No meals created yet.</p>
+      <% end %>
+  </div>
+
+  <div class="meal meal0">
+    <div class="add-meal">
+      <h4><%= image_tag 'meal.png', size: '20x20' %>Add New Meal</h4>
+      <%= form_for @meal, action: :create, remote: true do |m| %>
+          <%= m.text_field :meal_name, placeholder: "Meal Name" %>
+      <% end %>
+    </div>
+  </div>   
+</div>
+

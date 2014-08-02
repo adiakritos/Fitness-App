@@ -1,0 +1,68 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+ActiveSupport	test/test_helper.rb	/^class ActiveSupport::TestCase$/;"	c
+Application	config/application.rb	/^  class Application < Rails::Application$/;"	c	class:GetJoocy
+ApplicationController	app/controllers/application_controller.rb	/^class ApplicationController < ActionController::Base$/;"	c
+ApplicationHelper	app/helpers/application_helper.rb	/^module ApplicationHelper$/;"	m
+Client	app/models/client.rb	/^class Client < ActiveRecord::Base$/;"	c
+ClientsController	app/controllers/clients_controller.rb	/^class ClientsController < ApplicationController$/;"	c
+CreateClients	db/migrate/20140314171037_create_clients.rb	/^class CreateClients < ActiveRecord::Migration$/;"	c
+CreateStatusUpdates	db/migrate/20140315192528_create_status_updates.rb	/^class CreateStatusUpdates < ActiveRecord::Migration$/;"	c
+DashboardsController	app/controllers/dashboards_controller.rb	/^class DashboardsController < ApplicationController$/;"	c
+DeviseCreateTrainers	db/migrate/20140314164528_devise_create_trainers.rb	/^class DeviseCreateTrainers < ActiveRecord::Migration$/;"	c
+FoodScraper	lib/food_scraper.rb	/^class FoodScraper$/;"	c
+FoodsController	app/controllers/foods_controller.rb	/^class FoodsController < ApplicationController$/;"	c
+GetJoocy	config/application.rb	/^module GetJoocy$/;"	m
+MealsController	app/controllers/meals_controller.rb	/^class MealsController < ApplicationController$/;"	c
+RecipesController	app/controllers/recipes_controller.rb	/^class RecipesController < ApplicationController$/;"	c
+StaticPagesController	app/controllers/static_pages_controller.rb	/^class StaticPagesController < ApplicationController$/;"	c
+StatusUpdate	app/models/status_update.rb	/^class StatusUpdate < ActiveRecord::Base$/;"	c
+StatusUpdatesController	app/controllers/status_updates_controller.rb	/^class StatusUpdatesController < ApplicationController$/;"	c
+Trainer	app/models/trainer.rb	/^class Trainer < ActiveRecord::Base$/;"	c
+TrainersController	app/controllers/trainers_controller.rb	/^class TrainersController < ApplicationController$/;"	c
+active_clients	app/models/trainer.rb	/^   def active_clients$/;"	f	class:Trainer
+change	db/migrate/20140314164528_devise_create_trainers.rb	/^  def change$/;"	f	class:DeviseCreateTrainers
+change	db/migrate/20140314171037_create_clients.rb	/^  def change$/;"	f	class:CreateClients
+change	db/migrate/20140315192528_create_status_updates.rb	/^  def change$/;"	f	class:CreateStatusUpdates
+client_params	app/controllers/clients_controller.rb	/^  def client_params$/;"	f	class:ClientsController
+client_session_active?	app/helpers/application_helper.rb	/^  def client_session_active?$/;"	f	class:ApplicationHelper
+completely.createDropDownController	app/assets/javascripts/completely.js	/^    var createDropDownController = function(elem) {$/;"	f
+completely.createDropDownController.onMouseDown	app/assets/javascripts/completely.js	/^        var onMouseDown =  function() { p.hide(); p.onmouseselection(this.__hint); }$/;"	f
+completely.createDropDownController.onMouseOut	app/assets/javascripts/completely.js	/^        var onMouseOut =   function() { this.style.outline = '0'; }$/;"	c
+completely.createDropDownController.onMouseOver	app/assets/javascripts/completely.js	/^        var onMouseOver =  function() { this.style.outline = '1px solid #ddd'; }$/;"	c
+completely.createDropDownController.p.hide	app/assets/javascripts/completely.js	/^            hide :  function() { elem.style.visibility = 'hidden'; }, $/;"	m
+create_food	lib/food_scraper.rb	/^  def create_food$/;"	f	class:FoodScraper
+current_client	app/helpers/application_helper.rb	/^  def current_client$/;"	f	class:ApplicationHelper
+current_client	app/models/trainer.rb	/^   def current_client$/;"	f	class:Trainer
+cut	app/models/status_update.rb	/^  def cut(num)$/;"	f	class:StatusUpdate
+dropDownController.onmouseselection	app/assets/javascripts/completely.js	/^    dropDownController.onmouseselection = function(text) {$/;"	f
+fat_change	app/models/status_update.rb	/^  def fat_change$/;"	f	class:StatusUpdate
+fat_weight	app/models/status_update.rb	/^  def fat_weight$/;"	f	class:StatusUpdate
+food_exists?	lib/food_scraper.rb	/^  def food_exists?(name, brand)$/;"	f	class:FoodScraper
+frontpage	app/controllers/static_pages_controller.rb	/^  def frontpage$/;"	f	class:StaticPagesController
+get_client_name	app/models/trainer.rb	/^   def get_client_name(id)$/;"	f	class:Trainer
+go	lib/food_scraper.rb	/^  def go$/;"	f	class:FoodScraper
+inactive_clients	app/models/trainer.rb	/^   def inactive_clients$/;"	f	class:Trainer
+index	app/controllers/clients_controller.rb	/^  def index$/;"	f	class:ClientsController
+lbm_change	app/models/status_update.rb	/^  def lbm_change$/;"	f	class:StatusUpdate
+lbm_weight	app/models/status_update.rb	/^  def lbm_weight$/;"	f	class:StatusUpdate
+next_page?	lib/food_scraper.rb	/^  def next_page?$/;"	f	class:FoodScraper
+p.highlight	app/assets/javascripts/completely.js	/^            highlight : function(index) {$/;"	m
+p.move	app/assets/javascripts/completely.js	/^            move : function(step) { \/\/ moves the selection either up or down (unless it's not possible) step is either +1 or -1.$/;"	m
+p.onmouseselection	app/assets/javascripts/completely.js	/^            onmouseselection : function() {} \/\/ it will be overwritten. $/;"	m
+p.refresh	app/assets/javascripts/completely.js	/^            refresh : function(token, array) {$/;"	m
+pre_phase_change	app/models/status_update.rb	/^  def pre_phase_change$/;"	f	class:StatusUpdate
+prev	app/models/status_update.rb	/^  def prev$/;"	f	class:StatusUpdate
+show	app/controllers/status_updates_controller.rb	/^  def show$/;"	f	class:StatusUpdatesController
+status_updates	app/helpers/application_helper.rb	/^  def status_updates$/;"	f	class:ApplicationHelper
+status_updates?	app/helpers/application_helper.rb	/^  def status_updates?$/;"	f	class:ApplicationHelper
+status_updates_params	app/controllers/status_updates_controller.rb	/^  def status_updates_params$/;"	f	class:StatusUpdatesController
+total_fat_change	app/models/status_update.rb	/^  def total_fat_change$/;"	f	class:StatusUpdate
+total_lbm_change	app/models/status_update.rb	/^  def total_lbm_change$/;"	f	class:StatusUpdate
+trainers_params	app/controllers/trainers_controller.rb	/^  def trainers_params$/;"	f	class:TrainersController
+update_query	lib/food_scraper.rb	/^  def update_query$/;"	f	class:FoodScraper
+weight_change	app/models/status_update.rb	/^  def weight_change$/;"	f	class:StatusUpdate

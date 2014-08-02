@@ -1,15 +1,5 @@
 class StaticPagesController < ApplicationController
-  def home
-    if user_signed_in?
-      redirect_to new_status_update_path
-    end 
+  def frontpage
+    redirect_to clients_path if trainer_signed_in?
   end
-
-  def faq
-    
-  end      
-
-  def signup
-
-  end
-end                                           
+end

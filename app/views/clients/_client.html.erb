@@ -1,0 +1,7 @@
+<li>
+  <%= form_for client, remote: true do |f| %>
+    <%= f.check_box :status %>
+    <%= link_to "#{client.firstname} #{client.lastname}", controller: "status_updates", action: "show", id: client.id%>
+  <% end %>
+</li>
+

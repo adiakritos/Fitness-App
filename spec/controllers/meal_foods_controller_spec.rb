@@ -1,5 +1,5 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe MealFoodsController do
+RSpec.describe MealFoodsController, :type => :controller do
 
 end

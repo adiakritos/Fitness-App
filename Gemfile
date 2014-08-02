@@ -1,47 +1,32 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.16'
-gem 'rake'
+gem 'rails', '4.0.2'
 gem 'mysql2'
-gem 'bcrypt-ruby'
-gem 'devise'
-gem 'rails_admin'
-gem 'jbuilder'
-gem 'gon'
-gem 'dynamic_form'
-gem 'therubyracer', :require => 'v8'
+gem 'sass-rails',   '~> 4.0.0'
+gem 'uglifier',     '>= 1.3.0'
+gem 'therubyracer', platforms: :ruby
 gem 'jquery-rails'
-gem 'jquery-ui-rails'
-gem 'rails3-jquery-autocomplete'
-gem 'simple_form'
-
-group :assets do
-  gem 'sass-rails', '~> 3.2.4'
-  gem 'coffee-script', '~> 2.2.0'
-  gem 'uglifier', '~> 1.2.3'
-  gem 'nokogiri'
-end
+gem 'devise'
+gem 'soulmate'
 
 group :development, :test do
-  gem 'pry', '~> 0.9.12.2'
+  gem 'binding_of_caller'
+  gem 'database_cleaner'
+  gem 'guard-rspec', require: false
+  gem 'capybara'
+  gem 'factory_girl_rails'
+  gem 'rspec-rails', '~> 3.0.0.beta'
+  gem 'faker'
+  gem 'populator'
+  gem 'capistrano', require: false
+  gem 'annotate', '>=2.6.0'
+  gem 'pry'
   gem 'pry-rails'
-  gem 'capistrano'
+  gem 'debugger'
+  gem 'better_errors'
   gem 'bullet'
   gem 'rvm-capistrano'
-  gem 'better_errors'
-  gem 'rspec-rails', '2.10.0'
-  gem 'awesome_print'
-  gem 'wirble'
-  gem 'thin'
-  gem 'guard', '>=2.1.0'
-  gem 'guard-rspec'
-  gem 'guard-livereload'
-  gem 'rb-fsevent', :require => false if RUBY_PLATFORM =~ /darwin/i  
-end
-
-group :test do
-  gem 'capybara', '1.1.2'
-  gem 'faker'
-  gem 'factory_girl_rails'
-  gem 'spork', '~> 1.0rc'
+  gem 'chrome_logger', :require => 'chrome_logger/railtie'
+  gem 'awesome_print', :require => 'ap'
+  gem 'table_print'
 end

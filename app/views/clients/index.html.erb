@@ -1,0 +1,20 @@
+<div class="widget widget-clients">
+    <h3>Add New Client</h3>
+    <%= form_for @client, action: :create, remote: true do |f| %>
+      <%= f.text_field :firstname, placeholder: 'First Name' %>
+      <%= f.text_field :lastname, placeholder: 'Last Name' %>
+      <%= f.hidden_field :status, value: true %>
+      <%= submit_tag :create %>
+    <% end %>
+</div>
+
+<div class="widget widget-clients">
+    <h4>Active Clients</h4>
+    <ul class="active">
+       <%= render(partial: "client", collection: @active_clients) %>
+    </ul>                        
+    <h4>Inactive Clients</h4>
+    <ul class="inactive">
+       <%= render(partial: "client", collection: @inactive_clients) %>
+    </ul>
+</div>

@@ -1,0 +1,5 @@
+class ClientFood < GlobalFood
+
+end
+
+

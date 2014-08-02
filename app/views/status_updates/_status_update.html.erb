@@ -1,19 +1,14 @@
 <tr>
- <td class = "timestamp"><%= status_update.created_at.strftime("%m/%d/%Y") %> </td>
- <!-- CURRENT --> 
- <td> <%= status_update.current_weight %>                                     </td> 
- <td> <%= BigDecimal(status_update.current_bf_pct * 100, 3) %>                </td> 
- <td> <%= BigDecimal(status_update.current_lbm, 3) %>                         </td>  
- <td> <%= BigDecimal(status_update.current_fat_weight, 3) %>                  </td>
+    <td class="left"><%= status_update.entry_date.strftime("%m/%d/%y") %></td>
+    <td class="left phase"><%= status_update.phase %> <a href="#">+</a></td>
+    <td><%= sprintf('%.2f', status_update.total_weight) %></td>
+    <td><%= sprintf('%.2f', status_update.weight_change) %></td>
+    <td><%= sprintf('%.2f', status_update.lbm_weight) %></td>
+    <td><%= sprintf('%.2f', status_update.lbm_change) %></td>
+    <td><%= sprintf('%.2f', status_update.total_lbm_change) %></td>
+    <td><%= sprintf('%.2f', status_update.body_fat_pct * 100) %>%</td>
+    <td><%= sprintf('%.2f', status_update.fat_change) %></td>
+    <td><%= sprintf('%.2f', status_update.total_fat_change) %></td>
+    <td><%= link_to('&times;'.html_safe, status_update, method: :delete, class: "delete-status") %></td>
+</tr>
 
- <!-- CHANGES -->
- <td> <%= status_update.weight_change %>                                      </td>
- <td> <%= status_update.lbm_change %>                                         </td>
- <td> <%= status_update.fat_change %>                                         </td>
-
-  <% if current_user==(status_update.user) %> 
-    <td>
-          <%= link_to "delete", status_update, method: :delete %>
-    </td>
-  <%  end  %>         
-</tr>                                    

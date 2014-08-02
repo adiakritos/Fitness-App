@@ -1,17 +1,29 @@
 module ApplicationHelper
-include StatusUpdatesHelper
-  def full_title(page_title)
-    base_title = "Welcome to the Fitness App"
-    if page_title.empty?
-      base_title
-    else
-      "#{base_title} | #{page_title}"
-    end
-  end 
-  
-  def round( input )
-    '%.2f' % input
-  end  
-  
-end
 
+  #general helpers
+
+  def round(num)
+    sprintf('%.2f', num)
+  end
+
+  #client helpers
+
+  def current_client
+    current_trainer.clients.where(id: session[:current_client]).first
+  end
+
+  def client_session_active?
+    trainer_signed_in? and session[:current_client].present?
+  end
+
+  #status_updates helpers
+
+  def status_updates?
+    current_client.status_updates.any? 
+  end
+
+  def status_updates
+    StatusUpdate.where("client_id = ?", current_client.id)
+  end   
+
+end

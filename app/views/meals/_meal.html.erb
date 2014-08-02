@@ -1,13 +1,31 @@
-  <thead class=meal-thead id=meal-thead-<%= meal.id %>>
-    <td class=meal-thead-name colspan="7"> <%= meal.meal_name %> </td>
-    <th> <%= link_to "x", meal_path(meal.id), method: :delete, remote:true %> </th>
-  </thead>
-
-  <tbody class=meal-tbody-<%= meal.id %>>
-
-    <%= render meal.meal_foods %>
-    <tr>
-      <td > <%= link_to "add food", new_food_path(meal_id: meal.id), class: "new-food-button-#{ meal.id }", remote: true %> </td> 
-    </tr>
-  </tbody>    
-
+<div class="meal meal1">
+  <%= form_for meal, action: :update do |m| %>
+    <h4>
+      <%= image_tag 'meal.png', size: '20x20' %>
+      <%= m.text_field :meal_name, placeholder: "Meal Name...", class: "meal-name" %>
+      <%= link_to "&times;".html_safe, meal_path(meal.id), method: :delete, class: "delete-meal" %>
+    </h4>
+  <% end %> 
+  <table>
+    <thead>
+      <tr>
+        <th width="230" class="left">Name</th>
+        <th class="left">Servings</th>
+        <th>Serving Size</th>  
+        <th>Fat</th>  
+        <th>Carbs</th>  
+        <th>Protein</th>  
+        <th>Sodium</th>  
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= render(partial: "meal_foods/meal_food", collection: meal.meal_foods) %>
+    </tbody>
+  </table>
+  <%= form_tag(meal_foods_path, method: :post) do %>
+    <a class="add-food-link" id="meal-link-<%= meal.id %>" >+ Add food</a>
+    <div id="autocomplete-input-meal-<%= meal.id %>"></div>
+    <%= hidden_field_tag :meal_id, meal.id %>
+  <% end %> 
+</div>
