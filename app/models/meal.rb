@@ -1,5 +1,12 @@
 class Meal < ActiveRecord::Base
-  belongs_to :client
-  has_many :meal_foods 
-end
+  before_save :sanitize
 
+  belongs_to :user
+  has_many :meal_foods, dependent: :destroy
+
+  attr_accessible :meal_name
+
+  def sanitize
+    self.meal_name = "Meal"
+  end
+end

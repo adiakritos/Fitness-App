@@ -1,180 +1,40 @@
-"use strict";
 
-var joocyApp = {
+var fitnessApp = (function() {
 
-    statusUpdates: {
+    // FOODS
+    var foods = (function() {
+        var autocomplete = function() {
+          // autocomplete code
+        };
 
-        colorCode: function() {
+        var init = function() {
+            autocomplete();
+        };
 
-            var fat     = $('.color-code-fat'),
-                bfp     = $('.color-code-bfp'),
-                lbm     = $('.color-code-lbm'), 
-                fat_num = parseFloat(fat.text()),
-                bfp_num = parseFloat(bfp.text()),
-                lbm_num = parseFloat(lbm.text());
+        return {
+            init: init
+        };
+    })();
 
-            if(fat_num <= 0 ) {
-                fat.css('color', 'green');
-            } else {
-                fat.css('color', 'red');
-                fat.prepend('+');
-            }
+    // OTHER
+    var other = (function() {
+        var init = function() {
+            // stuff
+        };
 
-            if(bfp_num <= 0 ) {
-                bfp.css('color', 'green');
-            } else {
-                bfp.css('color', 'red');
-                bfp.prepend('+');
-            }
+        return {
+            init: init
+        };
+    })();
 
-            if(lbm_num >= 0 ) {
-                lbm.css('color', 'green');
-                lbm.prepend('+');
-            } else {
-                lbm.css('color', 'red');
-            }
-        },
+    // APP INIT
+    var init = (function() {
+        $(document).ready(function() {
+            foods.init();
+            other.init();
+        });
+    })();
 
-        init: function() {
-            $('.change-phase').click(function(e) {
-                e.preventDefault();
-                $('.new_status_update select').prop('disabled', false);
-            });
+})();
 
-            $('.toggle-chart').click(function() {
-                $('#chartdiv').toggle();
-            });
-            this.colorCode();
-        }
-    },
 
-    clientsPage: {
-
-        changeClientStatus: function() {
-
-            jQuery.fn.submitOnCheck = function() {
-              this.find('input[type=submit]').remove();
-              this.find('input[type=checkbox]').click(function() {
-                $(this).parent('form').submit();
-              });
-              return this;
-            }
-
-            var inactive = $('.inactive'),
-                active   = $('.active');
-
-            $('input:checkbox').on('change', function() {
-                var $this    = $(this),
-                    liParent = $this.parent(),
-                    ulClass  = liParent.parent().attr('class'),
-                    listatus = $this.attr('checked');
-
-                if(listatus === 'checked') {
-                   $this.removeAttr('checked');
-                   inactive.prepend(liParent);
-                }
-                else if
-                (listatus === undefined) {
-                   $this.attr('checked', 'checked');
-                   active.prepend(liParent);
-                }
-                $this.parent('form').submitOnCheck();
-            });
-        },
-
-        saveClient: function( newElement ) {  
-            $( ".active" ).prepend( newElement );  
-        },  
-
-        init: function() {
-            this.changeClientStatus();
-        }
-    },
-    
-    mealsPage: {
-
-        foodSearch: function(link) {
-           
-           var id = link.attr('id').match(/\d+$/)[0],
-               input = link.siblings('#autocomplete-input-meal-' + id),
-               submit = $("<input type='submit' value='save foods'>");
-
-           link.hide();
-
-            input.magicSuggest({
-               data: "/foods/search/",
-               minChars: 3,
-               placeholder: "Search Foods...",
-               name: 'foods',
-               resultAsString: true,
-               allowFreeEntries: false,
-               useZebraStyle: true
-            });
-
-            link.parent().append(submit);
-        },
-
-        init: function() {
-           $('.add-food-link').click(function() {
-               joocyApp.mealsPage.foodSearch($(this));
-           });
-           $('.delete-food').click(function() {
-               $(this).closest('tr').remove();
-           });
-           $('.meal-name').focus(function(e) {
-               $(this).select();  
-           });
-           $(document).ajaxComplete(function() {
-               joocyApp.mealsPage.init();
-           })
-        }
-    },
-
-    foodsPage: {
-
-        StartAutoComplete: function() {
-            $('#search-foods').magicSuggest({
-               data: "/foods/search/",
-               minChars: 3,
-               placeholder: "Search Foods...",
-               name: 'foods',
-               resultAsString: true,
-               strictSuggest: true,
-               allowFreeEntries: true
-            });
-            
-        },
-
-        init: function() {
-           $('.delete-food').click(function(e) {
-               $(this).closest('tr').remove();
-           }); 
-
-           joocyApp.foodsPage.StartAutoComplete();
-        }
-    }                       
-};
-
-var joocyRouter = function() {
-    var path = window.location.pathname;
-    if
-    ( path === '/' ) {
-        joocyApp.clientsPage.init();
-    }
-    else if
-    ( /^\/clients/i.test(path) ) {
-        joocyApp.clientsPage.init();
-    }
-    else if
-    ( /^\/status_updates/i.test(path) ) {
-        joocyApp.statusUpdates.init();
-    }
-    else if
-    ( /^\/meals/i.test(path) ) {
-        joocyApp.mealsPage.init();
-    }
-    else if
-    ( /^\/foods/i.test(path) ) {
-        joocyApp.foodsPage.init();
-    } 
-}();
