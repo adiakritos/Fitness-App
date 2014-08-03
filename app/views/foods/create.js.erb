@@ -1,0 +1,43 @@
+
+<% if !@custom_food.nil? %>
+  $(".meal-tbody-<%= @meal.id %>").prepend('<%= j render @meal_food %>');
+<% end %>
+<% if @custom_food.nil? & !@site_food.nil?  %>
+   $(".meal-tbody-<%= @meal.id %>").prepend('<%= j render @meal_food %>');  
+
+<% elsif @custom_food.nil? & @site_food.nil? %>
+
+  <% if @new_food.nil? %>
+    //render the modal box
+    var $modal, $modal_close, $modal_container, $meal_id, $new_food_form;
+    $modal = $('#modal');
+    $modal_close = $modal.find('.close');
+    $modal_container = $('#modal-container');
+    $new_food_form = $('.new_food_form');
+    $meal_id = <%= @meal_id %>
+
+    $modal
+      .prepend($modal_close)
+      .css('top', $(window)
+      .scrollTop() + 100)
+      .show();
+
+    $modal_container.show();
+
+    $new_food_form.attr('action', '/foods?meal_id=' + $meal_id);
+
+    $(document).on('click', '#modal .close', function() {
+      $modal_container.hide();
+      $modal.hide();
+      return false;
+    });  
+
+    $(document).on('click', '#modal .submit', function() {
+      $modal_container.hide();
+      $modal.hide();
+    }); 
+     
+  <% elsif !@new_food.nil? %>    
+    $(".meal-tbody-<%= @meal.id %>").prepend('<%= j render @meal_food %>');  
+  <% end %>
+<% end %>

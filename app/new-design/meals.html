@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Dashboard Design</title>
+  <!-- CSRF META TAG -->
+  <!-- OTHER META TAGS -->
+
+  <link rel="stylesheet" href="css/normalize.css" type="text/css">
+  <link rel="stylesheet" href="css/main.css" type="text/css">
+
+  <link href="favicon.ico" rel="shortcut icon" type="image/x-icon">
+  <link href="http://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet" type="text/css">
+  <link href='http://fonts.googleapis.com/css?family=Pathway+Gothic+One' rel='stylesheet' type='text/css'>
+</head>
+<body>
+
+  <div class="wrapper">
+    <div class="header container clearfix">
+      <h1 class="logo">GET JOOCY!</h1>
+      <ul class="nav">
+        <li><a href="index.html">Dashboard</a></li>
+        <li><a href="meals.html">Meals</a></li>
+        <li><a href="foods.html">Foods</a></li>
+        <li><a href="#">Tutorials</a></li>
+        <li><a href="#">Settings</a></li>
+        <li><a href="#">Login/out</a></li>
+      </ul> 
+    </div>      
+    <div class="main clearfix">
+      <div class="container">
+          <div class="content">
+
+           <div class="widget widget-important">
+             <h3>Macro Settings</h3>
+             <div class="widget-inner widget-macro-settings">
+               <small>Set your fat and protein grams per pound of *lean* mass.</small>
+               <form action="#" method="post" accept-charset="UTF-8">
+                 <input type="number" name="fat_factor" placeholder="Fat Factor">
+                 <input type="number" name="protein_factor" placeholder="Protein Factor">
+                 <input type="submit" value="Set">
+               </form>
+             </div>
+           </div>
+
+            <div class="widget widget-meal-builder">
+              <h3>Meal Plan Creator</h3>
+
+              <div class="totals">
+                <table>
+                  <thead>
+                    <tr>
+                      <td width="355"></td>
+                      <td></td>
+                      <td>Totals</td>
+                      <td>20%</td>
+                      <td>90%</td>
+                      <td>110%</td>
+                      <td><img src="img/question.png" width="13" height="13" alt=""></td>
+                    </tr>
+                  </thead>
+                </table>
+              </div>   
+
+              <div class="meal meal1">
+                <form action="#">
+                  <h4><img src="img/meal.png" width="20" height="20" alt="">Breakfast</h4>
+                </form> 
+                <table>
+                  <thead>
+                    <tr>
+                      <th width="230" class="left">Name</th>
+                      <th class="left">Servings</th>
+                      <th>Serving Size</th>  
+                      <th>Fat</th>  
+                      <th>Carbs</th>  
+                      <th>Protein</th>  
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="left">Chicken</td>
+                      <td class="left">
+                        <form action="#" method="post"><input step="0.01" type="number" value="1.0"></form>
+                      </td>
+                      <td>4.0 oz</td>
+                      <td>20.0</td>
+                      <td>0.0</td>
+                      <td>25.0</td>
+                      <td><a href="#">&times;</a></td>
+                    </tr>
+                    <tr>
+                      <td class="left">Banana</td>
+                      <td class="left">
+                        <form action="#" method="post"><input step="0.01" type="number" value="1.0"></form>
+                      </td>
+                      <td>1.0 oz</td>
+                      <td>3.0</td>
+                      <td>0.0</td>
+                      <td>25.0</td>
+                      <td><a href="#">&times;</a></td>
+                    </tr>
+                    <tr>
+                      <td class="left">
+                        <a href="#">+ Add food</a>
+                      </td>
+                      <td>
+                      </td>
+                      <td colspan="5"></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div class="meal meal2">
+                <form action="#">
+                  <h4><img src="img/meal.png" width="20" height="20" alt="">Snack #1</h4>
+                </form>
+                <table>
+                  <thead>
+                    <tr>
+                      <th class="left">Name</th>
+                      <th class="left">Servings</th>
+                      <th>Serving Size</th>  
+                      <th>Fat</th>  
+                      <th>Carbs</th>  
+                      <th>Protein</th>  
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td width="230" class="left">Carrots &amp; Hummus</td>
+                      <td class="left">
+                        <form action="#" method="post"><input step="0.01" type="number" value="1.0"></form>
+                      </td>
+                      <td>4.0 oz</td>
+                      <td>20.0</td>
+                      <td>0.0</td>
+                      <td>25.0</td>
+                      <td><a href="#">&times;</a></td>
+                    </tr>
+                    <tr>
+                      <td class="left">
+                        <a href="#">+ Add food</a>
+                      </td>
+                      </td>
+                      <td>
+                      </td>
+                      <td colspan="5"></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div class="meal meal0">
+                <div class="add-meal">
+                  <form action="#">
+                    <h4><img src="img/meal.png" width="20" height="20" alt="">Add New Meal</h4>
+                    <input type="text" placeholder="Add New Meal">
+                  </form>
+                </div>
+              </div>   
+
+            </div>
+          </div>
+
+         <div class="sidebar">
+           <div class="widget widget-coaching">
+             <h4>Coaching</h4>
+             <p>Coaching advice goes here, maybe flashed in yellow, and maybe the sidebar will 'stick' as they scroll.</p>
+           </div>   
+           <div class="widget">
+             <h4>Meal Building Tips</h4> 
+             <h5>For Each Meal, Choose:</h5>
+             <ul>
+               <li>1 Protein</li>
+               <li>1 Startchy Carb</li>
+               <li>1 Fibrous Carb</li>
+               <li>Keep your macros close to 100%</li>
+             </ul>
+           </div>
+         </div>
+
+       </div>
+    </div>
+
+    <div class="container">
+      <div class="footer">
+          <p>Copyright &copy; 2013 GetJoocy.com - All Rights Reserved.</p>
+      </div>
+    </div> 
+  </div>
+
+
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+  <script src="amcharts/amcharts.js"></script>
+  <script src="amcharts/serial.js"></script>
+  <script src="js/progress-chart.js"></script>
+  <script src="js/main.js"></script>
+  <script type="text/javascript" src="js/html5shiv.js"></script>
+  <script type="text/javascript" src="js/html5shiv-printshiv.js"></script>
+  <script type="text/javascript" src="js/jquery.qtip-1.0.0-rc3.min.js"></script>
+
+</body>
+</html>
+

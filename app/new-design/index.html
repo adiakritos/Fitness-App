@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>GetJoocy.com - Dashboard</title>
+  <!-- CSRF META TAG -->
+  <!-- OTHER META TAGS -->
+
+  <link rel="stylesheet" href="css/normalize.css" type="text/css">
+  <link rel="stylesheet" href="css/main.css" type="text/css">
+
+  <link href="favicon.ico" rel="shortcut icon" type="image/x-icon">
+
+  <!--[if gte IE 9]>
+    <style type="text/css">.gradient { filter: none; }</style>
+  <![endif]-->
+</head>
+<body>
+
+  <div class="wrapper">
+
+    <div class="header container clearfix">
+      <h1 class="logo">GET JOOCY!</h1>
+      <ul class="nav">
+        <li><a href="index.html">Dashboard</a></li>
+        <li><a href="meals.html">Meals</a></li>
+        <li><a href="foods.html">Foods</a></li>
+        <li><a href="#">Tutorials</a></li>
+        <li><a href="#">Settings</a></li>
+        <li><a href="#">Login/out</a></li>
+      </ul> 
+    </div> 
+
+    <div class="main clearfix">
+      <div class="container">
+        <div class="content">
+          <div class="widget widget-important">
+            <h3>Update Your Stats</h3>
+            <div class="widget-inner widget-update">
+              <small>Enter your recent measurements here.</small>
+              <form action="" method="">
+                <input name="total-weight"    type="text" placeholder="Total Weight">
+                <input name="bodyfat-percent" type="text" placeholder="Body Fat Percentage">
+                <select>
+                  <option value="nul">Select Phase</option>
+                  <option value="cutting">Cutting</option>
+                  <option value="bulking">Bulking</option>
+                  <option value="maintenance">Maintenance</option>
+                  <option value="off_season">Off Season</option>
+                </select>
+                <input type="submit" value="Update"> 
+              </form>  
+            </div>
+          </div>
+
+          <div class="widget widget-progress">
+            <h3>Progress</h3>
+            <table>
+              <thead>
+                <tr>
+                  <th width="230" class="left">Change</th>
+                  <th>Weight</th>
+                  <th>Fat</th>
+                  <th>Lean Mass</th>
+                  <th>Body Fat %</th>
+                </tr>
+              </thead> 
+              <tbody>
+                <tr>
+                  <td class="left"><strong>Since Last Update</strong></td>
+                  <td>-1.3lbs</td>
+                  <td class="notice-red">+1.1lbs</td>
+                  <td class="notice-green">+0.3lbs</td>
+                  <td class="notice-green">-0.1%</td>
+                </tr>
+                <tr>
+                  <td class="left"><strong>Since Start of Cut Phase</strong></td>
+                  <td>-10.3lbs</td>
+                  <td>-9.2lbs</td>
+                  <td>-0.3lbs</td>
+                  <td>-3.4%</td>
+                </tr>
+              </tbody>
+            </table> 
+
+            <table>
+              <thead>
+                <tr>
+                  <th width="230" class="left">Current</th>
+                  <th>Weight</th>
+                  <th>Fat</th>
+                  <th>Lean Mass</th>
+                  <th>Body Fat %</th>
+                </tr>
+              </thead> 
+              <tbody>
+                <tr>
+                  <td class="left"><strong>Totals as of Today</strong></td>
+                  <td>173.3lbs</td>
+                  <td>12.2lbs</td>
+                  <td>28.3lbs</td>
+                  <td>10.9%</td>
+                </tr>
+              </tbody>
+            </table> 
+            <p><a href="#" class="bold-link toggle-chart">Show/Hide Chart</a></p>
+            <div id="chartdiv" style="display: none; height: 400px;"></div>
+          </div>
+
+          <div class="widget widget-status-updates">
+            <h3><span class="active">2</span> Status Updates</h3> 
+            <table>
+              <thead>
+                <tr>
+                  <th class="left">Entry Date</th>
+                  <th class="left">Phase</th>
+                  <th>Weight</th>
+                  <th>BF %</th>                                   
+                  <th>LBM</th>
+                  <th>Fat</th>
+                  <th>Weight Change</th>
+                  <th>LBM Change</th>
+                  <th>Fat Change</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="left">12/02/2013</td>
+                  <td class="left">B</td>
+                  <td>109.0</td> 
+                  <td>24.0</td> 
+                  <td>82.8</td>  
+                  <td>26.2</td>
+                  <td>-1.0</td>
+                  <td>0.34</td>
+                  <td>-1.34</td>
+                </tr>                                    
+                <tr>
+                  <td class="left">12/02/2013</td>
+                  <td class="left">B</td>
+                  <td>110.0</td> 
+                  <td>25.0</td> 
+                  <td>82.5</td>  
+                  <td>27.5</td>
+                  <td>0.0</td>
+                  <td>0.0</td>
+                  <td>0.0</td>
+                </tr>                                    
+              </tbody>        
+            </table>
+
+            <div class="pagination">
+              <span>&laquo; Prev</span>
+              <span>1</span>
+              <span><a href="#">2</a></span>
+              <span><a href="#">3</a></span>
+              <span><a href="#">Next &raquo;</a></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="sidebar">
+          <div class="widget widget-coaching">
+            <h4>Coaching</h4>
+            <p>Coaching advice goes here, maybe flashed in yellow, and maybe the sidebar will 'stick' as they scroll.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="container">
+      <div class="footer">
+        <p>Copyright &copy; 2013 GetJoocy.com - All Rights Reserved.</p>
+      </div>
+    </div> 
+  </div>
+
+
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+  <script src="amcharts/amcharts.js"></script>
+  <script src="amcharts/serial.js"></script>
+  <script src="js/progress-chart.js"></script>
+  <script src="js/main.js"></script>
+
+</body>
+</html>

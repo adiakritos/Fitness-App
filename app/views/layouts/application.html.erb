@@ -1,67 +1,52 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html>
 <head>
-  <meta charset="utf-8">
-  <title>Get Joocy</title>
+  <title><%= full_title(yield(:title)) %></title>    
   <%= csrf_meta_tags %>
-  <%= stylesheet_link_tag "application" %>
-  <%= favicon_link_tag 'favicon.ico' %>
-
-  <!--[if gte IE 9]>
-    <style type="text/css">.gradient { filter: none; }</style>
-  <![endif]-->
-
+  <%= stylesheet_link_tag "application", :media => "all" %>
 </head>
 <body>
+  <div class=container>
+    <div class=container-inner>
 
-  <div class="wrapper">
-    <div class="header container clearfix">
-      <h1 class="logo">GET JOOCY!</h1>
-      <ul class="nav">
-        <% if trainer_signed_in? %>
-          <% if client_session_active? %>
-            <li><%= link_to "Clients",  clients_path %></li>
-            <li><%= link_to "Stats",  status_update_path(session[:current_client]) %></li>
-            <li><%= link_to "Meals",    meal_path(session[:current_client]) %></li>
-            <li><%= link_to "Settings", settings_path %></li>
-          <% end %>
-          <li><%= link_to "Logout",  logout_path %></li>
-        <% else %>
-          <li><%= link_to "Login",   login_path %></li>
-          <li><%= link_to "Sign up", signup_path %></li>
-        <% end %>
-      </ul> 
-    </div> 
+      <h1><%= yield(:heading) %></h1> 
 
-    <div class="main clearfix">
-      <div class="container">
-        <div class="content">
-          <% flash.each do |key, value| %>
-            <%= content_tag :div, value, class: "flash #{key}" %>
-          <% end %>
-          <%= content_tag(:h1, current_trainer.get_client_name(session[:current_client]), class: 'current-client') if client_session_active? %>
-          <%= yield %>
+      <% flash.each do |key, value| %>
+        <%= content_tag(:div, value, class: "alert alert-#{key}")%>
+      <% end %>
+
+      <header class="navbar navbar-fixed-top">
+        <div class="navbar-inner">
+          <%= render 'layouts/header' %>
         </div>
-        <% if trainer_signed_in? %>
-        <div class="sidebar">
-          <div class="widget widget-site-guide">
-            <h4>Sidebar</h4>
-            <p>This is an empty sidebar</p>
-          </div>
-        </div>    
-        <% end %>
-      </div>
-    </div>
+      </header> 
 
-    <div class="footer">
-      <div class="container clearfix">
-        <p style="display:block; float:left;">Copyright &copy; <%= Time.now.year %> GetJoocy.com - All Rights Reserved.</p>
-        <p style="text-align:right; display: block; float:right;">Foods: <%= GlobalFood.count %></p>
-      </div> 
+      <% if user_signed_in? %>
+        <div class="navbar navbar-fixed-middle">
+          <div class="navbar-inner">
+            <%= render 'layouts/subheader' %>
+          </div>
+        </div> 
+      <% end %>
+
+      <%= yield %>
+      <%= debug(params) if Rails.env.development? %>
     </div>
   </div>
 
-  <%= javascript_include_tag "application" %>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+  <%= include_gon %>
+  <%= javascript_include_tag 'application' %>  
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-45666107-1', 'getjoocy.com');
+    ga('send', 'pageview');
+  </script>
 
 </body>
 </html>

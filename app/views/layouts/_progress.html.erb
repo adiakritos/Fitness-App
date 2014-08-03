@@ -1,0 +1,32 @@
+<div id="progress" >
+  <div id="progress-inner">
+
+    <table>
+      <thead>
+        <tr>
+          <th colspan=3><h3>Progress</h3></th>
+        </tr>
+      </thead>
+      <tbody>
+            <tr>
+              <th> Current BF Pct </th>
+              <th> Target BF Pct </th>
+            </tr>
+            <tr>
+              <td> <%= current_user.current_bf_pct %> % </td>
+              <td> <%= current_user.target_bf_pct  %> % </td>
+            </tr> 
+            <tr>                                      
+              <th> Current Weight </th>
+              <th> Target Weight </th>
+            </tr>
+            <tr>
+              <td> <%= current_user.current_weight %> </td>
+              <td> <%= current_user.target_weight  %>  </td>
+            </tr>
+      </tbody>
+    </table>
+
+
+  </div>
+</div> 

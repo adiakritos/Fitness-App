@@ -1,93 +1,72 @@
+require 'rubygems'
+require 'active_support/core_ext/numeric/time'
 class StatusUpdatesController < ApplicationController
-  before_filter :create_client_session, only: [:show]
-  def index
-    @status_updates = status_updates.reverse
+  include StatusUpdatesHelper
+
+  before_filter :correct_user, only: [:destroy, :delete_all]
+  before_filter :destroy_temporary, only: :create
+  before_filter :status_updates_empty?, only: [:new, :show]
+
+  def create
+    @status_update = current_user.status_updates.build(params[:status_update])
+    @status_update.temporary = 'false'
+    if @status_update.save
+      flash[:success] = "Status Update Saved! #{params[:status_update]}"
+      redirect_to new_status_update_path
+    else
+      flash[:error] = "Status Updates couldn't be saved. :/"
+      redirect_to new_status_update_path
+    end 
+  end 
+  
+  def new
+    @status_update = current_user.status_updates.build if user_signed_in?
   end
 
   def show
-    if status_updates?
-      @status_update  = status_updates.new
-      @status_updates = status_updates.last(5).reverse
-      @recent_stat    = status_updates.last
-    elsif status_updates? == false
-      create_temp
-      @recent_stat   = current_client.status_updates.where(temporary: true).first
-      @status_update = current_client.status_updates.new
-    end
-  end         
-
-  def create
-    destroy_temp
-    @status_update = current_client.status_updates.create(status_updates_params)
-    if @status_update.save!
-      respond_to do |format|
-        format.html { redirect_to :back }
-        format.js
-      end
-    end
+    @user = User.find(params[:id])
+    @status_updates = @user.status_updates
   end
 
   def destroy
-    @status_update = current_client.status_updates.where(id: params[:id]).first
-    if @status_update.destroy
-      redirect_to status_update_path(current_client.id)
+    @status_update.destroy
+    flash[:success] = "Status update deleted!"
+    redirect_to status_update_path(current_user.id)
+  end
+
+  def delete_all
+    @all_status_updates = current_user.status_updates
+    @all_status_updates.destroy_all
+    if @all_status_updates.count == 0
+      flash[:success] = "All status updates deleted!"
+      redirect_to status_update_path(current_user.id)
     else
-      flash[:notice] = "Not deleted"
+      flash[:error] = "Could not reset"
+      redirect_to status_update_path(current_user.id)
     end
   end
 
-  private 
+  private
 
-  def status_updates_params
-    params.require(:status_update).permit(
-      :phase, 
-      :total_weight, 
-      :body_fat_pct, 
-      :entry_date, 
-      :id, 
+  def correct_user
+    @status_update = current_user.status_updates
+    redirect_to root_url if @status_update.nil?
+  end 
 
-      :weight_change, 
-      :lbm_change,
-      :bfp_change, 
-      :fat_change,
-      :fat_weight, 
-      :lbm_weight, 
-      
-      :total_lbm_change, 
-      :total_fat_change, 
-      :total_bfp_change,
-      :total_weight_change,
-
-      :phase_change_total_weight,
-      :phase_change_lbm_weight,
-      :phase_change_fat_weight,
-      :phase_change_body_fat_pct,
-                                
-      :prev_total_weight,
-      :prev_lbm_weight,
-      :prev_fat_weight,
-      :prev_body_fat_pct        
-    ) 
-  end                                                                    
-
-  def create_client_session                                            
-    session[:current_client] = params[:id]                             
-  end                                                                  
-
-  def create_temp
-    temp = current_client.status_updates.build(temporary: true, 
-                                               phase: 'B', 
-                                               entry_date: Date.today, 
-                                               total_weight: 0, 
-                                               body_fat_pct: 0 , 
-                                               client: current_client)
-    temp.save! 
+  def destroy_temporary
+    if current_user.status_updates.find_by_temporary('true') 
+      current_user.status_updates.find_by_temporary('true').destroy
+    end
+  end
+  
+  def status_updates_empty?
+    if current_user.status_updates.count == 0 
+      current_user.create_temporary_status_update
+    end
   end
 
-  def destroy_temp
-    current_client.status_updates.where(temporary: true).destroy_all
-  end
+end
 
-end                                                              
-                                                                 
-                                                              
+
+
+
